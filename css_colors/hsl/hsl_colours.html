@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSL colours</title>
+    <style>
+        /* hsl() function 
+        h-hue- is degree of a colour on a colour wheel. It comes with numbers 0-360
+        s-saturation- . It comes with numbers 0-100%. When it is zero it is completely grayscale. 100 is fully saturate 
+        l-lightness- . IT comes with numbers 0-100%. 0 is black. 0 is white.
+        Once L is 0% the colour will be black regardless of the other combinations
+        Once L is 100% the colour will be white regardless of the other combinations
+        Once S is 0% the colour will be a shade of grayscale if L is between 10-90, regardless of the other combinations
+        To get colours with HSL ensure that your L is not 0 or 100 and ensure your S is not 0
+        Also ensure your S and L are from 10% */
+        h1 {
+            background-color: hsl(20, 0%, 10%);
+        }
+
+        h2 {
+            background-color: hsl(300, 5%, 30%);
+        }
+
+        h3 {
+            color: hsla(200, 40%, 60%, .7);
+        }
+
+        p {
+            background-color: hsla(30, 50%, 90%, .5);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Silence</h1>
+    <h2>Joyful</h2>
+    <h3>Happiness</h3>
+    <h4>Greatness</h4>
+    <p>Colors are awesome</p>
+</body>
+
+</html>
