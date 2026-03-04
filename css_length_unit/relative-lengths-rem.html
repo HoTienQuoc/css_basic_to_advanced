@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative length units</title>
+    <style>
+        /* Relative (tương đối) Length units */
+        /* They depend on another length unit to function */
+        /* rem = root em */
+        /* rem = xrem TIMES 16px by default */
+        /* 1 rem = 16px by default */
+        /* rem = xrem TIMES the font-size of the root - html{} (anything px) */
+        /* 📐 5️⃣ rem = xrem TIMES 16px by default */
+        /* Giá trị px = số rem × font-size của html */
+        /* % phụ thuộc vào kích thước phần tử cha */
+        /* em phụ thuộc vào font-size của phần tử cha */
+        /* rem phụ thuộc vào font-size của thẻ gốc (html) */
+        html {
+            font-size: 50px;
+        }
+
+        p {
+            font-size: 4rem;
+        }
+
+        address {
+            font-size: 5rem;
+        }
+
+        var {
+            line-height: 10rem;
+        }
+
+        h1 {
+            background-color: teal;
+            width: 8rem;
+        }
+
+        pre {
+            background-color: gold;
+            height: 10rem;
+        }
+
+        code {
+            font-size: 6rem;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Friends</p>
+    <address>3, Bronx, USA</address>
+    <var>Dexterity</var>
+    <h1>Greatness</h1>
+    <pre>Sound mind</pre>
+    <code>Dreams</code>
+</body>
+
+</html>

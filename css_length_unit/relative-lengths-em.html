@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative length units</title>
+    <style>
+        /* Relative (tương đối) Length units */
+        /* They depend on another length unit to function */
+        /* em = em */
+        /* em = xem TIMES 16px by default */
+        /* 1 em = 16px by default */
+        /* em = xem TIMES the font-size of the parent - parent{} (anything px) */
+        /* If there is no parent font-size then em can multiply by the root html font-size */
+        /* em = xem TIMES the font-size of the root - html{} (anything px) */
+
+        /* 📐 5️⃣ rem = xrem TIMES 16px by default */
+        /* Giá trị px = số rem × font-size của html */
+        /* % phụ thuộc vào kích thước phần tử cha */
+        /* em phụ thuộc vào font-size của phần tử cha */
+        /* rem phụ thuộc vào font-size của thẻ gốc (html) */
+
+        /* 1em = font-size của phần tử cha gần nhất */
+
+
+        /* Trong CSS,
+        em là một đơn vị chiều dài tương đối (relative length unit),
+        được tính dựa trên kích thước font (font-size) của phần tử cha gần nhất. 📌 1️⃣ em là gì? 1em=kích thước chữ (font-size) của phần tử hiện tại. Nếu phần tử không tự đặt font-size,
+        thì 1em sẽ dựa vào font-size của phần tử cha. Nếu không có gì được khai báo,
+        mặc định trình duyệt thường là 16px. 📌 2️⃣ Ví dụ dễ hiểu Giả sử: body {
+            font-size: 16px;
+        }
+
+        div {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 2em;
+        }
+
+        👉 Khi đó: div=20px p nằm trong div 2em=2 × 20px=40px 📌 3️⃣ em được tính như thế nào? em phụ thuộc vào ngữ cảnh (context): Thuộc tính em dựa trên font-size font-size của phần tử cha width / height / padding / margin font-size của chính phần tử đó 📌 4️⃣ So sánh em và rem Đơn vị Phụ thuộc vào em font-size của phần tử cha rem font-size của phần tử gốc (html) Ví dụ: html {
+            font-size: 16px;
+        }
+
+        div {
+            font-size: 2em;
+            /* = 32px */
+        /* }
+
+        Nếu dùng rem: div {
+            font-size: 2rem;
+            /* luôn = 32px nếu html = 16px */
+        /* }
+
+        📌 rem ổn định hơn,
+        còn em linh hoạt theo từng vùng. 📌 5️⃣ Khi nào nên dùng em? ✅ Khi muốn kích thước thay đổi linh hoạt theo phần tử cha ✅ Khi làm component có thể co giãn ❌ Không nên dùng quá sâu nhiều cấp vì dễ bị nhân nhiều lần (cascading effect) 
+        */
+        html {
+            font-size: 10px;
+        }
+
+        /* blockquote {
+            font-size: 70px;
+        } */
+
+        cite {
+            font-size: 5em;
+        }
+
+        section {
+            font-size: 80px;
+        }
+
+        p {
+            font-size: 4em;
+        }
+
+        address {
+            font-size: 5em;
+        }
+
+        var {
+            line-height: 10em;
+        }
+
+        h1 {
+            background-color: teal;
+            width: 10em;
+        }
+
+        pre {
+            background-color: gold;
+            height: 10em;
+        }
+
+        code {
+            font-size: 6em;
+        }
+    </style>
+</head>
+
+<body>
+    <blockquote>World Health Organization <cite>Office</cite></blockquote>
+    <section>
+        <p>Friends</p>
+        <address>3, Bronx, USA</address>
+        <var>Dexterity</var>
+        <h1>Greatness</h1>
+        <pre>Sound mind</pre>
+        <code>Dreams</code>
+
+    </section>
+</body>
+
+</html>

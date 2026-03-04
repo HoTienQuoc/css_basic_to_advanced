@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* `ex` và `ch` là **relative length units** trong CSS, nhưng chúng không dựa trực tiếp vào `font-size` như `em` hay `rem` — mà dựa vào **đặc điểm hình học của font chữ**.
+
+        ---
+
+        # 🔹 `ex` là gì?
+
+        ### 👉 `1ex` = chiều cao của chữ thường “x” (x-height) trong font hiện tại.
+
+        Nó phụ thuộc vào:
+
+        * Font đang dùng
+        * Kiểu chữ (regular, bold…)
+        * Kích thước font
+
+        📌 Vì mỗi font có x-height khác nhau nên `ex` **không ổn định tuyệt đối**.
+
+        ---
+
+        ### Ví dụ:
+
+        ```css
+        p {
+        font-size: 40px;
+        }
+
+        .box {
+        height: 3ex;
+        }
+        ```
+
+        Nếu chữ “x” cao khoảng 20px →
+        3ex ≈ 60px
+
+        Nhưng đổi font → chiều cao có thể thay đổi.
+
+        ---
+
+        # 🔹 `ch` là gì?
+
+        ### 👉 `1ch` = chiều rộng của ký tự “0” (số 0) trong font hiện tại.
+
+        📌 Thường dùng để:
+
+        * Giới hạn độ dài dòng text
+        * Tạo input có chiều rộng theo số ký tự
+
+        ---
+
+        ### Ví dụ:
+
+        ```css
+        input {
+        width: 20ch;
+        }
+        ```
+
+        → Ô input rộng bằng khoảng **20 ký tự “0”**
+
+        Rất hữu ích cho:
+
+        * Form nhập mã OTP
+        * Giới hạn chiều dài đoạn văn
+
+        ---
+
+        # 🔥 So sánh nhanh
+
+        | Unit  | Dựa vào           | Ổn định không?   | Dùng khi nào         |
+        | ----- | ----------------- | ---------------- | -------------------- |
+        | `em`  | font-size         | khá ổn           | spacing, component   |
+        | `rem` | font-size html    | rất ổn           | layout tổng          |
+        | `ex`  | chiều cao chữ “x” | ❌ ít dùng        | canh text đặc biệt   |
+        | `ch`  | chiều rộng số “0” | ⚠ phụ thuộc font | giới hạn độ dài text |
+
+        ---
+
+        # 🎯 Thực tế
+
+        * `ex` → gần như ít dùng trong thực tế
+        * `ch` → khá hữu ích khi làm form, typography
+        * `rem` → phổ biến nhất cho layout
+        * `em` → phổ biến trong component
+
+        ---
+
+        Nếu bạn muốn mình demo một ví dụ thực tế khi `ch` cực kỳ hữu ích trong UI không? */
+
+        /* Relative Length Units depends on font-size unit of another element
+        EX and CH are influenced by their own font-size
+        EX (x-height) is the height of the lowercase "x" alphabet */
+        /* 1ex is approximately 0.5 (half) em */
+        blockquote {
+            background-color: lime;
+            width: 140ex;
+        }
+
+        cite {
+            font-size: 56ex;
+        }
+
+        /* CH (character) is the width of the character "0" zero. */
+        /* 1ex is approximately 0.5 (half) em */
+        address {
+            background-color: blueviolet;
+            width: 30ch;
+            font-size: 30px;
+        }
+
+        h1 {
+            background-color: darkorange;
+            height: 30ch;
+            /* width: 50px; */
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <blockquote>World Health Organization <cite>Office</cite></blockquote>
+    <section>
+        <p>Friends</p>
+        <address>3, Bronx, USA</address>
+        <var>Dexterity</var>
+        <h1>Greatness</h1>
+        <pre>Sound mind</pre>
+        <code>Dreams</code>
+    </section>
+</body>
+
+</html>

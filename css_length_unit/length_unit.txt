@@ -1,0 +1,6 @@
+in, cm, mm, points(pt), picas(pc), pixels(px)
+6 picas = 1 inch
+96 pixels = 1 inch
+72 points = 1 inch
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Properties</title>
+    <style>
+        h1 {
+            font-size: 60px;
+            font-style: italic;
+        }
+
+        h2 {
+            font-style: oblique;
+        }
+
+        p {
+            /* unicase makes the first letter uniform with the rest */
+            /* all-petite-caps and all-small-caps makes all letters in capital while maintaining unicase */
+            /* petite-caps and small-caps makes all letters in capital but doesn't maintain unicase */
+
+            font-variant: all-small-caps;
+            font-size: 80px;
+        }
+
+        /* font-weight: bold, bolder, lighter, 100-900 (600-900 is very bold) */
+        cite {
+            font-size: 90px;
+            font-weight: 900;
+        }
+
+        /* line-height 
+        The top and bottom gap height of an element*/
+        blockquote {
+            font-size: 70px;
+            line-height: 150px;
+        }
+
+        /* font-family
+        the default font-family is serif
+        If a font-family is spaced (more than one word), you ensure it is enclosed in a speech mark (single or double speech mark)
+        The fallbacks you should use for font-family should be sans-serif or serif
+        The first font is the PRIORITY/PRIMARY while the rest are the fall backs 
+        You will notice that Times New Roman, serif, Gill sans are alike
+         */
+        var {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 90px;
+        }
+
+        time {
+            font: italic small-caps 800 120px/500px Arial, Helvetica, sans-serif;
+        }
+
+        div {
+            font: 170px Garamond, Consolas, serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Excellent</h1>
+    <h2>Bravo</h2>
+    <p>Joyous</p>
+    <cite>Happiness</cite>
+    <blockquote>Thank you</blockquote>
+    <var>Greetings</var>
+    <time datetime="">Time is Love o'clock</time>
+    <div>Greatness</div>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unset</title>
+    <!-- 
+    1️⃣ inherit – Kế thừa từ phần tử cha
+    👉 Bắt buộc thuộc tính nhận đúng giá trị từ phần tử cha.
+
+    2️⃣ initial – Trả về giá trị mặc định của CSS
+    👉 Đưa thuộc tính về giá trị mặc định ban đầu theo chuẩn CSS, không phụ thuộc cha.
+
+    3️⃣ unset – Tùy thuộc vào tính kế thừa của thuộc tính
+    👉 Hoạt động như sau:
+    Nếu thuộc tính có tính kế thừa → hoạt động như inherit
+    Nếu thuộc tính không kế thừa → hoạt động như initial
+
+
+    -->
+
+
+    <!-- Làm sao để biết Nếu thuộc tính có tính kế thừa và Nếu thuộc tính không kế thừa
+
+    🎯 1️⃣ Cách chính xác nhất: Xem trên tài liệu chính thức (MDN)
+    Vào trang tài liệu của thuộc tính trên MDN Web Docs. Trong phần thông tin sẽ có dòng:
+    Inherited: yes hoặc Inherited: no
+    Ví dụ:
+    Thuộc tính color → Inherited: yes
+    Thuộc tính margin → Inherited: no
+    👉 Chỉ cần tìm:
+    MDN + tên thuộc tính
+
+
+    🎯 2️⃣ Quy tắc ghi nhớ nhanh (rất hữu ích)
+    ✅ Nhóm THƯỜNG kế thừa
+    Các thuộc tính liên quan đến:
+    📝 Text & Font
+    color
+    font-family
+    font-size
+    font-weight
+    line-height
+    text-align
+    visibility
+    👉 Quy tắc nhớ:
+    Những thứ liên quan đến chữ thường kế thừa
+    ❌ Nhóm KHÔNG kế thừa
+    Các thuộc tính liên quan đến:
+    📦 Box model
+    margin
+    padding
+    border
+    width
+    height
+    📐 Layout
+    display
+    position
+    float
+    flex
+    grid
+    👉 Quy tắc nhớ:
+    Những thứ liên quan đến kích thước và bố cục thì không kế thừa
+
+
+    🎯 3️⃣ Cách tự kiểm tra bằng DevTools (thực tế nhất)
+    Mở trình duyệt → F12
+    Tạo HTML như:
+    <div style="color: red;">
+    <p>Test</p>
+    </div>
+    Kiểm tra <p> trong tab Styles
+    Nếu thuộc tính có gạch chú thích:
+    Inherited from div
+    → Nó là thuộc tính kế thừa.
+
+
+    🎯 4️⃣ Mẹo nhớ cực nhanh
+    Nếu thuộc tính...	Thì...
+    Ảnh hưởng đến nội dung bên trong	Thường kế thừa
+    Ảnh hưởng đến hộp (box) bên ngoài	Không kế thừa
+    💡 Ví dụ dễ hiểu
+    div {
+    color: red;
+    margin: 50px;
+    }
+    Thẻ con <p> sẽ:
+    Có chữ đỏ (vì color kế thừa)
+    Không có margin 50px (vì margin không kế thừa)
+
+     -->
+    <style>
+        /* section {
+            font-size: 80px;
+        }
+
+        p {
+            font-size: inherit;
+        } */
+
+        html {
+            font-size: 100px;
+        }
+
+        section {
+            font-size: 80px;
+            color: blueviolet;
+            font-style: unset;
+            font-weight: 800;
+        }
+
+        section {
+            font-weight: unset;
+        }
+
+        p {
+            font-size: inherit;
+            font-style: initial;
+            color: unset;
+            font-weight: unset;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <p>Example</p>
+        <p>Joy</p>
+        <p>Greatness</p>
+    </section>
+</body>
+
+</html>
