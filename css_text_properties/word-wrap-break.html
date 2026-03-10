@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word wrap and word break</title>
+    <style>
+        /* Web browser prefixes */
+        /* -moz- mozilla firefox */
+        /* -mz- internet explorer or edge */
+        /* -webkit- Google Chrome, safari */
+        /* -o- Opera */
+        div {
+            background-color: hotpink;
+            width: 300px;
+            font-size: 30px;
+            /* word-wrap: break-word; */
+            /* Specifies whether the UA may break within a word to prevent overflow when an otherwise-unbreakable string is too long to fit.
+            Syntax: normal | break-word
+            
+            word-wrap = tên cũ (legacy)
+            overflow-wrap = tên chuẩn CSS hiện tại
+            */
+
+            /* overflow-wrap */
+            /* Keyword values */
+            /* overflow-wrap: normal;
+            overflow-wrap: break-word;
+            overflow-wrap: anywhere; */
+
+            /* Global values */
+            /* overflow-wrap: inherit;
+            overflow-wrap: initial;
+            overflow-wrap: revert;
+            overflow-wrap: revert-layer;
+            overflow-wrap: unset; */
+
+            /* overflow-wrap: break-word helps to split a long word in the middle that was overflowing */
+            overflow-wrap: break-word;
+        }
+
+        p {
+            background-color: hotpink;
+            width: 300px;
+            font-size: 30px;
+
+
+            /* Keyword values */
+            /* word-break: normal;
+            word-break: break-all;
+            word-break: keep-all;
+            word-break: auto-phrase; */
+            /* experimental */
+            /* word-break: break-word; */
+            /* deprecated */
+
+            /* Global values */
+            /* word-break: inherit;
+            word-break: initial;
+            word-break: revert;
+            word-break: revert-layer;
+            word-break: unset; */
+
+            /* word-break: break-word helps to split a long word in the middle that was overflowing */
+
+            word-break: break-word;
+        }
+
+        section {
+            background-color: hotpink;
+            width: 300px;
+            font-size: 30px;
+            /* word-break: break-all helps to split a long word along any character that was overflowing */
+
+            /* word-break: break-all break-word keep-all/normal (both are the same and they are the default) */
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Overflow-wrap: break-word</h1>
+    <div>Lorem ipsumuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu dolor sit amet, consectetur adipisicing elit. Rerum
+        tempore aut repellat alias, consequuntur ullam
+        necessitatibus? Consequatur corrupti deleniti impedit nisi, quia repellendus magnam officiis nemo.</div>
+    <h1>Word-break: break-word</h1>
+    <p>Lorem ipsumuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu dolor sit amet, consectetur adipisicing elit. Rerum
+        tempore aut repellat alias, consequuntur ullam
+        necessitatibus? Consequatur corrupti deleniti impedit nisi, quia repellendus magnam officiis nemo.</p>
+    <h1>Word-break: break-all</h1>
+    <section>Lorem ipsumuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu dolor sit amet, consectetur adipisicing elit. Rerum
+        tempore aut repellat alias, consequuntur ullam
+        necessitatibus? Consequatur corrupti deleniti impedit nisi, quia repellendus magnam officiis nemo.</section>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text shadow and Box Shadow</title>
+    <style>
+        html {
+            font-size: 50px;
+        }
+
+        /* Text shadow */
+        h1 {
+            /* text-shadow: Syntax: none | <shadow-t># 
+            <shadow> = 
+                <color>?                 &&
+                [ <length>{2} [ <length [0,∞]> <length>? ]? ]  &&
+            inset?  */
+            /* text-shadow: (shadow's horizontal(ngang) offset) (shadow's vertical(dọc) offset) (shadow's blur(mờ) radius) (color) */
+            /* When the shadow's horizontal offset is negative it is going towards the left */
+            /* When the shadow's horizontal offset is positive it is going towards the right */
+            /* When the shadow's vertical offset is negative it is going upwards */
+            /* When the shadow's vertical offset is positive it is going downwards */
+            /* The higher the blur value the fainer(mờ nhạt) the blur becomes */
+            /* But The lesser the blur value the thicker the blur becomes */
+
+
+
+
+            /* text-shadow: offset-x | offset-y | blur-radius | color */
+            /* color | offset-x | offset-y | blur-radius */
+            /* offset-x | offset-y | color */
+            /* offset-x | offset-y
+            /* Use defaults for color and blur-radius */
+            /* Global values */
+            /* text-shadow: inherit;
+            text-shadow: initial;
+            text-shadow: revert;
+            text-shadow: revert-layer;
+            text-shadow: unset; */
+
+            /* text-shadow là thuộc tính CSS dùng để tạo bóng (shadow) cho chữ.
+            Nó giúp chữ nổi bật hơn, có chiều sâu hoặc hiệu ứng đẹp hơn. */
+
+            /* text-shadow – bóng của chữ Bóng chỉ áp dụng cho ký tự. Nó không ảnh hưởng tới nền hoặc khung phần tử. */
+
+
+
+            text-shadow: 4px 4px 1px red;
+        }
+
+        h2 {
+            text-shadow: 3px 4px 2px teal;
+        }
+
+        /* Box Shadow */
+        /* box-shadow: inset (shadow's horizontal(ngang) offset) (shadow's vertical(dọc) offset) (shadow's blur(mờ) radius) (spread of the shadow) (color) 
+        inset - places the shadow inside an element */
+        /* box-shadow trong CSS
+        box-shadow là thuộc tính CSS dùng để tạo bóng cho phần tử (box) như:
+        div
+        button
+        card
+        img
+        input
+        Nó làm phần tử có chiều sâu giống vật thể nổi lên. */
+        /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+        /* box-shadow – bóng của phần tử Bóng áp dụng cho toàn bộ khối (box). */
+        /* Keyword values */
+        /* box-shadow: none; */
+
+        /* A color and two length values */
+        /* box-shadow: red 60px -16px; */
+
+        /* Three length values and a color */
+        /* box-shadow: 10px 5px 5px black; */
+
+        /* Four length values and a color */
+        /* box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%); */
+
+        /* inset, length values, and a color */
+        /* box-shadow: inset 5em 1em gold; */
+
+        /* Multiple shadows, separated by commas */
+        /* box-shadow:
+            3px 3px red inset,
+            -1em 0 0.4em olive; */
+
+        /* Global values */
+        /* box-shadow: inherit;
+        box-shadow: initial;
+        box-shadow: revert;
+        box-shadow: revert-layer;
+        box-shadow: unset; */
+
+        /* Specify a single box-shadow using:
+        Two, three, or four <length> values.
+        If only two values are given, they are interpreted as <offset-x> and <offset-y> values.
+        If a third value is given, it is interpreted as a <blur-radius>.
+        If a fourth value is given, it is interpreted as a <spread-radius>.
+        Optionally, the inset keyword.
+        Optionally, a <color> value.
+        To specify multiple shadows, provide a comma-separated list of shadows.
+        */
+        /* spread-radius quyết định bóng lớn hơn hay nhỏ hơn box bao nhiêu trước khi blur. */
+        /* inset là từ khóa trong box-shadow dùng để tạo bóng ở bên trong phần tử thay vì bên ngoài. */
+
+        /* Thứ tự hoạt động box-shadow:
+            1 tạo shadow
+            2 spread (phóng to / thu nhỏ)
+            3 blur (làm mờ)
+        */
+        h3 {
+            box-shadow: 4px 1px 4px 7px darkred;
+            /* outset có nghĩa là không có inset */
+        }
+
+        h4 {
+            box-shadow: inset -1px 1px 1px 7px #5e3;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <a href="">Greenland</a>
+        <h1>Friends</h1>
+        <h2>Greatness</h2>
+        <h3>Fairness</h3>
+        <h4>Loyalty is a fantastic virtue</h4>
+        <h5>Dreams do come true</h5>
+        <aside>
+            <p>Rightness</p>
+        </aside>
+        <!-- <p>Rightness</p> -->
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quibusdam eum, nobis tenetur quisquam in.
+            Assumenda officia repellendus enim quod quos repellat quisquam quibusdam magni, veniam blanditiis eum? Nobis
+            ea quibusdam adipisci quisquam minus optio sunt iste doloribus eum quia.</div>
+    </section>
+</body>
+
+</html>

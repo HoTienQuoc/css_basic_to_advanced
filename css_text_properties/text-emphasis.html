@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Emphasis</title>
+    <style>
+        /* Text Emphasis is used to apply emphasis marks to text */
+        h1 {
+            /* Syntax: <'text-emphasis-style'> || <'text-emphasis-color'> */
+
+            /* text-emphasis-style: Syntax: none | [ [ filled | open ] || [ dot | circle | double-circle | triangle | sesame ] ] | 
+            <string>(any letter, number or symbol placed in a quotiation) */
+            /* Initial value */
+            /* text-emphasis-style: none; */
+            /* No emphasis marks */
+
+            /* <string> values */
+            /* text-emphasis-style: "x";
+            text-emphasis-style: "\25B2";
+            text-emphasis-style: "*"; */
+
+            /* Keyword values */
+            /* text-emphasis-style: filled (default);
+            text-emphasis-style: open;
+            text-emphasis-style: dot;
+            text-emphasis-style: circle;
+            text-emphasis-style: double-circle;
+            text-emphasis-style: triangle;
+            text-emphasis-style: filled sesame;
+            text-emphasis-style: open sesame; */
+
+            /* Global values */
+            /* text-emphasis-style: inherit;
+            text-emphasis-style: initial;
+            text-emphasis-style: revert;
+            text-emphasis-style: revert-layer;
+            text-emphasis-style: unset; */
+            text-emphasis-style: double-circle;
+            font-size: 100px;
+
+            /* text-emphasis-color: Syntax: <color> */
+            /* Initial value */
+            /* text-emphasis-color: currentColor; */
+
+            /* <color> */
+            /* text-emphasis-color: #555555;
+            text-emphasis-color: blue;
+            text-emphasis-color: rgb(90 200 160 / 80%);
+            text-emphasis-color: transparent; */
+
+            /* Global values */
+            /* text-emphasis-color: inherit;
+            text-emphasis-color: initial;
+            text-emphasis-color: revert;
+            text-emphasis-color: revert-layer;
+            text-emphasis-color: unset; */
+            text-emphasis-color: green;
+        }
+
+        h2 {
+            font-size: 100px;
+            text-emphasis-style: "*";
+            text-emphasis-color: darkorange;
+        }
+
+        h3 {
+            font-size: 100px;
+            text-emphasis-style: "#";
+            text-emphasis-color: #a47;
+            /* text-emphasis-position: Syntax: auto | [ over | under ] && [ right | left ]?; */
+            /* Initial value */
+            /* text-emphasis-position: auto; */
+
+            /* Keyword values */
+            /* text-emphasis-position: over;
+            text-emphasis-position: under;
+
+            text-emphasis-position: over right;
+            text-emphasis-position: over left;
+            text-emphasis-position: under right;
+            text-emphasis-position: under left;
+
+            text-emphasis-position: left over;
+            text-emphasis-position: right over;
+            text-emphasis-position: right under;
+            text-emphasis-position: left under; */
+
+            /* Global values */
+            /* text-emphasis-position: inherit;
+            text-emphasis-position: initial;
+            text-emphasis-position: revert;
+            text-emphasis-position: revert-layer;
+            text-emphasis-position: unset; */
+            text-emphasis-position: under;
+        }
+
+        /* text-emphasis: */
+        /* Shorthand is written this way */
+        /* text-emphasis: style color */
+        h4 {
+            font-size: 100px;
+            text-emphasis: '@' red;
+            text-emphasis-position: under;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Friends</h1>
+    <h2>Greatness</h2>
+    <h3>Fairness</h3>
+    <h4>Loyalty is a fantastic virtue</h4>
+    <h5>Dreams do come true</h5>
+</body>
+
+</html>

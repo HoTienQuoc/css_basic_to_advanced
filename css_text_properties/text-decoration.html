@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text decoration</title>
+    <style>
+        html {
+            font-size: 40px;
+        }
+
+        /* Text decoration */
+        /* The shorthand property is: */
+        /* text-decoration: line style color thickness */
+        /* text-decoration-line (A MUST) (là bắt buộc cần phải có): line-throught, underline, overline, blink; */
+        /* text-decoration-style: dotted, dashed, double, solid, wavy; */
+
+        /* text-decoration là thuộc tính CSS dùng để thêm hoặc chỉnh kiểu trang trí cho văn bản, phổ biến nhất là gạch chân (underline).
+        Cú pháp
+        text-decoration: value;
+        Ví dụ cơ bản
+        p {
+        text-decoration: underline;
+        }
+        Kết quả:
+        Văn bản trong <p> sẽ bị gạch chân.
+        Các giá trị phổ biến
+        Giá trị	Ý nghĩa
+        none	không có trang trí
+        underline	gạch chân
+        overline	gạch trên chữ
+        line-through	gạch ngang giữa chữ
+        */
+        /* Thuộc tính chi tiết hơn
+        text-decoration thực ra là viết tắt (shorthand) của nhiều thuộc tính:
+        Thuộc tính	Chức năng
+        text-decoration-line	kiểu gạch
+        text-decoration-color	màu của đường gạch
+        text-decoration-style	kiểu nét gạch
+        text-decoration-thickness	độ dày
+        */
+        /* text-decoration-line là thuộc tính CSS dùng để xác định loại đường trang trí của văn bản (đường gạch ở đâu).
+        Nó là một phần của thuộc tính text-decoration.
+        Cú pháp
+        text-decoration-line: value;
+        Các giá trị phổ biến
+        Giá trị	Ý nghĩa
+        none	không có trang trí
+        underline	gạch chân
+        overline	gạch trên chữ
+        line-through	gạch ngang giữa chữ 
+        blink  Chữ nhấp nháy */
+        h1 {
+            /* text-decoration-line: line-through; */
+            /* text-decoration-line: underline; */
+            /* text-decoration-line: overline; */
+            /* text-decoration-line: blink; */
+            text-decoration-line: line-through;
+        }
+
+        h2 {
+            text-decoration-line: line-through underline overline blink;
+        }
+
+        h3 {
+            /* text-decoration-style */
+            text-decoration-line: overline;
+            text-decoration-style: double;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h4 {
+            /* text-decoration-color */
+            text-decoration-color: blueviolet;
+            text-decoration-line: line-through;
+        }
+
+        p {
+            text-decoration: overline dashed lime 30px;
+        }
+
+        h5 {
+            text-decoration: underline dashed darkgoldenrod;
+            /* text-decoration-thickness: is for the thickness of the line */
+            text-decoration-thickness: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <a href="">Greenland</a>
+        <h1>Friends</h1>
+        <h2>Greatness</h2>
+        <h3>Fairness</h3>
+        <h4>Loyalty is a fantastic virtue</h4>
+        <h5>Dreams do come true</h5>
+        <aside>
+            <p>Rightness</p>
+        </aside>
+        <!-- <p>Rightness</p> -->
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quibusdam eum, nobis tenetur quisquam in.
+            Assumenda officia repellendus enim quod quos repellat quisquam quibusdam magni, veniam blanditiis eum? Nobis
+            ea quibusdam adipisci quisquam minus optio sunt iste doloribus eum quia.</div>
+    </section>
+</body>
+
+</html>

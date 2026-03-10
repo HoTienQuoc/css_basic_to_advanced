@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewport Length Unit</title>
+    <style>
+        /* Viewport Length unit */
+        /* Viewport width (vw) */
+        /* Viewport height (vh) */
+        /* Viewport minium (vmin) for height works like vh. Using vmin with width causes a reduction */
+        /* Viewport maximun (vmax) for height works like vw. Using vmax with height causes a high increment */
+        /* It is not influenced by its parent's MATCHING PROPERTIES */
+
+        /* vh là đơn vị viewport height trong CSS.
+        👉 1vh = 1% chiều cao của màn hình trình duyệt (viewport). */
+
+        /* vw là viewport width trong CSS.
+        👉 1vw = 1% chiều rộng của viewport (màn hình trình duyệt). */
+
+        /* vmin là đơn vị dựa trên cạnh nhỏ hơn của viewport (màn hình trình duyệt).
+        1vmin = 1% của cạnh nhỏ hơn giữa width và height của viewport
+        width nhỏ hơn height thì lấy width
+        Còn height lớn hơn width thì lấy height
+        */
+
+        /* vmax là đơn vị dựa trên cạnh lớn hơn của viewport (màn hình trình duyệt).
+        1vmax = 1% của cạnh lớn hơn giữa width và height của viewport
+        width lớn hơn height thì lấy width
+        Còn height lớn hơn width thì lấy height
+         */
+        section {
+            background-color: blueviolet;
+            width: 300px;
+            height: 600px;
+        }
+
+        address {
+            background-color: aqua;
+            width: 30vw;
+        }
+
+        h1 {
+            background-color: darkgreen;
+            height: 50vh;
+        }
+
+        div {
+            background-color: darkorange;
+            width: 60vmin;
+            height: 60vmax;
+        }
+    </style>
+</head>
+
+<body>
+    <blockquote>World Health Organization <cite>Office</cite></blockquote>
+    <section>
+        <p>Friends</p>
+        <address>3, Bronx, USA</address>
+        <var>Dexterity</var>
+        <h1>Greatness</h1>
+        <pre>Sound mind</pre>
+        <code>Dreams</code>
+    </section>
+    <div>Sing aloud</div>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Properties</title>
+    <style>
+        /* Text transform */
+        /* uppercase, lowercase, capitalize (makes the first letter a capital letter) */
+        h1 {
+            font-size: 40px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 50px;
+            text-transform: lowercase;
+        }
+
+        h3 {
+            font-size: 40px;
+            text-transform: capitalize;
+        }
+
+        /* Text align */
+        /* start/left, end/right, center, justify, match-parent/inherit */
+
+        /* match-parent: Phần tử sẽ căn giống phần tử cha. */
+
+        /* initial về giá trị mặc định
+        inherit	kế thừa từ phần tử cha
+        unset nếu có thể kế thừa thì kế thừa, không thì về mặc định
+        revert quay lại style của browser/user */
+
+        /* Text-align-last */
+        /* text-align-last: auto | left | right | center | justify | start | end; */
+        /* text-align-last là thuộc tính CSS dùng để xác định cách căn chỉnh dòng cuối cùng của đoạn văn bản (hoặc dòng trước khi xuống dòng bằng <br>). Nó thường được dùng khi đoạn văn được text-align: justify để kiểm soát riêng dòng cuối. */
+        /* Giá trị	Ý nghĩa
+            auto	Trình duyệt tự quyết định (mặc định)
+            left	Căn trái dòng cuối
+            right	Căn phải dòng cuối
+            center	Căn giữa dòng cuối
+            justify	Căn đều cả dòng cuối
+            start	Căn theo hướng bắt đầu của ngôn ngữ
+            end	Căn theo hướng kết thúc của ngôn ngữ
+        */
+        h4 {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        section {
+            text-align: end;
+        }
+
+        aside {
+            text-align: right;
+        }
+
+        p {
+            font-size: 50px;
+            text-align: inherit;
+        }
+
+        section {
+            font-size: 30px;
+        }
+
+        div {
+            font-size: inherit;
+            text-align: justify;
+            text-align-last: end;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Friends</h1>
+        <h2>Greatness</h2>
+        <h3>Fairness</h3>
+        <h4>Loyalty</h4>
+        <aside>
+            <p>Rightness</p>
+        </aside>
+        <!-- <p>Rightness</p> -->
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quibusdam eum, nobis tenetur quisquam in.
+            Assumenda officia repellendus enim quod quos repellat quisquam quibusdam magni, veniam blanditiis eum? Nobis
+            ea quibusdam adipisci quisquam minus optio sunt iste doloribus eum quia.</div>
+    </section>
+</body>
+
+</html>

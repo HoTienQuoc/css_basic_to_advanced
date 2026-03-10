@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text spacing and Word Spacing and Letter spacing</title>
+    <style>
+        /* Text Indent */
+        html {
+            font-size: 40px;
+        }
+
+        aside {
+            font-size: 80px;
+        }
+
+        /* text-indent là thuộc tính trong CSS dùng để thụt đầu dòng (indent) của dòng đầu tiên trong một đoạn văn bản. Nói đơn giản: 👉 Nó làm dòng đầu tiên của đoạn <p>hoặc block text lùi vào một khoảng so với lề trái. */
+
+        /* Text indent */
+        /* Positive indenting shifts the text to the right */
+        /* Negative indenting shifts the text to the left */
+        h1 {
+            text-indent: 7rem;
+            /* text-indent px = 7 * font-size of html (40px) = 280px */
+        }
+
+        /* Letter spacing */
+        h2 {
+            letter-spacing: 50px;
+        }
+
+        /* letter-spacing trong CSS
+        letter-spacing là thuộc tính CSS dùng để điều chỉnh khoảng cách giữa các ký tự (chữ cái) trong văn bản.
+        Cú pháp
+        letter-spacing: value;
+        */
+        p {
+            /* letter-spacing: 100px; */
+            letter-spacing: 3em;
+        }
+
+        /* Trong CSS, word-spacing là thuộc tính dùng để điều chỉnh khoảng cách giữa các từ (words) trong văn bản.
+        Cú pháp
+        word-spacing: value;
+        */
+        h4 {
+            word-spacing: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Friends</h1>
+        <h2>Greatness</h2>
+        <h3>Fairness</h3>
+        <h4>Loyalty is a fantastic virtue</h4>
+        <aside>
+            <p>Rightness</p>
+        </aside>
+        <!-- <p>Rightness</p> -->
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quibusdam eum, nobis tenetur quisquam in.
+            Assumenda officia repellendus enim quod quos repellat quisquam quibusdam magni, veniam blanditiis eum? Nobis
+            ea quibusdam adipisci quisquam minus optio sunt iste doloribus eum quia.</div>
+    </section>
+
+</body>
+
+</html>

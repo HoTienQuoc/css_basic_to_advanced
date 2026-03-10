@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Space Property</title>
+    <style>
+        /* 1. Normal and Wrap are the same and are the defaults  */
+        /* 2. Pre and Pre-wrap are not the same. They can act the same when the size of the elements is large enought to contain the text */
+
+
+        /* white-space: Syntax: normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'>
+         */
+
+
+        /* Các giá trị phổ biến
+            1. normal (mặc định)
+            Nhiều khoảng trắng → gộp thành 1 khoảng trắng
+            Văn bản tự xuống dòng khi hết chiều rộng
+            white-space: normal;
+            Ví dụ:
+            Hello      world
+            Hiển thị:
+            Hello world
+            2. nowrap
+            Gộp khoảng trắng
+            Không xuống dòng
+            white-space: nowrap;
+            Kết quả: text chạy 1 dòng dài.
+            3. pre
+            Giữ nguyên khoảng trắng
+            Giữ nguyên xuống dòng
+            Giống thẻ <pre>
+            white-space: pre;
+            Ví dụ HTML:
+            Hello      world
+            This is line 2
+            Hiển thị y như vậy.
+            4. pre-wrap
+            Giữ khoảng trắng
+            Giữ xuống dòng
+            Cho phép tự xuống dòng
+            white-space: pre-wrap;
+            5. pre-line
+            Gộp khoảng trắng
+            Giữ xuống dòng
+            white-space: pre-line;
+            */
+
+
+            /* Single keyword values */
+            /* white-space: normal;
+            white-space: pre;
+            white-space: pre-wrap;
+            white-space: pre-line; */
+
+            /* white-space-collapse and text-wrap-mode shorthand values */
+            /* white-space: nowrap;
+            white-space: wrap;
+            white-space: break-spaces;
+            white-space: collapse;
+            white-space: preserve nowrap; */
+
+            /* Global values */
+            /* white-space: inherit;
+            white-space: initial;
+            white-space: revert;
+            white-space: revert-layer;
+            white-space: unset; */
+
+        article {
+            background-color: darkorange;
+            width: 300px;
+            /* white-space: normal;  */
+            white-space: wrap;
+            /* wrap or normal is default */
+        }
+
+        div {
+            background-color: chocolate;
+            width: 300px;
+            white-space: nowrap;
+        }
+
+        section {
+            background-color: forestgreen;
+            width: 400px;
+            white-space: pre-wrap;
+        }
+
+        aside {
+            background-color: darkorange;
+            width: 400px;
+            white-space: pre;
+        }
+
+        p {
+            background-color: fuchsia;
+            width: 200px;
+            white-space: pre-line;
+        }
+
+        h5 {
+            background-color: teal;
+            width: 200px;
+            white-space: break-spaces;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>White-space: wrap or normal</h1>
+    <article>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Qui id, vero harum error dignissimos voluptatibus accusantium officia minima libero.
+    Quos voluptatibus quod, omnis iure fugiat non optio reprehenderit doloribus aspernatur.</article>
+    <h1>White-space: nowrap</h1>
+    <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+    Nemo rem fuga iure dolore, beatae harum ipsa, praesentium ex excepturi mollitia vitae, minus cumque quibusdam sint aspernatur iusto.
+    Totam, iure quidem.</div>
+    <h1>White-space: pre-wrap</h1>
+    <section>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Quam, perferendis sit, aliquid dolorem doloremque ea maxime a voluptas nostrum excepturi enim ullam magnam, natus earum unde numquam esse.
+    Dicta, voluptatem.
+    </section>
+    <h1>White-space: pre</h1>
+    <aside>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Eos sit veritatis quos, tempore laborum iusto dolor corporis debitis alias magni quasi velit cum aliquam fuga ea excepturi perferendis veniam praesentium?
+    </aside>
+    <h1>White-space: pre-line</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Corrupti quos tempora aspernatur a, nihil eaque id exercitationem itaque nostrum culpa labore hic, vitae porro laboriosam ipsum, quam voluptatem facere nemo.</p>
+    <h1>White-spacing: break-spaces</h1>
+    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Cum laudantium molestias eaque nostrum repudiandae unde.
+    Aut nisi animi voluptatem, similique pariatur laudantium accusantium architecto culpa. Magni excepturi nam pariatur corporis?</h5>
+</body>
+
+</html>

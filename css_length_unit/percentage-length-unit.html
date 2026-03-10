@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Length Unit</title>
+    <style>
+        /* Percentage Length Unit */
+        /* It is not influenced only by font-size */
+        /* It is influenced by ANY PROPERTY of its parent */
+        /* When an element doesn't have a parent, it works with the browser's default length sizes */
+        /* How does it work */
+        /* x%/100 TIMES parent's length unit MATCHING property with the length unit */
+        blockquote {
+            font-size: 70px;
+        }
+
+        cite {
+            font-size: 50%;
+        }
+
+        section {
+            width: 500px;
+            background-color: darkgreen;
+            height: 700px;
+        }
+
+        p {
+            background-color: brown;
+            width: 80%;
+        }
+
+        h1 {
+            background-color: deeppink;
+            height: 70%;
+        }
+
+        div {
+            background-color: magenta;
+            /* html rộng = 100% viewport (màn hình trình duyệt) */
+            /* div = 50% chiều rộng màn hình */
+            width: 90%;
+            /* Mặc định:
+            html thường = 16px
+            body kế thừa từ html = 16px
+            div = 50% của 16px */
+            font-size: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <blockquote>World Health Organization <cite>Office</cite></blockquote>
+    <section>
+        <p>Friends</p>
+        <address>3, Bronx, USA</address>
+        <var>Dexterity</var>
+        <h1>Greatness</h1>
+        <pre>Sound mind</pre>
+        <code>Dreams</code>
+    </section>
+    <div>Sing aloud</div>
+</body>
+
+</html>
