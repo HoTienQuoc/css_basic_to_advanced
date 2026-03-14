@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS cascade rule 2</title>
+    <!-- <link rel="stylesheet" href="css-cascade-rule2.css"> -->
+    <style> /* Internal CSS */
+        /* When using different styling (inline, internal, external)
+        The BOTTOM MOST styling of the same element/class/id  takes preeminence(sự ưu việt) */
+        h1{
+            font-size: 70px;
+            text-shadow: 3px 5px 4px red;
+        }
+    </style>
+        <link rel="stylesheet" href="css-cascade-rule2.css">
+
+</head>
+<body>
+    <!-- example inline style css -->
+    <!-- <h1 style="font-size: 20px; text-shadow: 3px 4px 5px blue;">CSS ROCKS</h1> -->
+    <h1>CSS ROCKS</h1>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking the css cascade rule</title>
+    <style>
+        /* CSS Cascade Rule can be broken using the !important after the CSS value
+
+        The BOTTOM MOST styling of the same element/class/id  takes preeminence(sự ưu việt)
+         */
+        /* p{
+            color: chartreuse;
+            color: blueviolet;
+            font-size: 60px;
+            font-size: 20px;
+            text-align: end;
+            text-align: start;
+        } */
+        p{
+            color: chartreuse;
+            font-size: 60px !important;
+            text-align: end;
+        }
+        p{
+            color: blueviolet;
+            font-size: 10px;
+            text-align: center !important;
+        }
+        p{
+            color: crimson !important;
+            font-size: 100px;
+            text-align: start;
+            text-emphasis: double-circle red;
+        }
+        p{
+            color: darkgreen !important;
+            font-size: 20px;
+            text-emphasis: '%' red !important;
+        }
+    </style>
+</head>
+<body>
+    <p>I am loving this course already</p>
+</body>
+</html>
+
+
+
+<!-- Trong CSS chỉ có **`!important`**, không có thuộc tính tên là **`important`** riêng.
+`!important` là **một flag đặc biệt dùng để tăng độ ưu tiên của CSS rule**.
+
+---
+
+# 1️⃣ `!important` là gì
+
+`!important` làm cho **CSS rule đó có ưu tiên cao nhất** trong Cascade.
+
+Ví dụ:
+
+```css
+p {
+  color: blue;
+}
+
+p {
+  color: red !important;
+}
+```
+
+Kết quả:
+
+```
+red
+```
+
+Vì:
+
+```
+!important > rule bình thường
+```
+
+---
+
+# 2️⃣ `!important` có thể thắng cả Specificity
+
+Ví dụ:
+
+```css
+#title {
+  color: blue;
+}
+
+p {
+  color: red !important;
+}
+```
+
+HTML
+
+```html
+<p id="title">Hello</p>
+```
+
+Kết quả:
+
+```
+red
+```
+
+Dù:
+
+```
+#id mạnh hơn element
+```
+
+Nhưng:
+
+```
+!important mạnh hơn specificity
+```
+
+---
+
+# 3️⃣ Thứ tự ưu tiên CSS (đơn giản)
+
+Từ yếu → mạnh:
+
+```
+Browser default
+↓
+External CSS
+↓
+Internal CSS
+↓
+Inline style
+↓
+!important
+```
+
+---
+
+# 4️⃣ Nếu cả hai đều `!important`
+
+CSS sẽ quay lại so **specificity**.
+
+Ví dụ:
+
+```css
+p {
+  color: blue !important;
+}
+
+#title {
+  color: red !important;
+}
+```
+
+HTML
+
+```html
+<p id="title">Hello</p>
+```
+
+Kết quả:
+
+```
+red
+```
+
+Vì:
+
+```
+#id > element
+```
+
+---
+
+# 5️⃣ Khi nào nên dùng `!important`
+
+Có vài trường hợp hợp lý:
+
+### 1️⃣ Override CSS framework
+
+Ví dụ khi dùng Bootstrap hoặc Tailwind CSS.
+
+---
+
+### 2️⃣ Debug nhanh
+
+Ví dụ test style:
+
+```css
+color: red !important;
+```
+
+---
+
+# 6️⃣ Khi nào KHÔNG nên dùng
+
+Dev chuyên nghiệp **rất hạn chế dùng `!important`**.
+
+Vì:
+
+```
+CSS sẽ rất khó maintain
+```
+
+Ví dụ:
+
+```css
+color: red !important;
+color: blue !important;
+color: green !important;
+```
+
+Sau này sửa sẽ rất đau đầu.
+
+---
+
+# 7️⃣ Quy tắc của dev frontend
+
+Nguyên tắc phổ biến:
+
+```
+Avoid !important whenever possible
+```
+
+Hãy sửa bằng:
+
+* **specificity**
+* **cascade**
+* **selector đúng**
+
+---
+
+# 8️⃣ Ví dụ đúng cách (không cần !important)
+
+Thay vì:
+
+```css
+p {
+  color: blue;
+}
+
+p {
+  color: red !important;
+}
+```
+
+Hãy viết:
+
+```css
+.article p {
+  color: red;
+}
+```
+
+Tăng **specificity** thay vì dùng `!important`.
+
+---
+
+# Tóm tắt
+
+| Thuộc tính   | Ý nghĩa               |
+| ------------ | --------------------- |
+| `!important` | tăng ưu tiên CSS rule |
+| thắng        | cascade + specificity |
+| chỉ nên dùng | khi thật sự cần       |
+
+---
+
+💡 Một điều **rất nhiều người học CSS không biết**:
+
+Có một khái niệm gọi là **CSS Specificity Score** (điểm ưu tiên selector).
+Chỉ cần nhìn selector là biết **rule nào thắng rule nào** ngay lập tức. Nếu bạn muốn mình có thể chỉ cách **tính specificity trong 5 giây** mà dev frontend dùng hằng ngày. -->

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"><!-- Parent tag of head and body tags -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css inheritance</title>
+    <style>
+        /* CSS Inheriance occurs with: 
+        1. styling a parent{} will make its children inherit except the child is styled otherwise  
+        2. styling the body{} will make elements inherit excepts the element is styled otherwise 
+        3. styling the html{} will make elements inherit excepts the element is styled otherwise
+        
+        if you style html{} and body{} all other elements will inherit from it Except otherwise stated (quy định) for each elements
+        */
+
+        /* Khi bạn style một phần tử cha (parent) thì các phần tử con (children) bên trong sẽ tự động kế thừa một số thuộc tính CSS, trừ khi phần tử con có style riêng.
+         */
+        /* Nếu bạn style body, thì tất cả element bên trong trang sẽ kế thừa style đó, trừ khi element đó có style riêng.
+         */
+
+        /* Nếu bạn style html, thì tất cả element bên trong trang sẽ kế thừa style đó, trừ khi element đó có style riêng.
+         */
+
+        /* Nếu bạn định kiểu cho html{} và body{}, tất cả các phần tử khác sẽ kế thừa từ đó, trừ khi có quy định khác cho từng phần tử. */
+        
+        html{
+            text-decoration: underline double darkgoldenrod;
+        }
+        body{
+            font-size: 150px;
+            /* background-color: firebrick; */
+            color: teal;
+            text-shadow: 4px 3px 5px green;
+        }
+        section{
+            font-size: 50px;
+            color: indigo;
+        }
+        var{
+            font-size: 300px;
+            color: crimson;
+            background-color: chartreuse;
+        }
+        article{
+            color: hotpink;
+        }
+    </style>
+</head>
+<body> <!-- Parent tag of section article -->
+    <section> <!-- Parent tag of div p h2 var -->
+        <div>Fantasic</div>
+        <p>Excellent</p>
+        <h2>Awesome</h2>
+        <var>Ecanto</var>
+    </section>
+    <article>CSS is such a good lesson</article>
+</body>
+</html>

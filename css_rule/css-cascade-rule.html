@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Cascade rule</title>
+    <style>
+        /* CSS Cascade Rule therefore states that when styling:
+            The next style takes preeminence(sự ưu việt)
+            because the rule cascades from top to bottom
+            The BOTTOM MOST styling of the same element/class/id  takes preeminence(sự ưu việt)
+        */
+        /* CSS Cascade là quy tắc quyết định CSS nào được áp dụng khi có nhiều rule cùng style một element. */
+        /* CSS Cascade (quy tắc ghi đè) */
+        /* CSS Specificity (độ ưu tiên selector) */
+        /* CSS Inheritance (kế thừa) */
+        /* Thứ tự ưu tiên tổng thể của CSS
+            Từ yếu → mạnh
+            1️⃣ Browser default
+            2️⃣ Inheritance
+            3️⃣ Element selector
+            4️⃣ Class selector
+            5️⃣ ID selector
+            6️⃣ Inline style
+            7️⃣ !important
+        */
+        /* p{
+            color: chartreuse;
+            color: blueviolet;
+            font-size: 60px;
+            font-size: 20px;
+            text-align: end;
+            text-align: start;
+        } */
+        p{
+            color: chartreuse;
+            font-size: 60px;
+            text-align: end;
+        }
+        p{
+            color: blueviolet;
+            font-size: 10px;
+        }
+        p{
+            color: crimson;
+            font-size: 100px;
+            text-align: start;
+        }
+        p{
+            color: darkgreen;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>I am loving this course already</p>
+</body>
+</html>
