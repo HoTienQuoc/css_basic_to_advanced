@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css has pseudo class root</title>
+    <style>
+        /* **76. Application of `:has()` with `:root` element** dùng để **thay đổi toàn bộ document dựa trên trạng thái của phần tử con** — cực kỳ mạnh cho **theme switcher, global state**. 🌍
+
+---
+
+## 🔹 Ý tưởng chính
+
+`:root` đại diện cho **toàn bộ document (`html`)**.
+Khi kết hợp với `:has()` → bạn có thể **style toàn trang dựa trên điều kiện bên trong**.
+
+```css
+:root:has(selector) {
+  /* global styles */
+  /*
+}
+```
+
+---
+
+## 🔹 Ví dụ Dark Mode không cần JavaScript 🌙
+
+```html
+<label>
+  <input type="checkbox" id="dark">
+  Dark mode
+</label>
+```
+
+```css
+:root:has(#dark:checked) {
+  background: #111;
+  color: white;
+}
+```
+
+👉 Khi checkbox được check → toàn bộ trang chuyển dark mode
+
+---
+
+## 🔹 Ví dụ với CSS variables (best practice)
+
+```css
+:root {
+  --bg: white;
+  --text: black;
+}
+
+:root:has(#dark:checked) {
+  --bg: #111;
+  --text: white;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+```
+
+👉 Toggle theme mượt hơn 🎛️
+
+---
+
+## 🔹 Auto change layout khi có modal
+
+```css
+:root:has(.modal.open) {
+  overflow: hidden;
+}
+```
+
+👉 Khi modal mở → disable scroll toàn trang
+
+---
+
+## 🔹 Menu active toàn site
+
+```css
+:root:has(nav .active) {
+  --nav-color: red;
+}
+```
+
+---
+
+## 🔹 So sánh cách cũ vs mới
+
+| Cách cũ          | Cách mới      |
+| ---------------- | ------------- |
+| JS toggle class  | `:root:has()` |
+| body.dark        | tự detect     |
+| add/remove class | CSS tự động   |
+
+---
+
+## 🔹 Use case phổ biến
+
+```css*/
+/* dark mode */
+/* :root:has(#dark:checked) { }
+
+/* modal open */
+/* :root:has(.modal.show) { } */
+
+/* sidebar expanded */
+/* :root:has(.sidebar.open) { } */
+
+/* form invalid */
+/* :root:has(form:invalid) { }
+```
+
+---
+
+## 🔥 Ưu điểm
+
+* Không cần JavaScript 🚀
+* Global state CSS
+* Clean architecture
+* Perfect cho theme switcher
+
+---
+
+👉 Pattern rất phổ biến:
+
+```css
+:root:has(input:checked) { }
+```
+
+Bạn muốn mình làm tiếp:
+
+* `77. :is()`
+* `78. :where()`
+* `79. :not()` advanced
+
+(3 cái này thường đi chung)
+ */
+      :root:has(.site_theme > [value="theme-1"]:checked){
+        background: burlywood;
+      }
+      :root:has(.site_theme > [value="theme-2"]:checked){
+        background: rebeccapurple;
+      }
+      :root:has(.site_theme > [value="theme-3"]:checked){
+        background: darkorange;
+      }
+      :root:has(.site_theme > [value="theme-4"]:checked){
+        background: darkred;
+      }
+    </style>
+</head>
+<body>
+    <select class="site_theme" name="" id="">
+      <option value="theme-1">Theme - 1</option>
+      <option value="theme-2">Theme - 2</option>
+      <option value="theme-3">Theme - 3</option>
+      <option value="theme-4">Theme - 4</option>
+    </select>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css link pseudo class selectors</title>
+    <style>
+        /* **CSS Link Pseudo-class selectors** dùng để style các trạng thái khác nhau của thẻ `<a>` (link). Có 4 cái cơ bản và thường dùng theo đúng thứ tự **LVHA** 👇
+
+---
+
+## 4 Link Pseudo-classes 🔗
+
+1. `:link` → link **chưa truy cập**
+2. `:visited` → link **đã truy cập**
+3. `:hover` → rê chuột lên link
+4. `:active` → đang click link
+
+---
+
+## Ví dụ đầy đủ
+
+```css
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: purple;
+}
+
+a:hover {
+  color: red;
+}
+
+a:active {
+  color: green;
+}
+```
+
+---
+
+## Thứ tự QUAN TRỌNG ⚠️
+
+Phải viết đúng thứ tự:
+
+**`:link → :visited → :hover → :active`**
+
+Nếu sai thứ tự, CSS có thể **không hoạt động đúng**.
+
+👉 Mẹo nhớ: **L V H A**
+👉 "LoVe HAte" (Link → Visited → Hover → Active)
+
+---
+
+## Ví dụ chuẩn hay dùng
+
+```css
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+```
+
+---
+
+## Tóm tắt nhanh 📌
+
+| Selector    | Ý nghĩa    |
+| ----------- | ---------- |
+| `a:link`    | chưa click |
+| `a:visited` | đã click   |
+| `a:hover`   | hover      |
+| `a:active`  | đang click |
+
+Bạn có muốn mình giải thích thêm:
+
+* sự khác nhau `:active` vs `:focus`
+* hay pseudo-class vs pseudo-element (`::before`) không?
+ */
+        a{font-size: 70px; text-decoration: none;}
+        a:link{
+            font-size: 90px;
+        }
+        a:visited{
+            color: teal;
+        }
+        a:hover{
+            color: magenta;
+        }
+        a:active{
+            color: darkgoldenrod;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://apple.com" target="_blank">Google</a>
+</body>
+</html>

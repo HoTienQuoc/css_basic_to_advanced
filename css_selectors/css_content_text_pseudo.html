@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content/Text pseudo elements</title>
+    <style>
+        /* **Content / Text pseudo-elements** trong CSS dùng để **style một phần nội dung bên trong phần tử**, chứ không phải toàn bộ phần tử. Chúng bắt đầu bằng `::` ✨
+
+---
+
+## Các Content/Text pseudo-elements phổ biến
+
+### 1. `::before`
+
+Chèn nội dung **trước nội dung thật** của phần tử
+
+```css
+p::before {
+  content: "👉 ";
+}
+```
+
+```html
+<p>Hello</p>
+```
+
+➡️ hiển thị: 👉 Hello
+
+---
+
+### 2. `::after`
+
+Chèn nội dung **sau nội dung thật**
+
+```css
+p::after {
+  content: " 🔥";
+}
+```
+
+➡️ Hello 🔥
+
+---
+
+### 3. `::first-letter`
+
+Style **chữ cái đầu tiên**
+
+```css
+p::first-letter {
+  font-size: 2em;
+  color: red;
+}
+```
+
+➡️ thường dùng kiểu **drop cap** (báo chí)
+
+---
+
+### 4. `::first-line`
+
+Style **dòng đầu tiên**
+
+```css
+p::first-line {
+  font-weight: bold;
+}
+```
+
+---
+
+### 5. `::selection`
+
+Style khi **user bôi đen text** 🖱️
+
+```css
+::selection {
+  background: black;
+  color: white;
+}
+```
+
+---
+
+### 6. `::placeholder`
+
+Style placeholder trong input
+
+```css
+input::placeholder {
+  color: gray;
+}
+```
+
+---
+
+### Ví dụ tổng hợp
+
+```css
+p::before {
+  content: "📌 ";
+}
+
+p::first-letter {
+  font-size: 24px;
+  color: red;
+}
+
+::selection {
+  background: yellow;
+}
+```
+
+---
+
+## Phân biệt nhanh 🧠
+
+|         | Pseudo-class | Pseudo-element |
+| ------- | ------------ | -------------- |
+| Ký hiệu | `:`          | `::`           |
+| Chọn    | trạng thái   | phần nội dung  |
+| Ví dụ   | `:hover`     | `::before`     |
+
+---
+
+## Tóm tắt Content/Text pseudo-elements 📌
+
+* `::before` → thêm nội dung trước
+* `::after` → thêm nội dung sau
+* `::first-letter` → chữ đầu
+* `::first-line` → dòng đầu
+* `::selection` → text bôi đen
+* `::placeholder` → placeholder input
+
+Bạn đang học CSS selectors theo roadmap nào vậy? (W3Schools hay MDN) mình có thể gom thành cheat sheet ngắn cho bạn.
+ */
+        /* Content pseudo elements */
+        h1::after{
+            content: " is free";
+            color: goldenrod;
+            font-size: 140px;
+        }
+        h2::before{
+            content: "I like to play ";
+            color: blueviolet;
+            font-size: 100px;
+        }
+        /* Textual pseudo elements */
+
+/* **Textual pseudo-elements** là nhóm **pseudo-elements áp dụng trực tiếp lên phần text** của phần tử (không phải thêm nội dung mới như `::before`, `::after`) ✍️
+
+## Các Textual pseudo-elements chính
+
+### 1. `::first-letter`
+
+Style **chữ cái đầu tiên** của text
+
+```css
+p::first-letter {
+  font-size: 2em;
+  color: red;
+}
+```
+
+➡️ Hay dùng tạo **drop cap** kiểu báo
+
+---
+
+### 2. `::first-line`
+
+Style **dòng đầu tiên** của đoạn text
+
+```css
+p::first-line {
+  font-weight: bold;
+}
+```
+
+➡️ Chỉ áp dụng cho dòng đầu, không phải `<br>`
+
+---
+
+### 3. `::selection`
+
+Style **text khi user bôi đen**
+
+```css
+::selection {
+  background: black;
+  color: white;
+}
+```
+
+---
+
+### 4. `::placeholder`
+
+Style **placeholder text** trong input
+
+```css
+input::placeholder {
+  color: gray;
+}
+```
+
+---
+
+## Khác với Content pseudo-elements
+
+* **Textual** → style text có sẵn
+* **Content** → chèn thêm content (`::before`, `::after`)
+
+| Loại    | Ví dụ                            |
+| ------- | -------------------------------- |
+| Textual | `::first-letter`, `::first-line` |
+| Content | `::before`, `::after`            |
+
+👉 Nhớ nhanh:
+
+* Textual = chỉnh **text**
+* Content = **thêm nội dung**
+
+Bạn đang học phần CSS selectors theo danh sách nào? Mình có thể gom toàn bộ pseudo-class + pseudo-element thành bảng nhớ nhanh.
+ */
+        h3::first-letter{
+            color: blueviolet;
+            font-size: 50px;
+            font-style: italic;
+        }
+        p{
+            font-size: 50px;
+        }
+        p::first-line{
+            color: white;
+            background-color: darkslategray;
+            font-size: 70px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happiness</h1>
+    <h2>Games</h2>
+    <h3>Hello</h3>
+    <p>Hi my dear friends. You guys have been great so far <br>
+    Thank you for all you have done for me. <br>
+    You guys are the MVP indeed
+    </p>
+</body>
+</html>

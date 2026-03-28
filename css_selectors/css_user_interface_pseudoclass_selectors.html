@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css User Interface pseudoclass selectors</title>
+    <style>
+        /* **CSS User Interface pseudo-class selectors** dùng để style **trạng thái UI của phần tử**, đặc biệt là **form controls** như input, button, checkbox… 🎛️
+
+---
+
+## Các User Interface pseudo-classes phổ biến 👇
+
+### 1. `:enabled` / `:disabled`
+
+* `:enabled` → phần tử **có thể tương tác**
+* `:disabled` → phần tử **bị vô hiệu hóa**
+
+```css
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+```
+
+---
+
+### 2. `:checked`
+
+Áp dụng cho checkbox / radio khi **được chọn** ✅
+
+```css
+input:checked {
+  accent-color: green;
+}
+```
+
+---
+
+### 3. `:focus`
+
+Khi input đang được chọn (click vào hoặc tab) 🎯
+
+```css
+input:focus {
+  border: 2px solid blue;
+}
+```
+
+---
+
+### 4. `:focus-visible`
+
+Chỉ hiển thị khi **focus bằng keyboard** (UX tốt hơn)
+
+```css
+button:focus-visible {
+  outline: 2px solid orange;
+}
+```
+
+---
+
+### 5. `:read-only` / `:read-write`
+
+* `:read-only` → chỉ đọc
+* `:read-write` → có thể nhập
+
+```css
+input:read-only {
+  background: #eee;
+}
+```
+
+---
+
+### 6. `:required` / `:optional`
+
+Áp dụng cho input form
+
+```css
+input:required {
+  border-left: 4px solid red;
+}
+```
+
+---
+
+### 7. `:valid` / `:invalid`
+
+Kiểm tra validation HTML5 ✔️ ❌
+
+```css
+input:invalid {
+  border-color: red;
+}
+
+input:valid {
+  border-color: green;
+}
+```
+
+---
+
+## Ví dụ tổng hợp 🧩
+
+```css
+input:focus {
+  outline: none;
+  border-color: blue;
+}
+
+input:invalid {
+  border-color: red;
+}
+
+input:disabled {
+  background: #f3f3f3;
+}
+```
+
+---
+
+## Tóm tắt nhanh 📌
+
+| Selector     | Ý nghĩa       |
+| ------------ | ------------- |
+| `:enabled`   | có thể dùng   |
+| `:disabled`  | bị khóa       |
+| `:checked`   | checkbox chọn |
+| `:focus`     | đang chọn     |
+| `:read-only` | chỉ đọc       |
+| `:required`  | bắt buộc      |
+| `:valid`     | hợp lệ        |
+| `:invalid`   | không hợp lệ  |
+
+👉 Nhóm này khác **structural** ở chỗ:
+
+* **UI pseudo-class** → dựa vào trạng thái input 🎛️
+* **Structural pseudo-class** → dựa vào vị trí DOM 📍
+ */
+        input:enabled{
+            background-color: darkcyan;
+            font-size: 30px;
+            color: red;
+        }
+        input:focus{
+            background-color: darkorange;
+            font-size: 50px;
+            box-shadow: 3px 5px 6px 10px teal;
+        }
+        input::placeholder{
+            color: darkmagenta;
+            opacity: .4;
+            font-size: 30px;
+        }
+        input:checked{
+            box-shadow: 0px 0px 0px 3px orange;
+        }
+        input:checked + label{
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <label for="add">Address</label>
+    <input type="text" id="add">
+    <label for="fun">Name</label>
+    <input type="text" id="fun" placeholder="Write your name">
+    <input type="checkbox">
+    <label for="">Yes</label>
+</body>
+</html>

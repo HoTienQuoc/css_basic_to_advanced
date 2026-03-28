@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:has() pseudo class</title>
+    <style>
+        /* **75. `:has()` pseudo-class selector** là selector **"parent selector"** mạnh nhất trong CSS — cho phép chọn **phần tử cha nếu nó chứa phần tử con phù hợp**. 🔥
+
+---
+
+## 🔹 Syntax
+
+```css
+selector:has(child-selector) {
+  /* styles */
+  /*
+}
+```
+
+👉 Đọc là: *chọn `selector` nếu bên trong có `child-selector`*
+
+---
+
+## 🔹 Ví dụ cơ bản
+
+```html
+<div class="card">
+  <img src="photo.jpg">
+</div>
+
+<div class="card">
+  <p>No image</p>
+</div>
+```
+
+```css
+.card:has(img) {
+  border: 2px solid green;
+}
+```
+
+👉 Chỉ `.card` chứa `<img>` mới có viền.
+
+---
+
+## 🔹 Parent selector (điểm mạnh nhất)
+
+```css
+form:has(input:invalid) {
+  border: 2px solid red;
+}
+```
+
+👉 Form sẽ đỏ nếu có input invalid ⚠️
+
+---
+
+## 🔹 Chọn label khi checkbox checked
+
+```html
+<label>
+  <input type="checkbox">
+  Accept terms
+</label>
+```
+
+```css
+label:has(input:checked) {
+  color: green;
+}
+```
+
+👉 Label đổi màu khi checkbox được check ✅
+
+---
+
+## 🔹 Chọn phần tử trước đó (previous sibling)
+
+```css
+h2:has(+ p) {
+  margin-bottom: 0;
+}
+```
+
+👉 `h2` bị ảnh hưởng nếu ngay sau nó có `p`
+
+---
+
+## 🔹 Kết hợp nhiều điều kiện
+
+```css
+.card:has(img):has(h3) {
+  background: #f5f5f5;
+}
+```
+
+👉 `.card` phải có **img + h3**
+
+---
+
+## 🔹 So sánh với selector cũ
+
+| Selector                   | Chọn            |
+| -------------------------- | --------------- |
+| `.parent .child`           | child           |
+| `.parent:has(.child)`      | parent          |
+| `input:checked + label`    | label sau input |
+| `label:has(input:checked)` | label bao input |
+
+---
+
+## 🔹 Use case cực thực tế
+
+```css
+/* menu có active item */
+/*nav:has(.active) {
+  background: black;
+}
+*/
+/* card có ảnh */
+/*.card:has(img) { }
+
+/* table có error */
+/*tr:has(.error) {
+  background: #ffe0e0;
+}
+```
+
+---
+
+## ⚠️ Browser support
+
+* Chrome / Edge / Safari ✅
+* Firefox: mới hỗ trợ (version mới) ⚠️
+
+Safari cũ trước đây chưa hỗ trợ tốt nên có thể bạn từng gặp issue.
+
+---
+
+`:has()` được gọi là **CSS parent selector thực sự đầu tiên** 🧠
+Trước đây phải dùng JavaScript mới làm được.
+
+Bạn muốn tiếp **76. :is() selector** không?
+ */
+        div:has(a){
+            padding: 30px;
+            background-color: chocolate;
+        }
+        div:has(img){
+            padding: 30px;
+            background-color: rebeccapurple;
+        }
+        div:has(p):has(h3){
+            padding: 30px;
+            background-color: goldenrod;
+        }
+        div:has(h2){
+            padding: 30px;
+            background-color: darkmagenta;
+        }
+        div:has(.fine) h2{
+            font-size: 100px;
+        }
+        div:has(.fine){
+            padding: 30px;
+            background-color: teal;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit repellat quae dolore vel explicabo alias blanditiis inventore asperiores! Officiis enim maxime tempora dolor dignissimos nisi distinctio placeat optio magnam quis!
+        <a href="#">Hello</a>
+    </div>
+    <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, enim ad! Corporis eius impedit, corrupti consequuntur illo similique natus cupiditate est necessitatibus ipsum provident omnis repellat quisquam! Totam, laboriosam quisquam.
+        <img src="images/vector-thiet-ke-gradient-chim-day-mau-sac_343694-2506.jpg.avif" alt="">
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero eaque veniam magnam cum recusandae molestiae nisi labore maiores distinctio. Expedita velit tempora minima itaque dolores laboriosam non veniam incidunt porro?
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus harum tenetur cupiditate maxime. Pariatur, officia?</p>
+        <h3>Greatness</h3>
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea sapiente numquam adipisci nihil praesentium atque necessitatibus assumenda. Sint, est, pariatur incidunt consequatur velit, nesciunt obcaecati esse cumque numquam officia ex.
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus harum tenetur cupiditate maxime. Pariatur, officia?</p>
+        <h2>Excellence</h2>
+    </div>
+    <div>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse autem maiores modi repudiandae tempore magni? Obcaecati quam eligendi reiciendis doloribus nisi fuga molestiae earum. Deserunt laudantium expedita eum impedit illo?
+        <p class="fine">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus harum tenetur cupiditate maxime. Pariatur, officia?</p>
+        <h2>Wonderful</h2>
+    </div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Relational Descant Selectors</title>
+    <style>
+        /* Descendant(Hậu duệ) selector */
+        /* Selector phần tử con */
+        .run code{
+            color: blueviolet;
+            font-size: 50px;
+        }
+
+
+        /* Direct child selector */
+        /* Selector trực tiếp phần tử child */
+        /* syntax: parent > child {
+        /* styles */
+        /* } */
+        /* .run > code{ /* ❌ Error because .run not be parent of code tag */
+        /*    color: red;
+            font-size: 80px;
+        } */
+        .run > blockquote{
+            color: red;
+            font-size: 50px;
+        }
+        div > h6{
+            color: darkmagenta;
+            font-size: 100px;
+        }
+        .run > p{
+            color: chocolate;
+            font-size: 70px;
+        }
+
+
+        /* Grand child/not a direct child of selector "*" */
+        /* Dấu * ở đây là universal selector (bộ chọn tất cả phần tử). */
+        /* .run * p chỉ áp dụng cho p có “cha trung gian” */
+        /* 🔥 “Grand child / not a direct child” nghĩa là gì?
+        👉 Nghĩa là:
+        Phần tử KHÔNG phải con trực tiếp → mà phải có ít nhất 1 “cha trung gian” */
+        /* Direct child	Không có cha trung gian */
+        /* Grandchild	Có ít nhất 1 cha trung gian */
+        .run * p{
+            color: orange;
+            font-size: 100px;
+        }
+        .run * h5{
+            color: darkgreen;
+            font-size: 100px;
+        }
+        blockquote * h5{
+            color: darkgreen;
+            font-size: 100px;
+        }
+
+        /* Adjacent sibling (a sibling directly after) Selector */ 
+        /* Lưu ý là phải liền kề nhau ví dụ các thẻ phải đứng sát nhau và cùng 1 cấp */
+        /* 🔥 Adjacent Selectors (bộ chọn liền kề) trong CSS */
+        /* Adjacent selector dùng ký hiệu + để chọn phần tử đứng ngay sau một phần tử khác (liền kề, cùng cấp). */
+        /* A + B {
+        /* styles */
+        /* } */
+        /* 👉 Nghĩa là:
+        Chọn B nếu:
+        B đứng ngay sau A
+        A và B là anh em cùng cấp (cùng parent) */
+        p + h1 {
+            color: indianred;
+            font-size: 90px;
+        }
+        h5 + h2 {
+            color: blue;
+            font-size: 90px;
+        }
+        article + aside {
+            color: teal;
+            font-size: 90px;
+        }
+
+        /* General sibling (a sibling sharing the same parent) Selector */
+        /* 👉 General sibling selector (~) dùng để chọn:
+        Tất cả các phần tử anh em cùng cấp (cùng parent) đứng phía sau một phần tử nào đó (không cần liền kề) */
+
+        /* ## 🔥 `/* General sibling (a sibling sharing the same parent) Selector */
+        
+        /*` là gì?
+
+        Đây là comment đang nói tới **General sibling selector (`~`)** trong CSS.
+
+        ---
+
+        ## 🧠 Ý nghĩa
+
+        👉 **General sibling selector (`~`)** dùng để chọn:
+
+        > Tất cả các phần tử **anh em cùng cấp (cùng parent)** đứng **phía sau** một phần tử nào đó (không cần liền kề)
+
+        ---
+
+        ## 📌 Cú pháp
+
+        ```css
+        A ~ B {
+        /* styles */
+        /*}/*
+        ```
+        /*
+        👉 Nghĩa là:
+        Chọn **mọi B** nếu:
+
+        * B cùng cha với A
+        * B đứng **sau A**
+        * Không cần sát nhau
+
+        ---
+
+        ## 🔍 Ví dụ
+
+        ```css
+        h1 ~ p {
+        color: blue;
+        }
+        ```
+
+        ```html
+        <h1>Title</h1>
+        <p>✔ được chọn</p>
+        <p>✔ được chọn</p>
+        <div>Something</div>
+        <p>✔ vẫn được chọn</p>
+        ```
+
+        👉 Tất cả `<p>` phía sau `<h1>` đều được chọn
+
+        ---
+
+        ## ⚠️ Điều kiện
+
+        1. Phải **cùng parent**
+        2. Phải **đứng sau**
+        3. Có thể cách nhau bởi nhiều element khác
+
+        ---
+
+        ## 🆚 So sánh với `+` (Adjacent)
+
+        | Selector | Ý nghĩa                         |
+        | -------- | ------------------------------- |
+        | `A + B`  | chỉ **1 phần tử ngay sau A**    |
+        | `A ~ B`  | **tất cả phần tử B phía sau A** |
+
+        ---
+
+        ## 🔥 Ví dụ so sánh
+
+        ```html
+        <h1>Title</h1>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        ```
+
+        ```css
+        h1 + p { color: red; }   /* chỉ p1 */
+        /*h1 ~ p { color: blue; }  /* p1, p2, p3 */
+        /*```
+        */
+        /*---
+
+        ## 💡 Tóm lại dễ nhớ
+
+        * `+` → **liền kề (1 thằng)**
+        * `~` → **cùng cấp, phía sau (nhiều thằng)**
+
+        ---
+
+        ## 🚀 Câu chốt
+
+        > **General sibling selector (`~`) = chọn tất cả anh em phía sau, cùng cha**
+
+        ---
+
+        Nếu bạn muốn, mình có thể làm cho bạn **1 bảng tổng hợp toàn bộ selector CSS (>, +, ~, space, *) + ví dụ thực chiến** → học 1 lần là nắm hết 💯
+        */
+        h3 ~ q {
+            color: hotpink;
+            font-size: 190px;
+        }
+        code ~ q {
+            color: deeppink;
+            font-size: 190px;
+        }
+    </style>
+</head>
+<body>
+    <section class="run"> <!-- Overall Parent -->
+        <blockquote> <!-- Direct child of section / Parent of you -->
+            <div><!-- Grand child of section / Direct child of blockquote / Parent of code -->
+                Happiness
+                <code>Joyous</code><!-- Greate Grand child of section / Grand child of blockquote / Direct child of div -->
+                <h6>Dream</h6>
+                <h5>Goals</h5>
+                <h2>Friends</h2>
+                <q>Exciting</q>
+            </div>
+        </blockquote>
+        <p>Shine</p>
+        <article>
+            <p>Brightness</p>
+            <h1>Good</h1>
+        </article>
+        <aside>
+            <h3>Seasons</h3>
+            <h4>Great</h4>
+            <q>Exciting</q>
+        </aside>
+    </section>
+</body>
+</html>

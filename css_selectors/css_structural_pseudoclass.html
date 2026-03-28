@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structural/Child Pseudo Class</title>
+    <style>
+        /* 
+        ## 🔥 Structural / Child Pseudo-class là gì trong CSS?
+
+    Đây là nhóm **pseudo-class** dùng để chọn phần tử dựa trên **vị trí của nó trong cây DOM** (đặc biệt là trong các phần tử con của parent).
+
+    👉 Hiểu đơn giản:
+
+    > Không cần class/id → vẫn chọn được element dựa vào **thứ tự, vị trí, cấu trúc**
+
+    ---
+
+    ## 🧠 Các pseudo-class phổ biến
+
+    ---
+
+    ### 1. `:first-child`
+
+    👉 Chọn phần tử là **con đầu tiên**
+
+    ```css
+    p:first-child {
+    color: red;
+    }
+    ```
+
+    ---
+
+    ### 2. `:last-child`
+
+    👉 Chọn phần tử là **con cuối cùng**
+
+    ```css
+    p:last-child {
+    color: blue;
+    }
+    ```
+
+    ---
+
+    ### 3. `:nth-child(n)`
+
+    👉 Chọn theo **vị trí thứ n**
+
+    ```css
+    li:nth-child(2) {
+    color: green;
+    }
+    ```
+
+    👉 Có thể dùng:
+
+    * `odd` (lẻ)
+    * `even` (chẵn)
+
+    ```css
+    li:nth-child(odd) {
+    background: gray;
+    }
+    ```
+
+    ---
+
+    ### 4. `:nth-last-child(n)`
+
+    👉 Đếm từ **cuối lên**
+
+    ```css
+    li:nth-last-child(1) {
+    color: purple;
+    }
+    ```
+
+    ---
+
+    ### 5. `:only-child`
+
+    👉 Chọn phần tử là **con duy nhất**
+
+    ```css
+    p:only-child {
+    color: orange;
+    }
+    ```
+
+    ---
+
+    ## 📌 Ví dụ thực tế
+
+    ```html
+    <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    </ul>
+    ```
+
+    ```css
+    li:first-child { color: red; }   /* A */
+    /* li:last-child { color: blue; }   /* C */
+    /* li:nth-child(2) { color: green; } /* B */
+    /*```
+
+    ---
+
+    ## ⚠️ Lưu ý quan trọng (hay nhầm)
+
+    ### ❌ `nth-child` tính tất cả phần tử
+
+    ```html
+    <div>
+    <h1></h1>
+    <p></p>
+    </div>
+    ```*/
+    /*
+    ```css
+    p:nth-child(2)  /* ✔ đúng */
+    /*
+    p:nth-child(1)  /* ❌ sai vì p không phải phần tử thứ 1 */
+    /*
+    ```
+
+    ---
+
+    ## 🆚 So với `:nth-of-type()`
+
+    👉 Cái này nhiều người nhầm:
+
+    ```css
+    p:nth-child(2)
+    ```
+
+    → đếm **tất cả loại thẻ**
+
+    ```css
+    p:nth-of-type(2)
+    ```
+
+    → chỉ đếm **thẻ p**
+
+    ---
+
+    ## 🔥 Tóm lại
+
+    | Pseudo-class         | Ý nghĩa      |
+    | -------------------- | ------------ |
+    | `:first-child`       | con đầu tiên |
+    | `:last-child`        | con cuối     |
+    | `:nth-child(n)`      | con thứ n    |
+    | `:nth-last-child(n)` | đếm từ cuối  |
+    | `:only-child`        | con duy nhất |
+
+    ---
+
+    ## 🚀 Câu chốt dễ nhớ
+
+    > **Structural pseudo-class = chọn phần tử theo vị trí trong cấu trúc HTML**
+
+    ---
+
+    Nếu bạn muốn, mình có thể cho bạn **bài tập kiểu “nhìn HTML → đoán selector”** (rất giống đề thi frontend) để bạn master phần này luôn 😎
+    */
+
+    /* First child */
+    /* Dấu , trong CSS dùng để gộp nhiều selector lại với nhau (grouping selectors). */
+    code:first-child, h3:first-child, p:first-child {
+        font-size: 50px;
+        color: orangered;
+    }
+
+    /* Last child */
+    p:last-child, q:last-child, h3:last-child{
+        font-size: 65px;
+        text-shadow: 4px 5px 6px gold;
+    }
+
+    /* Only child */
+    /* An only child can be styled with  */
+    var:only-child, section div:only-child {
+        font-size: 42px;
+        font-style: italic;
+        color: orange;
+    }
+
+    /* nth-child */
+    /* nth-child(n) where n is a whole number */
+    p:nth-child(3), q:nth-child(4), ul li:nth-child(2) {
+        font-weight: 800px;
+        font-size: 70px;
+        color: deeppink;
+        box-shadow: 4px 5px 6px gold;
+    }
+
+    /* nth-child can accept an offset */
+    /* a and b are whole numbers */
+    /* n+b = the value of the n is zero at */
+    /* an+b = an means a times n. While the value of the */
+    /* an = an means a times n. While the value of the */
+    /* an-b = an means a times n. While the */
+    /* nth-child(n) also accepts 'odd' and 'even' as */
+    p:nth-child(3n-4){
+        font-size: 45px;
+        color: blueviolet;
+        font-style: italic;
+        box-shadow: none;
+        font-weight: 400;
+    }
+
+
+
+    /* nth-last-child */
+    /* It counts from the end of the family tree */
+    /* It can also accept even(chẵn)(2n+2 or 2n) or odd(lẻ) */
+    h4:nth-last-child(2n){
+        font-size: 45px;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Hello</p>
+        <p>Dreams</p>
+        <p>Cool</p>
+        <p>Joyous</p>
+        <q>Friendship</q>
+    </div>
+    <article>
+        <code>Happiness</code>
+        <q>Goals</q>
+        <code>Greatness</code>
+        <q>Awesome</q>
+        <code>Beauty</code>
+        <q>Exciting</q>
+        <p>Bold</p>
+    </article>
+    <section>
+        <div>Peace</div>
+    </section>
+    <blockquote>
+        <var>Mercy</var>
+    </blockquote>
+    <ul>
+        <li>Grateful</li>
+        <li>Grace</li>
+        <li>Faith</li>
+        <li>Love</li>
+    </ul>
+    <ol>
+        <li>Fortune</li>
+        <li>Favour</li>
+        <li>Riches</li>
+        <li>Glory</li>
+        <li>Hope</li>
+        <li>Freedom</li>
+    </ol>
+    <aside>
+        <h3>Snow</h3>
+        <h3>Rain</h3>
+        <h3>Sunny</h3>
+        <h3>Storm</h3>
+    </aside>
+    <header>
+        <h4>Mufasa</h4>
+        <h4>Ecanto</h4>
+        <h4>Straw</h4>
+        <h4>Lilo & Stitch</h4>
+        <h4>Moana 2</h4>
+        <h4>Wish</h4>
+        <h4>Working man</h4>
+        <h4>Gladiator 2</h4>
+        <h4>Kraven</h4>
+    </header>
+</body>
+</html>

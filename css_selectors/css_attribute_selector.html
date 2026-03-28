@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* **Attribute selectors – present, equals, contains** là 3 kiểu chọn phần tử theo **thuộc tính HTML** trong CSS 🎯
+
+---
+
+## 1. Present — `[attr]`
+
+Chọn phần tử **có attribute**, không cần giá trị
+
+```css
+input[required] {
+  border: 1px solid red;
+}
+```
+
+➡️ tất cả `input` có `required`
+
+---
+
+## 2. Equals — `[attr=value]`
+
+Chọn phần tử có **giá trị chính xác**
+
+```css
+input[type="text"] {
+  background: #eee;
+}
+```
+
+➡️ chỉ `type="text"`
+
+---
+
+## 3. Contains — `[attr*=value]`
+
+Chọn phần tử có **chuỗi chứa giá trị**
+
+```css
+a[href*="google"] {
+  color: green;
+}
+```
+
+➡️ `href` chứa `"google"`
+
+---
+
+## Tóm tắt nhanh 🧠
+
+| Loại     | Selector        | Ý nghĩa        |
+| -------- | --------------- | -------------- |
+| Present  | `[attr]`        | có attribute   |
+| Equals   | `[attr=value]`  | bằng chính xác |
+| Contains | `[attr*=value]` | chứa chuỗi     |
+
+Ví dụ nhanh:
+
+```css
+img[alt] { }          /* present */
+/*
+input[type="email"] { } /* equals */
+/*a[href*="https"] { }    /* contains */
+/*```
+ */
+      [title] {/* present */
+        color: blueviolet;
+        font-size: 40px;
+      }
+      [title="World Health Organization"]{
+        color:darkorange;
+        font-size: 40px;
+      }
+      [title*="Unit"]{
+        color: royalblue;
+        font-size: 120px;
+      }
+
+      /* **73. Attribute selectors – begins with & ends with** trong CSS dùng để chọn phần tử dựa trên **giá trị thuộc tính bắt đầu hoặc kết thúc bằng chuỗi nào đó**.
+
+---
+
+## 🔹 Begins with (`^=`)
+
+Chọn phần tử có **giá trị thuộc tính bắt đầu bằng** chuỗi chỉ định.
+
+**Syntax**
+
+```css
+[attribute^="value"] {
+  /* styles */
+  /*
+}
+```
+
+**Ví dụ**
+
+```html
+<a href="https://google.com">Google</a>
+<a href="https://youtube.com">YouTube</a>
+<a href="http://example.com">Example</a>
+```
+
+```css
+a[href^="https"] {
+  color: green;
+}
+```
+
+👉 Chỉ các link bắt đầu bằng `https` sẽ có màu xanh.
+
+---
+
+## 🔹 Ends with (`$=`)
+
+Chọn phần tử có **giá trị thuộc tính kết thúc bằng** chuỗi chỉ định.
+
+**Syntax**
+
+```css
+[attribute$="value"] {
+  /* styles */
+  /*
+}
+```
+
+**Ví dụ**
+
+```html
+<img src="photo.jpg">
+<img src="icon.png">
+<img src="banner.jpg">
+```
+
+```css
+img[src$=".jpg"] {
+  border: 2px solid red;
+}
+```
+
+👉 Chỉ ảnh `.jpg` có viền đỏ.
+
+---
+
+## 🔹 Ví dụ kết hợp thực tế
+
+```html
+<input type="email">
+<input type="text">
+<input type="password">
+```
+
+```css
+input[type^="pa"] {
+  background: #ffe0e0;
+}
+```
+
+👉 Chỉ `password` bị chọn.
+
+---
+
+## 🔹 So sánh nhanh
+
+| Selector        | Ý nghĩa           |
+| --------------- | ----------------- |
+| `[attr^="val"]` | Bắt đầu bằng      |
+| `[attr$="val"]` | Kết thúc bằng     |
+| `[attr*="val"]` | Chứa ở bất kỳ đâu |
+
+---
+
+## 🔹 Use case phổ biến
+
+* `[href^="https"]` → link secure 🔒
+* `[src$=".png"]` → ảnh PNG 🖼️
+* `[class^="btn-"]` → prefix component 🎛️
+* `[id$="-modal"]` → modal suffix 🧩
+
+Bạn có muốn mình làm luôn **74. contains (`*=`)** để đủ bộ không?
+ */
+      [href^="h"]{
+        color: teal;
+        font-size: 80px;
+        text-decoration: none;
+      }
+      [title$="com"]{
+        color: chartreuse;
+        font-size: 100px;
+      }
+
+
+      /* **74. Attribute selectors – includes (`~=`) và hyphenated (`|=`)** dùng để chọn phần tử theo **từng từ riêng biệt** hoặc **giá trị có tiền tố kèm dấu gạch ngang**.
+
+---
+
+## 🔹 Includes (`~=`) — chứa **từ riêng biệt**
+
+Chọn phần tử có **giá trị thuộc tính chứa một từ chính xác** (cách nhau bằng dấu cách).
+
+**Syntax**
+
+```css
+[attribute~="value"] {
+  /* styles */
+ /* 
+}
+```
+
+**Ví dụ**
+
+```html
+<p class="btn primary large">Button</p>
+<p class="btn secondary">Button</p>
+<p class="primary-btn">Button</p>
+```
+
+```css
+[class~="primary"] {
+  color: red;
+}
+```
+
+👉 Chỉ phần tử có **từ "primary" riêng biệt** được chọn
+
+* ✅ `"btn primary large"`
+* ❌ `"primary-btn"` (không phải từ riêng)
+
+📌 Hay dùng cho class chứa nhiều giá trị.
+
+---
+
+## 🔹 Hyphenated (`|=`) — bắt đầu bằng + dấu `-`
+
+Chọn phần tử có giá trị:
+
+* đúng bằng value
+* hoặc bắt đầu bằng `value-`
+
+**Syntax**
+
+```css
+[attribute|="value"] {
+  /* styles */
+  /*
+}
+```
+
+**Ví dụ**
+
+```html
+<p lang="en">English</p>
+<p lang="en-US">American English</p>
+<p lang="en-GB">British English</p>
+<p lang="fr">French</p>
+```
+
+```css
+[lang|="en"] {
+  font-weight: bold;
+}
+```
+
+👉 Sẽ chọn:
+
+* ✅ `en`
+* ✅ `en-US`
+* ✅ `en-GB`
+* ❌ `fr`
+
+📌 Thường dùng cho `lang`, version prefix, namespace.
+
+---
+
+## 🔹 So sánh nhanh
+
+| Selector        | Ý nghĩa                |                               |
+| --------------- | ---------------------- | ----------------------------- |
+| `[attr~="val"]` | chứa **từ riêng biệt** |                               |
+| `[attr          | ="val"]`               | bằng hoặc bắt đầu bằng `val-` |
+| `[attr*="val"]` | chứa bất kỳ đâu        |                               |
+| `[attr^="val"]` | bắt đầu bằng           |                               |
+| `[attr$="val"]` | kết thúc bằng          |                               |
+
+---
+
+## 🔹 Ví dụ thực tế
+
+```css
+/* chọn class chứa từ btn */
+/*
+[class~="btn"] { }
+
+/* chọn ngôn ngữ en-* */
+/*
+[lang|="en"] { }
+
+/* chọn version app-v2 */
+/*
+[data-version|="app"] { }
+```
+
+---
+
+📚 Bộ Attribute selectors đầy đủ:
+
+* Present `[attr]`
+* Equals `[attr="val"]`
+* Contains `*=`
+* Begins `^=`
+* Ends `$=`
+* Includes `~=`
+* Hyphenated `|=` (có dấu gạch nối)
+
+Bạn muốn mình gom **tất cả 7 cái vào 1 bảng cheat sheet** dễ nhớ không?
+ */
+      [class~="with"]{/* Spaced/Includes */
+        color: darkviolet;
+        font-size: 140px;
+      }
+      [title|="encanto"]{/* Hyphenated */
+        color: aquamarine;
+        font-size: 160px;
+      }
+    </style>
+</head>
+<body>
+    <!-- Attribute Present Selectors -->
+    <p title="World Wide Web">W.W.W</p>
+    <!-- Attribute Equals Selectors -->
+    <cite title="World Health Organization">W.H.O</cite>
+    <!-- Attribute Contain Selectors -->
+    <q title="United States">U.S.A</q>
+    <!-- Attribute Begins With Selectors -->
+    <a href="http://google.com">Google</a>
+    <!-- Attribute Ends With Selectors -->
+    <p title="https://amazon.com">Amazon</p>
+    <!-- Attribute Spaced/Includes Selectors -->
+    <blockquote class="Dance with me">Thank you</blockquote>
+    <!-- Attribute Hyphenated Selectors -->
+    <p title="encanto-cinames">Ecanto</p>
+
+</body>
+</html>

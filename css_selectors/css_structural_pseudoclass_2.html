@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structural/Type Pseudo Class 2</title>
+    <style>
+        /* Type Pseudo Class deals with the  */
+        /* First of type */
+        code:first-of-type, h3:first-of-type, li:first-of-type{
+            font-size: 50px;
+            color: orangered;
+        }
+
+        /* Last of type */
+        p:last-of-type, code:last-of-type, h3:last-of-type {
+            font-weight: 800px;
+            font-size: 70px;
+            color: deeppink;
+            box-shadow: 4px 5px 6px gold;
+        }
+
+        /* Only of type */
+        q:only-of-type, blockquote:only-of-type{
+            font-size: 65px;
+            text-shadow: 4px 5px 6px gold;
+        }
+
+        /* nth of type */
+        /* nth-of-type(n) where n is a whole  */
+        /* n+b = the value of the n is zero at */
+        /* an+b = an means a times n */
+        /* an = an means a times n */
+        /* an-b = an means a times n */
+        ol li:nth-of-type(n){
+            font-size: 35px;
+            color: orange;
+        }
+
+        h4:nth-of-type(2n-3){
+            font-style: italic;
+            font-size: 45px;
+            color: blue;
+        }
+        
+        aside h4:only-of-type{
+            font-style: italic;
+            font-size: 45px;
+            color: blue;
+        }
+
+
+        /* nth-last-of-type */
+        /* counts from the end of the family */
+        h4:nth-last-of-type(3n){
+            font-style: italic;
+            font-size: 45px;
+            color: blueviolet;
+        }
+
+        /* Trong CSS, **Pseudo-class** dùng để định dạng **trạng thái đặc biệt** của phần tử (hover, focus, vị trí, con thứ n…). Có thể chia **Type Pseudo Class** thành vài nhóm phổ biến sau 👇
+
+        ---
+
+        ## 1. User Action Pseudo-classes (Tương tác người dùng) 🖱️
+
+        Áp dụng khi người dùng tương tác với phần tử.
+
+        * `:hover` → khi rê chuột
+        * `:active` → khi đang click
+        * `:focus` → khi input được chọn
+        * `:visited` → link đã truy cập
+        * `:link` → link chưa truy cập
+
+        ```css
+        a:hover {
+        color: red;
+        }
+
+        input:focus {
+        border: 2px solid blue;
+        }
+        ```
+
+        ---
+
+        ## 2. Structural Pseudo-classes (Cấu trúc DOM) 🧱
+
+        Chọn phần tử dựa trên vị trí trong cây HTML.
+
+        * `:first-child`
+        * `:last-child`
+        * `:nth-child(n)`
+        * `:nth-of-type(n)`
+        * `:only-child`
+
+        ```css
+        li:first-child {
+        color: green;
+        }
+
+        li:nth-child(2) {
+        color: blue;
+        }
+        ```
+
+        ---
+
+        ## 3. Form / Input State Pseudo-classes 📝
+
+        Áp dụng cho form elements.
+
+        * `:checked`
+        * `:disabled`
+        * `:enabled`
+        * `:required`
+        * `:valid`
+        * `:invalid`
+
+        ```css
+        input:checked {
+        accent-color: red;
+        }
+
+        input:disabled {
+        background: #eee;
+        }
+        ```
+
+        ---
+
+        ## 4. Logical / Negation Pseudo-classes 🧠
+
+        Cho phép logic chọn phần tử.
+
+        * `:not()`
+        * `:is()`
+        * `:where()`
+        * `:has()` (CSS hiện đại)
+
+        ```css
+        div:not(.active) {
+        opacity: 0.5;
+        }
+        ```
+
+        ---
+
+        ## 5. UI Element States 🎛️
+
+        Một số trạng thái UI khác.
+
+        * `:empty`
+        * `:root`
+        * `:target`
+
+        ```css
+        p:empty {
+        display: none;
+        }
+        ```
+
+        ---
+
+        ## Tóm tắt nhanh 📌
+
+        | Nhóm        | Ví dụ                        |
+        | ----------- | ---------------------------- |
+        | User action | `:hover`, `:focus`           |
+        | Structure   | `:nth-child`, `:first-child` |
+        | Form state  | `:checked`, `:disabled`      |
+        | Logic       | `:not()`, `:is()`            |
+        | UI state    | `:empty`, `:root`            |
+
+        ---
+
+        Bạn đang học CSS cơ bản hay đang dùng với framework như Nuxt / Vue.js vậy? Mình có thể đưa ví dụ sát với use-case của bạn.
+        */
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>Hello</p>
+        <p>Dreams</p>
+        <p>Cool</p>
+        <p>Joyous</p>
+        <q>Friendship</q>
+    </div>
+    <article>
+        <code>Happiness</code>
+        <q>Goals</q>
+        <code>Greatness</code>
+        <q>Awesome</q>
+        <code>Beauty</code>
+        <q>Exciting</q>
+        <p>Bold</p>
+    </article>
+    <section>
+        <div>Peace</div>
+    </section>
+    <blockquote>
+        <var>Mercy</var>
+    </blockquote>
+    <ul>
+        <li>Grateful</li>
+        <li>Grace</li>
+        <li>Faith</li>
+        <li>Love</li>
+    </ul>
+    <ol>
+        <li>Fortune</li>
+        <li>Favour</li>
+        <li>Riches</li>
+        <li>Glory</li>
+        <li>Hope</li>
+        <li>Freedom</li>
+    </ol>
+    <aside>
+        <h3>Snow</h3>
+        <h3>Rain</h3>
+        <h3>Sunny</h3>
+        <h3>Storm</h3>
+    </aside>
+    <header>
+        <h4>Mufasa</h4>
+        <h4>Ecanto</h4>
+        <h4>Straw</h4>
+        <h4>Lilo & Stitch</h4>
+        <h4>Moana 2</h4>
+        <h4>Wish</h4>
+        <h4>Working man</h4>
+        <h4>Gladiator 2</h4>
+        <h4>Kraven</h4>
+    </header>
+</body>
+
+</html>

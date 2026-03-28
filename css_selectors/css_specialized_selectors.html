@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css specialized selectors</title>
+    <style>
+        /* **Specialized selectors** trong CSS là các selector **đặc biệt**, dùng để chọn phần tử theo **điều kiện nâng cao** (không chỉ class / id / tag). Chúng thường bao gồm attribute selector, combinator, pseudo… nhưng tài liệu hay tách riêng nhóm này 📌
+
+---
+
+## 1. Attribute selectors 🎯
+
+Chọn phần tử dựa trên **thuộc tính HTML**
+
+```css
+input[type="text"] {
+  border: 1px solid blue;
+}
+```
+
+Các dạng phổ biến:
+
+| Selector        | Ý nghĩa        |
+| --------------- | -------------- |
+| `[attr]`        | có attribute   |
+| `[attr=value]`  | bằng chính xác |
+| `[attr^=value]` | bắt đầu bằng   |
+| `[attr$=value]` | kết thúc bằng  |
+| `[attr*=value]` | chứa           |
+
+Ví dụ:
+
+```css
+a[href^="https"] {
+  color: green;
+}
+```
+
+---
+
+## 2. Child / Descendant combinators 🌳
+
+### Descendant selector (khoảng trắng)
+
+```css
+div p {
+  color: red;
+}
+```
+
+➡️ tất cả `p` bên trong `div`
+
+### Child selector `>`
+
+```css
+div > p {
+  color: blue;
+}
+```
+
+➡️ chỉ `p` **con trực tiếp**
+
+---
+
+## 3. Adjacent sibling `+`
+
+Chọn phần tử **liền kề ngay sau**
+
+```css
+h1 + p {
+  margin-top: 0;
+}
+```
+
+---
+
+## 4. General sibling `~`
+
+Chọn tất cả sibling phía sau
+
+```css
+h1 ~ p {
+  color: gray;
+}
+```
+
+---
+
+## 5. Universal selector `*`
+
+Chọn **tất cả phần tử**
+
+```css
+* {
+  box-sizing: border-box;
+}
+```
+
+---
+
+## Tóm tắt nhanh 🧠
+
+| Selector        | Loại       |
+| --------------- | ---------- |
+| `[type="text"]` | attribute  |
+| `div p`         | descendant |
+| `div > p`       | child      |
+| `h1 + p`        | adjacent   |
+| `h1 ~ p`        | sibling    |
+| `*`             | universal  |
+
+---
+
+## Nhớ nhanh
+
+* ` ` (space) → con cháu
+* `>` → con trực tiếp
+* `+` → kế bên
+* `~` → phía sau
+* `[]` → attribute
+
+Bạn đang học CSS selector theo list này phải không?
+
+* basic selectors
+* combinators
+* pseudo-class
+* pseudo-elements
+* specialized selectors
+
+Nếu đúng mình gửi luôn **cheat sheet full** 1 trang cho bạn 📄
+ */
+        /* Universal Selectors == * */
+        *{
+            color: forestgreen;
+            font-size: 160px;
+            font-style: oblique;
+        }
+
+
+        /* Root class Selectors */
+        /* **Root class selector** trong CSS thường nói đến pseudo-class **`:root`** — dùng để chọn **phần tử gốc của document** 🌳
+
+## `:root` là gì?
+
+* Trong HTML, `:root` chính là thẻ `<html>`
+* Nó **giống `html` selector** nhưng **độ ưu tiên cao hơn**
+* Hay dùng để khai báo **CSS variables (custom properties)**
+
+---
+
+## Ví dụ cơ bản
+
+```css
+:root {
+  background: #f5f5f5;
+}
+```
+
+Tương đương:
+
+```css
+html {
+  background: #f5f5f5;
+}
+```
+
+Nhưng `:root` có **specificity cao hơn** nên thường được ưu tiên.
+
+---
+
+## Dùng phổ biến nhất: CSS Variables 🎨
+
+```css
+:root {
+  --main-color: blue;
+  --font-size: 16px;
+}
+
+h1 {
+  color: var(--main-color);
+  font-size: var(--font-size);
+}
+```
+
+---
+
+## So sánh `:root` vs `html`
+
+|                | `:root`    | `html`   |
+| -------------- | ---------- | -------- |
+| Chọn phần tử   | `<html>`   | `<html>` |
+| Specificity    | cao hơn    | thấp hơn |
+| Dùng variables | ✅ phổ biến | ít dùng  |
+
+---
+
+## Ví dụ theme switch
+
+```css
+:root {
+  --bg: white;
+  --text: black;
+}
+
+.dark {
+  --bg: black;
+  --text: white;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+```
+
+---
+
+## Nhớ nhanh 🧠
+
+* `:root` = phần tử gốc (`html`)
+* dùng để khai báo **biến global**
+* thường đặt ở **top CSS file**
+
+Bạn đang học tới phần **CSS variables** luôn rồi đúng không?
+ */
+        :root{
+            color: gold;
+            font-size: 60px;
+            font-style: oblique;
+        }
+
+        /* Negation Selector */
+        /* **Negation selector** trong CSS là pseudo-class `:not()` — dùng để **chọn tất cả phần tử ngoại trừ điều kiện bên trong** ❌
+
+---
+
+## Cú pháp
+
+```css
+selector:not(condition) {
+  /* style */
+  /*
+}
+```
+
+---
+
+## Ví dụ cơ bản
+
+Chọn tất cả `p` **trừ** class `.intro`
+
+```css
+p:not(.intro) {
+  color: gray;
+}
+```
+
+---
+
+## Ví dụ khác
+
+### 1. Bỏ qua phần tử cuối
+
+```css
+li:not(:last-child) {
+  margin-bottom: 10px;
+}
+```
+
+➡️ tất cả `li` trừ cái cuối
+
+---
+
+### 2. Style tất cả button trừ disabled
+
+```css
+button:not(:disabled) {
+  cursor: pointer;
+}
+```
+
+---
+
+### 3. Kết hợp nhiều điều kiện
+
+```css
+div:not(.active):not(.hidden) {
+  opacity: 0.5;
+}
+```
+
+---
+
+## Ví dụ HTML minh họa
+
+```html
+<p class="intro">Intro</p>
+<p>Text 1</p>
+<p>Text 2</p>
+```
+
+```css
+p:not(.intro) {
+  color: red;
+}
+```
+
+➡️ chỉ "Text 1" và "Text 2" màu đỏ
+
+---
+
+## Nhớ nhanh 🧠
+
+* `:not()` = **phủ định**
+* đọc là: "chọn tất cả trừ..."
+* rất hay dùng với:
+
+  * class
+  * pseudo-class
+  * attribute selector
+
+---
+
+## So sánh nhanh
+
+| Selector                   | Ý nghĩa                |
+| -------------------------- | ---------------------- |
+| `div:not(.box)`            | div không có class box |
+| `li:not(:last-child)`      | li trừ cái cuối        |
+| `input:not([type="text"])` | input không phải text  |
+
+👉 `:not()` là **pseudo-class**, không phải pseudo-element.
+ */
+        h1:not(.go){
+          color: blue;
+        }
+        h2:not(#fly){
+          color: goldenrod;
+          font-size: 80px;
+        }
+        
+        /* Selection Pseudo Selector */
+        /* **Selection pseudo selector** trong CSS là pseudo-element `::selection` — dùng để **style phần text khi người dùng bôi đen (highlight)** 🖱️✨
+
+---
+
+## Cú pháp
+
+```css
+::selection {
+  property: value;
+}
+```
+
+---
+
+## Ví dụ cơ bản
+
+```css
+::selection {
+  background: black;
+  color: white;
+}
+```
+
+➡️ Khi bạn bôi đen text → nền đen, chữ trắng
+
+---
+
+## Áp dụng cho phần tử cụ thể
+
+```css
+p::selection {
+  background: yellow;
+  color: red;
+}
+```
+
+➡️ chỉ text trong `<p>` mới bị ảnh hưởng
+
+---
+
+## Ví dụ thực tế
+
+```css
+h1::selection {
+  background: #ffcc00;
+}
+
+p::selection {
+  background: #222;
+  color: #fff;
+}
+```
+
+---
+
+## Thuộc tính dùng được ⚠️
+
+`::selection` chỉ hỗ trợ một số CSS:
+
+* `color`
+* `background`
+* `background-color`
+* `text-shadow` (limited)
+
+Không hoạt động với:
+
+* margin
+* padding
+* border
+* transform
+
+---
+
+## Nhớ nhanh 🧠
+
+* `::selection` → text được bôi đen
+* là **pseudo-element**
+* dùng để customize highlight UX
+
+Ví dụ nhanh:
+
+```css
+::selection {
+  background: hotpink;
+  color: white;
+}
+```
+ */
+        /* p::selection{
+          background-color: deeppink;
+          color: lawngreen;
+        } */
+        p::selection{
+          background-color: deeppink;
+          color: lawngreen;
+        }
+
+        /* Disable Selection with user-select */
+        /* Trong Safari, user-select thường không hoạt động nếu bạn chỉ dùng bản chuẩn, vì Safari (đặc biệt bản cũ và iOS) vẫn cần prefix -webkit- 🍏 */
+        h1{
+          user-select: none;
+          -webkit-user-select: none;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Happiness</h1>
+    <h1 class="go">Joyous</h1>
+    <h1>Greatness</h1>
+    <h2>Games</h2>
+    <h2>Friends</h2>
+    <h2 id="fly">Front</h2>
+    <h3>Hello</h3>
+    <p>Hi my dear friends. You guys have been great so far <br>
+    Thank you for all you have done for me. <br>
+    You guys are the MVP indeed
+    </p>
+</body>
+</html>
