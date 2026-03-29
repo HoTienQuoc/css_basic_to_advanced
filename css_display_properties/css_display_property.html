@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css display property</title>
+    <style>
+        /* **86. `display` — inline, inline-block, block, …** điều khiển **cách phần tử hiển thị và chiếm không gian** trên trang. 📦
+
+---
+
+## 🔹 `display: block`
+
+* Chiếm **toàn bộ chiều ngang**
+* Luôn xuống dòng mới
+* Có thể set `width`, `height`, `margin`, `padding`
+
+```css
+div {
+  display: block;
+}
+```
+
+**Ví dụ**
+
+```html
+<div>Block 1</div>
+<div>Block 2</div>
+```
+
+👉 Hiển thị mỗi dòng một phần tử
+
+**Default block elements**
+
+* `div`, `p`, `h1-h6`, `section`, `article` 📚
+
+---
+
+## 🔹 `display: inline`
+
+* Không xuống dòng
+* Chiều rộng = nội dung
+* ❌ Không set được `width`, `height`
+* `margin-top/bottom` không có tác dụng
+
+```css
+span {
+  display: inline;
+}
+```
+
+**Ví dụ**
+
+```html
+<span>Inline 1</span>
+<span>Inline 2</span>
+```
+
+👉 Nằm cùng một dòng
+
+**Default inline elements**
+
+* `span`, `a`, `strong`, `em` ✏️
+
+---
+
+## 🔹 `display: inline-block`
+
+👉 Lai giữa `inline` + `block`
+
+* Nằm cùng dòng như inline
+* Nhưng set được `width`, `height`
+* Có margin/padding đầy đủ
+
+```css
+.box {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+```
+
+---
+
+## 🔹 So sánh nhanh
+
+| display      | xuống dòng | set width/height | margin top/bottom |
+| ------------ | ---------- | ---------------- | ----------------- |
+| block        | ✅          | ✅                | ✅                 |
+| inline       | ❌          | ❌                | ❌                 |
+| inline-block | ❌          | ✅                | ✅                 |
+
+---
+
+## 🔹 Ví dụ trực quan
+
+```html
+<div class="block">block</div>
+<span class="inline">inline</span>
+<span class="inline">inline</span>
+<div class="inline-block">inline-block</div>
+<div class="inline-block">inline-block</div>
+```
+
+```css
+.block {
+  display: block;
+  background: lightblue;
+}
+
+.inline {
+  display: inline;
+  background: pink;
+}
+
+.inline-block {
+  display: inline-block;
+  width: 100px;
+  background: lightgreen;
+}
+```
+
+---
+
+## 🔹 Các giá trị display phổ biến khác
+
+```css
+display: none;        /* ẩn hoàn toàn */
+/*
+display: flex;        /* flexbox */
+/*
+display: grid;        /* grid layout */
+/*
+display: contents;    /* bỏ wrapper */
+/*
+display: table;       /* table layout */
+/*
+display: list-item;   /* giống li */
+/*
+```
+
+---
+
+## 🔹 `display: none`
+
+```css
+.hidden {
+  display: none;
+}
+```
+
+👉 Phần tử biến mất hoàn toàn (không chiếm chỗ) 🚫
+
+---
+
+## 🔥 Use case phổ biến
+
+```css
+/* nav ngang */
+/*
+li {
+  display: inline-block;
+}
+
+/* button full width */
+/*
+button {
+  display: block;
+  width: 100%;
+}
+
+/* hide element */
+/*
+.modal {
+  display: none;
+}
+```
+
+---
+
+## 🧠 Quy tắc nhớ nhanh
+
+* block = dòng riêng 📏
+* inline = cùng dòng ✏️
+* inline-block = cùng dòng nhưng control được 📦
+
+Bạn muốn mình làm tiếp:
+
+* `87. display: none vs visibility hidden`
+* `88. flex vs inline-flex`
+* `89. block vs inline-block layout trick`
+ */
+        /* inline, block, inline-block, inline-flex, none, flex, table, contents, inline-table */
+        /* section, aside{
+            display: inline;
+        } */
+        /* section, aside{
+            display: inline;
+        } */
+        /* section, aside{
+            display: contents;
+        } */
+        section, aside{
+            display: inline-table;
+        }
+        /* p, h1{
+            display: inline-block;
+        } */
+        /* p, h1{
+            display: table;
+        } */
+        /* p, h1{
+            display: contents;
+        } */
+        p, h1{
+            display: inline-block;
+        }
+        /* span, i{
+            display: block;
+        } */
+        /* span, i{
+            display: inline-flex;
+        } */
+        /* span, i{
+            display: none;
+        } */
+        /* span, i{
+            display: flex;
+        } */
+        span, i{
+            display: contents;
+        }
+    </style>
+</head>
+<body>
+    <section>Great</section>
+    <aside>Dream</aside>
+    <p>Friends</p>
+    <h1>Dance</h1>
+    <span>Happy</span>
+    <i>Awesome</i>
+    <h1>Sing</h1>
+</body>
+</html>
