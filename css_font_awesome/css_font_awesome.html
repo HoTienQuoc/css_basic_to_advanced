@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CDN Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Local Linking -->
+    <!-- <link rel="stylesheet" href="files/font-awesome"> -->
+    <title>Font Awesome Icons</title>
+    <style>
+        .bin{
+            height: 56px;
+            width: 56px;
+        }
+        .icons{
+            color: firebrick;
+            /* border: 2px solid red; */
+        }
+        .border{
+            border: 2px solid red;
+            padding: 10px;
+        }
+        .icon-list{
+            color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <svg class="bin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M500 261.8C500 403.3 403.1 504 260 504 122.8 504 12 393.2 12 256S122.8 8 260 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9c-88.3-85.2-252.5-21.2-252.5 118.2 0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9l-140.8 0 0-85.3 236.1 0c2.3 12.7 3.9 24.9 3.9 41.4z"/>
+    </svg>
+    <i class="fa-solid fa-align-center"></i>
+    <!-- fa-1x to fa-10x -->
+     <!-- fa-fw (fixed width) -->
+     <div>
+        <span class="fa-10x fa-fw icons">
+            <i class="fa-brands fa-fedora border"></i>
+            <i class="fa-brands fa-fedex"></i>
+            <i class="fa-brands fa-fort-awesome-alt"></i>
+            <i class="fa-brands fa-galactic-senate"></i>
+            <i class="fa-brands fa-d-and-d"></i>
+            <i class="fa-brands fa-critical-role"></i>
+            <i class="fa-brands fa-aviato"></i>
+        </span>
+    </div>
+    <!-- font awesome list -->
+    <!-- fa-ul:  -->
+    <!-- fa-li:  -->
+    <ol class="fa-ul fa-4x icon-list">
+        <li>
+            <i class="fa-solid fa-square-check fa-li"></i>
+            List 1
+        </li>
+        <li>
+            <i class="fa-solid fa-user-check fa-li"></i>
+            List 2
+        </li>
+        <li>
+            <i class="fa-solid fa-spell-check fa-li"></i>
+            List 3
+        </li>
+        <li>
+            <i class="fa-solid fa-heart-circle-check fa-li"></i>
+            List 4
+        </li>
+    </ol>
+
+<!-- fa-border -->
+    <div>
+        <span>
+            <i class="fa-solid fa-plane-circle-check fa-6x fa-border" style="border: 4px solid green;"></i>
+        </span>
+        <!-- stacking icons => fa-stack -->
+         <!-- fa-stack: container để chứa các icon
+                fa-stack-2x: icon nền (to hơn)
+                fa-stack-1x: icon phía trên (nhỏ hơn)
+                fa-inverse: đảo màu để nổi bật -->
+        <span class="fa-stack fa-3x">
+            <i class="fa-solid fa-square fa-stack-2x" style="color: orange;"></i>
+            <i class="fa-regular fa-user fa-stack-1x fa-inverse"></i>
+        </span>
+        <span class="fa-3x fa-stack">
+            <i class="fa-solid fa-circle fa-stack-2x"></i>
+            <i class="fa-regular fa-heart fa-stack-1x fa-inverse"></i>
+        </span>
+        <span class="fa-5x fa-stack">
+            <i class="fa-solid fa-cloud fa-stack-2x"></i>
+            <i class="fa-brands fa-whatsapp fa-stack-1x fa-inverse"></i>
+        </span>
+        <span class="fa-4x fa-stack">
+            <i class="fa-solid fa-volume-off fa-stack-1x"></i>
+            <i class="fa-solid fa-ban fa-stack-2x fa-inverse" style="color: red;"></i>
+        </span>
+    </div>
+    
+</body>
+</html>
