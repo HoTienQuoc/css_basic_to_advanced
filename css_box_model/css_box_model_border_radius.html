@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css box model border radius</title>
+    <style>
+        /* # 98. Box Model – Border Radius
+
+**`border-radius`** dùng để **bo tròn góc** của box trong CSS. 📦✨
+
+---
+
+## 1. Border radius cơ bản
+
+```css
+.box {
+  border-radius: 10px;
+}
+```
+
+👉 Bo tròn **tất cả các góc**
+
+---
+
+## 2. Ví dụ
+
+```css
+.card {
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 15px;
+}
+```
+
+---
+
+## 3. Border radius hình tròn
+
+```css
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+```
+
+👉 tạo hình tròn hoàn hảo ⚪
+
+---
+
+## 4. Border radius 2 giá trị
+
+👉 `top-left & bottom-right | top-right & bottom-left`
+
+```css
+.box {
+  border-radius: 10px 20px;
+}
+```
+
+---
+
+## 5. Border radius 3 giá trị
+
+👉 `top-left | top-right & bottom-left | bottom-right`
+
+```css
+.box {
+  border-radius: 10px 20px 30px;
+}
+```
+
+---
+
+## 6. Border radius 4 giá trị
+
+👉 `top-left top-right bottom-right bottom-left`
+
+```css
+.box {
+  border-radius: 10px 20px 30px 40px;
+}
+```
+
+🕒 clockwise
+
+```
+top-left   top-right
+bottom-left bottom-right
+```
+
+---
+
+## 7. Bo từng góc riêng
+
+```css
+.box {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 40px;
+}
+```
+
+---
+
+## 8. Bo hình pill (button)
+
+```css
+button {
+  padding: 10px 20px;
+  border-radius: 999px;
+}
+```
+
+👉 tạo nút pill 💊
+
+---
+
+## 9. Border radius với image
+
+```css
+img {
+  border-radius: 10px;
+}
+```
+
+Avatar:
+
+```css
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+```
+
+---
+
+## 10. Elliptical radius
+
+```css
+.box {
+  border-radius: 50px / 20px;
+}
+```
+
+👉 bo tròn theo ellipse
+
+---
+
+## Ghi nhớ nhanh
+
+* `border-radius` → bo góc 🎯
+* `50%` → hình tròn ⚪
+* `999px` → pill 💊
+* 4 giá trị → clockwise 🕒
+ */
+        /* box-model: border-radius */
+        /* border-radius: width, style, color */
+        /* border-radius: top-left/bottom-right top-right/bottom-left */
+        /* border-radius: top-left top-right/bottom-left bottom-right */
+        section{
+            background-color: chocolate;
+            width: 400px;
+            height: 400px;
+            border-radius: 70px;
+        }
+        p{ 
+            text-align: center;
+            height: 400px;
+            line-height: 400px;
+        }
+        article{
+            background-color: firebrick;
+            width: 400px;
+            height: 400px;
+            /* border-top-left-radius: 70px;
+            border-bottom-right-radius: 70px; */
+            border-radius: 70px 20px 180px;
+        }
+        aside{
+            background-color: darkgreen;
+            width: 400px;
+            height: 200px;
+            /* border-radius: 70px 20px 180px; */
+            border-radius: 50%;
+            display: inline-block;
+        }
+        span{
+            background-color: rebeccapurple;
+            display: inline;
+            padding: 60px;
+            border: 20px solid red;
+            border-radius: 50%;
+        }
+        img{
+            width: 500px;
+            height: 500px;
+            border: 50px solid rebeccapurple;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <p>Hello</p>
+    </section>
+    <article>
+
+    </article>
+    <aside>
+
+    </aside>
+    <span>
+
+    </span>
+    <img src="images/image.png" alt="">
+</body>
+</html>

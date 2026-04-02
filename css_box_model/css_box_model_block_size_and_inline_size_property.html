@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS box model block size and inline size property</title>
+    <style>
+        /* # 107. `block-size` và `inline-size`
+
+`block-size` và `inline-size` là **logical properties** thay thế cho `width` và `height`, giúp CSS **phụ thuộc vào hướng viết (writing-mode)** thay vì cố định ngang/dọc. 🔄
+
+---
+
+## 1. `inline-size`
+
+👉 tương đương **width** (trong writing mode mặc định)
+
+```css
+.box {
+  inline-size: 200px;
+}
+```
+
+Trong `writing-mode: horizontal-tb` (mặc định):
+
+```
+inline-size = width
+```
+
+---
+
+## 2. `block-size`
+
+👉 tương đương **height**
+
+```css
+.box {
+  block-size: 100px;
+}
+```
+
+Trong mặc định:
+
+```
+block-size = height
+```
+
+---
+
+## 3. Ví dụ cơ bản
+
+```css
+.box {
+  inline-size: 200px;
+  block-size: 100px;
+  background: lightblue;
+}
+```
+
+---
+
+## 4. Vì sao cần logical properties?
+
+Khi đổi hướng viết:
+
+```css
+.container {
+  writing-mode: vertical-rl;
+}
+```
+
+👉 lúc này:
+
+| property    | nghĩa       |
+| ----------- | ----------- |
+| inline-size | chiều dọc   |
+| block-size  | chiều ngang |
+
+📌 width/height **không đổi**, nhưng inline/block **tự thích nghi**
+
+---
+
+## 5. So sánh
+
+| Physical    | Logical             |
+| ----------- | ------------------- |
+| width       | inline-size         |
+| height      | block-size          |
+| margin-left | margin-inline-start |
+| padding-top | padding-block-start |
+
+---
+
+## 6. Ví dụ responsive tốt hơn
+
+```css
+.card {
+  inline-size: 300px;
+  block-size: auto;
+}
+```
+
+---
+
+## 7. Dùng với min/max
+
+```css
+.box {
+  min-inline-size: 200px;
+  max-inline-size: 400px;
+}
+```
+
+```css
+.box {
+  min-block-size: 100px;
+}
+```
+
+---
+
+## 8. Khi nên dùng
+
+✔ international layouts
+✔ vertical writing
+✔ logical spacing
+✔ modern CSS system
+
+---
+
+## Ghi nhớ nhanh 🧠
+
+* `inline-size` → width (logical) ↔️
+* `block-size` → height (logical) ↕️
+* tự thích nghi writing-mode
+* thay thế width/height hiện đại
+ */
+        div{
+            block-size: 700px;
+            inline-size: 500px;
+            background-color: blueviolet;
+        }
+        img{
+            block-size: 400px;
+            inline-size: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <img src="images/image3.png" alt="" srcset="">
+</body>
+</html>

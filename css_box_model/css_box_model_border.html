@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css box model border</title>
+    <style>
+        /* # 96. Box Model – Border
+
+**Border** là đường viền bao quanh **padding + content** của một element trong CSS Box Model. 📦
+
+```
+margin
+ └─ border
+     └─ padding
+         └─ content
+```
+
+---
+
+## 1. Border cơ bản
+
+Border cần **3 thành phần**:
+
+* width (độ dày)
+* style (kiểu)
+* color (màu)
+
+```css
+.box {
+  border: 2px solid black;
+}
+```
+
+---
+
+## 2. Border shorthand
+
+```css
+border: width style color;
+```
+
+Ví dụ:
+
+```css
+.box {
+  border: 3px dashed red;
+}
+```
+
+---
+
+## 3. Border riêng từng cạnh
+
+```css
+.box {
+  border-top: 2px solid black;
+  border-right: 3px dotted blue;
+  border-bottom: 4px dashed red;
+  border-left: 5px solid green;
+}
+```
+
+---
+
+## 4. Border width
+
+```css
+.box {
+  border-width: 5px;
+  border-style: solid;
+}
+```
+
+Hoặc:
+
+```css
+border-width: 1px 2px 3px 4px;
+```
+
+(clockwise giống padding) 🕒
+
+---
+
+## 5. Border style
+
+Các kiểu phổ biến:
+
+```css
+solid
+dashed
+dotted
+double
+groove
+ridge
+inset
+outset
+none
+```
+
+Ví dụ:
+
+```css
+.box {
+  border: 4px dotted black;
+}
+```
+
+---
+
+## 6. Border color
+
+```css
+.box {
+  border: 2px solid blue;
+}
+```
+
+Hoặc riêng:
+
+```css
+border-color: red;
+```
+
+---
+
+## 7. Border ảnh hưởng đến size box
+
+Mặc định (`content-box`):
+
+```css
+.box {
+  width: 200px;
+  border: 10px solid black;
+}
+```
+
+➡️ width thật = **220px**
+
+```
+200 + 10 + 10
+```
+
+---
+
+## 8. Border radius (bo góc)
+
+```css
+.box {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+```
+
+Hình tròn:
+
+```css
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+```
+
+---
+
+## 9. Border riêng từng thuộc tính
+
+```css
+.box {
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+```
+
+---
+
+## 10. Border vs Outline
+
+| Border           | Outline       |
+| ---------------- | ------------- |
+| nằm trong box    | nằm ngoài box |
+| ảnh hưởng layout | không         |
+| có radius        | không         |
+
+---
+
+## Ví dụ thực tế
+
+Button:
+
+```css
+button {
+  padding: 10px 20px;
+  border: 2px solid black;
+}
+```
+
+Card:
+
+```css
+.card {
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+```
+
+---
+
+## Ghi nhớ nhanh
+
+* border = đường viền 📦
+* cần: width + style + color
+* ảnh hưởng size box
+* có thể bo góc với `border-radius` 🎯
+ */
+    /* box-model: border */
+        /* border: width, style, color */
+        /* border-style:  */
+        /* border-style: hidden;
+border-style: dotted;
+border-style: dashed;
+border-style: solid;
+border-style: double;
+border-style: groove;
+border-style: ridge;
+ */
+
+            /* border-inline = border-left and border-right */
+            /* border-inline-end = border-right */
+            /* border-inline-start = border-left */
+            /* border-block = border-top and border-bottom */
+            /* border-block-end = border-bottom */
+            /* border-block-start = border-top */
+        section{
+            width: 40px;
+            background-color: blueviolet;
+            padding: 110px 80px;
+            border: 25px solid yellow;
+        }
+        aside{
+            width: 40px;/* 15rem = 15px * 16px */
+            background-color: teal;
+            padding: 60px 300px 30px;
+            /* border: 10px dashed pink; */
+            border: 10px dotted pink;
+        }
+        article{
+            height: 150px;
+            width: 70%;
+            background-color: brown;
+            border: 35px inset greenyellow;
+        }
+        h3{
+            width: 8%;
+            background-color: royalblue;
+            padding-block-end: 60px;
+        }
+        p{
+            width: 50%;
+            background-color: yellow;
+            height: 50%;
+            border-top: 15px dashed red;
+            border-right: 15px ridge aquamarine;
+        }
+        h1{
+            width: 50%;
+            background-color: royalblue;
+            padding-bottom: 70px;
+        }
+        span{
+            width: 50%;
+            background-color: rebeccapurple;
+            display: inline;
+            padding: 60px;
+            border: 20px solid red;
+        }
+        i{
+            width: 50%;
+            background-color: goldenrod;
+            padding: 110px 280px;
+            border-top-style: groove;
+            border-top-color: blueviolet;
+            border-top-width: 16px;
+            border-block-start: 20px ridge teal;
+        }
+    </style>
+</head>
+<body>
+    <section>Great</section>
+    <aside>Dream</aside>
+    <article>
+        <h3>Thanks</h3>
+        <p>Friends</p>
+    </article>
+    <!-- <p>Friends</p> -->
+    <h1>Dance</h1>
+    <span>Happy</span>
+    <i>Awesome</i>
+    <h1>Sing</h1>
+</body>
+</html>

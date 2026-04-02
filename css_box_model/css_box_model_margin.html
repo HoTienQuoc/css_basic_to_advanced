@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS box model margin</title>
+    <style>
+        /* # 102. Box Model – Margin
+
+**Margin** là khoảng **không gian bên ngoài** của một element, dùng để **tạo khoảng cách giữa các box**. 📦↔️📦
+
+```text
+margin
+ └─ border
+     └─ padding
+         └─ content
+```
+
+---
+
+## 1. Margin cơ bản
+
+```css
+.box {
+  margin: 20px;
+}
+```
+
+👉 tạo khoảng cách **20px xung quanh element**
+
+---
+
+## 2. Margin từng cạnh
+
+```css
+.box {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  margin-left: 40px;
+}
+```
+
+---
+
+## 3. Margin shorthand
+
+### 1 giá trị
+
+```css
+margin: 20px;
+```
+
+→ tất cả các cạnh = 20px
+
+### 2 giá trị
+
+```css
+margin: 10px 20px;
+```
+
+→ top/bottom = 10px
+→ left/right = 20px
+
+### 3 giá trị
+
+```css
+margin: 10px 20px 30px;
+```
+
+→ top = 10px
+→ left/right = 20px
+→ bottom = 30px
+
+### 4 giá trị (clockwise)
+
+```css
+margin: 10px 20px 30px 40px;
+```
+
+🕒 thứ tự:
+
+```text
+top right bottom left
+```
+
+---
+
+## 4. Margin không ăn background
+
+```css
+.box {
+  background: lightblue;
+  margin: 20px;
+}
+```
+
+👉 vùng margin **trong suốt** (không có màu)
+
+---
+
+## 5. Margin auto (căn giữa)
+
+```css
+.box {
+  width: 200px;
+  margin: 0 auto;
+}
+```
+
+👉 căn giữa ngang 🎯
+
+Điều kiện:
+
+* phải có `width`
+* element là `block`
+
+---
+
+## 6. Margin collapse (vertical)
+
+Margin trên dưới có thể **gộp lại**
+
+```css
+.box1 {
+  margin-bottom: 20px;
+}
+
+.box2 {
+  margin-top: 30px;
+}
+```
+
+👉 khoảng cách thực = **30px** (không phải 50px)
+
+📌 chỉ xảy ra với **margin vertical**
+
+---
+
+## 7. Margin âm (negative margin)
+
+```css
+.box {
+  margin-top: -20px;
+}
+```
+
+👉 kéo element lên trên ⬆️
+
+---
+
+## 8. Margin vs Padding
+
+| Margin                   | Padding                   |
+| ------------------------ | ------------------------- |
+| bên ngoài                | bên trong                 |
+| không ăn background      | ăn background             |
+| tạo khoảng cách giữa box | tạo khoảng cách trong box |
+| có thể collapse          | không                     |
+
+---
+
+## 9. Ví dụ thực tế
+
+Spacing giữa card:
+
+```css
+.card {
+  margin-bottom: 20px;
+}
+```
+
+Navbar spacing:
+
+```css
+.nav-item {
+  margin-right: 15px;
+}
+```
+
+---
+
+## Ghi nhớ nhanh 🧠
+
+* margin = khoảng cách ngoài ↔️
+* không ảnh hưởng background
+* `margin: auto` → căn giữa 🎯
+* margin vertical có thể collapse
+ */
+ /* # 104. Box Model – `margin: auto`
+
+`margin: auto` cho phép **trình duyệt tự tính margin** để **căn chỉnh element**.
+Thường dùng nhất để **căn giữa ngang**. 🎯
+
+---
+
+## 1. Căn giữa ngang (phổ biến nhất)
+
+```css
+.box {
+  width: 200px;
+  margin: 0 auto;
+}
+```
+
+👉 kết quả:
+
+* `margin-left` = auto
+* `margin-right` = auto
+* element nằm **giữa container**
+
+📌 Điều kiện:
+
+* phải có `width`
+* element là `block` (hoặc block-like)
+
+---
+
+## 2. Ví dụ
+
+```css
+.container {
+  border: 2px solid black;
+}
+
+.box {
+  width: 150px;
+  margin: 0 auto;
+  background: lightblue;
+}
+```
+
+👉 `.box` sẽ nằm giữa `.container`
+
+---
+
+## 3. `margin: auto` hoạt động thế nào
+
+Browser chia đều khoảng trống:
+
+```text
+|----auto----| BOX |----auto----|
+```
+
+---
+
+## 4. Chỉ căn giữa ngang
+
+```css
+margin: auto;
+```
+
+thực tế tương đương:
+
+```css
+margin-top: auto;
+margin-bottom: auto;
+margin-left: auto;
+margin-right: auto;
+```
+
+Nhưng **chỉ left/right có tác dụng** trong layout block.
+
+---
+
+## 5. Căn phải với auto
+
+```css
+.box {
+  width: 200px;
+  margin-left: auto;
+}
+```
+
+👉 đẩy sang phải ➡️
+
+---
+
+## 6. Căn trái với auto
+
+```css
+.box {
+  width: 200px;
+  margin-right: auto;
+}
+```
+
+👉 đẩy sang trái ⬅️
+
+---
+
+## 7. Flexbox + margin auto
+
+Trong flexbox, `margin: auto` mạnh hơn
+
+```css
+.container {
+  display: flex;
+}
+
+.box {
+  margin-left: auto;
+}
+```
+
+👉 đẩy `.box` sang phải
+
+---
+
+## 8. Căn giữa cả 2 chiều (flex)
+
+```css
+.container {
+  display: flex;
+}
+
+.box {
+  margin: auto;
+}
+```
+
+👉 căn giữa cả ngang và dọc 🎯
+
+---
+
+## So sánh nhanh
+
+| CSS                   | Kết quả           |
+| --------------------- | ----------------- |
+| `margin: 0 auto`      | căn giữa ngang    |
+| `margin-left: auto`   | đẩy sang phải     |
+| `margin-right: auto`  | đẩy sang trái     |
+| `margin: auto` (flex) | center cả 2 chiều |
+
+---
+
+## Ghi nhớ nhanh 🧠
+
+* `margin: auto` = browser tự chia khoảng trống
+* block + width → center ngang
+* flex → center cả 2 chiều
+* auto dùng để push element 🎯
+ */
+ /* margin: top, right, bottom, left */
+ section{
+            width: 40px;
+            background-color: blueviolet;
+            /* margin: top/bottom left/right */
+            padding: 110px 80px;
+            margin: 50px;
+        }
+        aside{
+            width: 40px;/* 15rem = 15px * 16px */
+            background-color: teal;
+            /* margin: top left/right bottom */
+            padding: 60px 300px 30px;
+            margin: 10px 80px;
+        }
+        article{
+            height: 250px;
+            width: 70%;
+            background-color: brown;
+            margin: 50px 100px 300px;
+        }
+        h3{
+            width: 8%;
+            background-color: royalblue;
+            /* margin-left: 100px; */
+            /* margin-inline-end: 100px; */
+            /* margin: 0 30px; */
+            /* margin-inline-start: 60px; */
+            /* margin-block: 60px; */
+            /* margin: 60px 0; */
+            /* margin-inline = margin-left and margin-right */
+            /* margin-inline-end = margin-right */
+            /* margin-inline-start = margin-left */
+            /* margin-block = margin-top and margin-bottom */
+            /* margin-block-end = margin-bottom */
+            /* margin-block-start = margin-top */
+            padding-block-end: 60px;
+            margin-left: 50px;
+        }
+        p{
+            width: 50%;
+            background-color: yellow;
+            height: 50%;
+            margin-top: 30px;
+        }
+        h1{
+            width: 50%;
+            background-color: royalblue;
+            padding-bottom: 70px;
+            margin-inline-start: 360px;
+            margin-bottom: 200px;
+        }
+        /* inline elements(inline,inline-block, -flex, -table) do not accept margin vertical - top, bottom but accepts margin horizontal - left, right */
+        span{
+            width: 50%;
+            background-color: rebeccapurple;
+            display: block;
+            padding: 60px;
+            margin: 60px;
+            display: inline-flex;
+        }
+        i{
+            width: 50%;
+            background-color: goldenrod;
+            padding: 110px 280px;
+            margin-top: 100px;
+        }
+        div{
+            width: 40px;
+            background-color: blueviolet;
+            padding: 110px 80px;
+            /* margin: 100px auto; */
+            /* margin: auto 60px; */
+            /* margin: 20px 70px auto 300px; */
+            margin: 20px 70px 300px auto;
+
+        }
+        /* To place an element in the center, MUST ENSURE that the margin left&right are AUTO  */
+        h4{
+            width: 40px;
+            background-color: blueviolet;
+            padding: 110px 80px;
+            margin-top: -220px;
+            display: inline-table;
+        }
+        h5{
+            width: 40px;
+            background-color: hotpink;
+            padding: 110px 80px;
+            margin-left: -100px;
+            display: inline-block;
+        }
+        h6{
+            width: 40px;
+            background-color: orangered;
+            padding: 110px 80px;
+            margin-bottom: 220px;
+            /* display: inline-block; */
+        }
+    </style>
+</head>
+<body>
+    <section>Great</section>
+    <aside>Dream</aside>
+    <article>
+        <h3>Thanks</h3>
+        <p>Friends</p>
+    </article>
+    <!-- <p>Friends</p> -->
+    <h1>Dance</h1>
+    <span>Happy</span>
+    <i>Awesome</i>
+    <h1>Sing</h1>
+    <div>Joyous</div>
+    <h6>Top</h6>
+    <h4>Shout</h4>
+    <h5>Silent</h5>
+</body>
+</html>

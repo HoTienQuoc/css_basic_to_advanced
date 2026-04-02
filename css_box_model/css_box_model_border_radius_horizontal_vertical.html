@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css box model border radius horizontal vertical</title>
+    <style>
+        /* # 100. `border-radius` – Horizontal / Vertical values
+
+`border-radius` không chỉ nhận **1 giá trị**, mà còn có thể nhận **horizontal / vertical** để tạo bo góc **ellipse** thay vì hình tròn.
+
+Cú pháp:
+
+```css
+border-radius: horizontal / vertical;
+```
+
+---
+
+## Ví dụ cơ bản
+
+```css
+.box {
+  border-radius: 50px / 20px;
+}
+```
+
+👉 nghĩa là:
+
+* horizontal radius = 50px
+* vertical radius = 20px
+
+Kết quả: góc bo **dẹt theo chiều dọc** 🥚
+
+---
+
+## Minh họa
+
+```
+border-radius: 50px;
+```
+
+→ bo tròn đều ⚪
+
+```
+border-radius: 50px / 20px;
+```
+
+→ bo ellipse
+
+---
+
+## 4 góc với horizontal / vertical
+
+Bạn có thể truyền **4 giá trị trước dấu /** và **4 giá trị sau dấu /**
+
+```css
+.box {
+  border-radius: 10px 20px 30px 40px / 5px 15px 25px 35px;
+}
+```
+
+👉 tương đương
+
+| Góc          | Horizontal | Vertical |
+| ------------ | ---------- | -------- |
+| top-left     | 10px       | 5px      |
+| top-right    | 20px       | 15px     |
+| bottom-right | 30px       | 25px     |
+| bottom-left  | 40px       | 35px     |
+
+---
+
+## Ví dụ shape blob
+
+```css
+.blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+```
+
+👉 tạo shape organic 🎨
+
+---
+
+## Dùng cho avatar ellipse
+
+```css
+.avatar {
+  width: 150px;
+  height: 100px;
+  border-radius: 50% / 50%;
+}
+```
+
+---
+
+## Khi nào dùng
+
+* blob UI
+* organic shapes
+* custom card
+* fancy buttons
+* image crop ellipse
+
+---
+
+## So sánh
+
+| Cú pháp                            | Kết quả      |
+| ---------------------------------- | ------------ |
+| `border-radius: 20px;`             | tròn đều     |
+| `border-radius: 50%;`              | hình tròn    |
+| `border-radius: 50px / 20px;`      | ellipse      |
+| `border-radius: a b c d / e f g h` | custom shape |
+
+---
+
+## Ghi nhớ nhanh
+
+* `/` → tách horizontal và vertical
+* trước `/` → chiều ngang
+* sau `/` → chiều dọc
+* dùng để tạo ellipse 🎯
+ */
+        div, article, aside, section{
+            width: 400px;
+            height: 400px;
+        }
+        div{
+            background-color: blueviolet;
+            border-radius: 6rem 10rem 3rem;
+        }
+        article{
+            background-color: teal;
+            /* border-top-left-radius: 30px; */
+            /* border-top-left-radius: 50% 200px;
+            border-bottom-right-radius: 10rem 200px;
+            border-top-right-radius: 20% 70%;
+            border-bottom-left-radius: 15em 50%; */
+            border-start-start-radius: 50% 200px;
+            border-start-end-radius: 20% 70%;
+            border-end-start-radius: 15em 50%;
+            border-end-end-radius: 10rem 200px;
+        }
+        /* border-radius: horizontal values / vertical values */
+        /* 
+            v: vertical, 
+            h: horizontal, 
+            t: top, 
+            b: bottom, 
+            r: right, 
+            l: left 
+        */
+        /* border-radius: t-l-h t-r-h b-r-h b-l-h / t-l-v t-r-v b-r-v b-l-v */
+        aside{
+            background-color: brown;
+            border-radius: 50% 20% 10rem 15em / 200px 70% 200px 50%;
+        }
+        /* border-radius: 1 2 / 3 4 */
+        /* 1 = t-l-h and b-r-h */
+        /* 2 = t-r-h and b-l-h */
+        /* 3 = t-l-v and b-r-v */
+        /* 4 = t-r-v and b-r-v */
+
+        /* border-radius: 1 2 3 / 4 5 */
+        /* 1 = t-l-h */
+        /* 2 = t-r-h and b-l-n */
+        /* 3 = b-r-h */
+        /* 4 = t-l-v and b-r-v */
+        /* 5 = t-r-v and b-l-v */
+        /* t-l = 1 and 4 */
+        /* t-r = 2 and 5 */
+        /* b-r = 3 and 4 */
+        /* b-l = 2 and 5 */
+        section{
+            background-color: chartreuse;
+            border-radius: 5rem 6rem / 8rem 10rem;
+        }
+
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <article></article>
+    <aside></aside>
+    <section></section>
+    <img src="images/image1.png" alt="" srcset="">
+    <img src="images/image2.png" alt="" srcset="">
+    <img src="images/image3.png" alt="" srcset="">
+
+</body>
+</html>

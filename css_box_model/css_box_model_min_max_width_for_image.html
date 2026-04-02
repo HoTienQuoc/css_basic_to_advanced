@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css box model min max width for image</title>
+    <style>
+        /* **89. Box model – `min-width` và `max-width` cho images** giúp **ảnh responsive**, tránh bị vỡ layout hoặc quá nhỏ 🖼️
+
+---
+
+## 🔹 `max-width` cho ảnh (quan trọng nhất) ⭐
+
+```css
+img {
+  max-width: 100%;
+}
+```
+
+👉 Ảnh **không vượt quá container** → responsive tự động 📱
+
+---
+
+## 🔹 Ví dụ
+
+```html
+<div class="card">
+  <img src="image.jpg">
+</div>
+```
+
+```css
+.card {
+  width: 300px;
+}
+
+img {
+  max-width: 100%;
+}
+```
+
+👉 Ảnh co lại theo `.card`, không bị tràn.
+
+---
+
+## 🔹 Nếu không dùng `max-width`
+
+```css
+img {
+  width: 500px;
+}
+```
+
+👉 Khi container nhỏ hơn → ảnh **overflow** ❌
+
+---
+
+## 🔹 `min-width` cho ảnh
+
+Giữ ảnh **không nhỏ hơn kích thước nhất định**
+
+```css
+img {
+  min-width: 200px;
+}
+```
+
+👉 Ảnh không co nhỏ hơn 200px.
+
+---
+
+## 🔹 Kết hợp cả hai
+
+```css
+img {
+  min-width: 200px;
+  max-width: 100%;
+}
+```
+
+👉
+
+* Không nhỏ hơn 200px
+* Không lớn hơn container
+
+---
+
+## 🔹 Best practice responsive image
+
+```css
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+👉 Giữ đúng tỷ lệ ảnh 📐
+
+---
+
+## 🔹 So sánh
+
+| property          | dùng khi                |
+| ----------------- | ----------------------- |
+| `width: 100%`     | ảnh luôn full container |
+| `max-width: 100%` | ảnh co lại khi cần      |
+| `min-width`       | tránh ảnh quá nhỏ       |
+
+---
+
+## 🔹 Ví dụ gallery
+
+```css
+.gallery img {
+  max-width: 100%;
+  min-width: 150px;
+}
+```
+
+---
+
+## 🔹 Layout card phổ biến
+
+```css
+.card img {
+  width: 100%;
+  max-width: 400px;
+}
+```
+
+---
+
+## 🔥 Quy tắc nhớ nhanh
+
+* ảnh responsive → `max-width: 100%` 🧠
+* giữ tỷ lệ → `height: auto` 📐
+* tránh ảnh quá nhỏ → `min-width` 📉
+ */
+        p{
+          background-color: dodgerblue;
+          max-width: 100px;
+        }
+        /* max-width for images CANNOT exceed the image's original width it can go below it but not exceed  */
+        /* When you go below the image's original width then max-width and width are the same  */
+        /* /* Chiều rộng tối đa cho hình ảnh KHÔNG THỂ vượt quá chiều rộng gốc của hình ảnh, nó có thể nhỏ hơn nhưng không được vượt quá */
+        /* Khi chiều rộng nhỏ hơn chiều rộng gốc của hình ảnh thì chiều rộng tối đa và chiều rộng bằng nhau */
+        /* img{
+          max-width: 1000px;
+        } */
+        /* img {
+          max-width: 1000px;
+        } */
+        img{
+          max-width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore dignissimos dolor excepturi maxime placeat, dolores provident culpa corrupti repellendus reprehenderit omnis rem veniam temporibus id molestiae deserunt recusandae quos doloribus cupiditate, quae aliquam suscipit exercitationem nostrum. Id debitis assumenda quisquam consequuntur voluptatibus. Labore, ad doloremque nemo assumenda pariatur eaque velit quisquam exercitationem tenetur vero veniam saepe voluptatibus maxime sapiente ipsum quidem sunt quae vel fugiat animi provident id consectetur corrupti? Dolores ducimus veritatis fugit officiis culpa! Veritatis mollitia vitae ratione.</p>
+
+    <img src="images/image.png" alt="">
+</body>
+</html>

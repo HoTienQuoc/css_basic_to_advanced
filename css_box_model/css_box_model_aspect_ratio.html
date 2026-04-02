@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css box model aspect ratio</title>
+    <style>
+        /* Aspect ratio allows you to define the ratio between width and height of an element.
+        aspect-ratio: width/height */
+        /* x = width||height */
+        /* y = y times width||height/x = y/x of width||height */
+        img{
+            width: 600px;
+            aspect-ratio: 4/3;
+        }
+        .image2{
+            height: 400px;
+            aspect-ratio: 4/3;
+        }
+        div{
+            height: 400px;
+            aspect-ratio: 5/2;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/image4.png" alt="">
+    <img src="images/image3.png" alt="" srcset="" class="image2">
+    <div></div>
+</body>
+</html>

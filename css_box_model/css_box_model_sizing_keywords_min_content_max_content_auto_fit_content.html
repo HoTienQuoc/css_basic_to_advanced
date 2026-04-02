@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Sizing keywords - min-content, max-content, auto, fit-content
+    </title>
+    <style>
+        /* a) The min-content is the smallest an element CAN BE based on the content it contains.
+OR it is the smallest
+size a box can take without overflowing its content.
+The longest word within the content defines the size of the box.
+b) The max-content sizing keyword represents the largest the content of an element can push (stretch) it.
+This is ideal when we need the maximum width of the content to determine the size of the box
+c) Auto sizing: it allows the element to expand to fit the content automatically.
+d) fit-content: the element will be able to use between the min and max-content. It uses the available container as its ideal size */
+        /*  */
+        section{
+            background-color: blueviolet;
+            width: 800px;
+        }
+        div{
+            font-size: 70px;
+            background-color: greenyellow;
+            /* width: min-content, max-content, auto, fit-content */
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officiis dolorem, facilis deserunt nihil quia doloremque ad possimus, commodi eius incidunt animi. Corporis ad error, iste non aperiam reprehenderit cum ducimus delectus aspernatur, esse ea amet debitis reiciendis exercitationem minima ex optio incidunt, mollitia explicabo quibusdam odio accusantium! Totam dolorem voluptatibus fuga eum at excepturi neque atque aut dolor obcaecati!
+        </div>
+    </section>
+</body>
+</html>

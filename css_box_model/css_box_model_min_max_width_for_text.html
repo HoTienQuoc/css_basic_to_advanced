@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css box model min max width for text</title>
+    <style>
+        /* **88. Box model – `min-width` và `max-width` cho text** giúp **giới hạn độ rộng đoạn văn**, tránh text quá dài hoặc quá hẹp khi responsive 📱
+
+---
+
+## 🔹 `min-width`
+
+Xác định **chiều rộng nhỏ nhất** phần tử có thể co lại.
+
+```css
+.text {
+  min-width: 200px;
+}
+```
+
+👉 Text **không bao giờ nhỏ hơn 200px**
+
+---
+
+## 🔹 `max-width`
+
+Xác định **chiều rộng lớn nhất** phần tử có thể giãn ra.
+
+```css
+.text {
+  max-width: 600px;
+}
+```
+
+👉 Text **không bao giờ rộng hơn 600px**
+
+---
+
+## 🔹 Ví dụ thực tế (đọc dễ hơn)
+
+```css
+.article {
+  max-width: 700px;
+}
+```
+
+👉 Giúp đoạn văn không kéo dài quá → dễ đọc hơn 📖
+
+---
+
+## 🔹 Kết hợp `min-width` + `max-width`
+
+```css
+.text {
+  min-width: 250px;
+  max-width: 600px;
+}
+```
+
+👉 Responsive:
+
+* nhỏ nhất: 250px
+* lớn nhất: 600px
+
+---
+
+## 🔹 Ví dụ center text block
+
+```css
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+```
+
+👉 Layout phổ biến cho blog/article 📰
+
+---
+
+## 🔹 So sánh
+
+| property    | ý nghĩa            |
+| ----------- | ------------------ |
+| `width`     | chiều rộng cố định |
+| `min-width` | nhỏ nhất           |
+| `max-width` | lớn nhất           |
+
+---
+
+## 🔹 Khi nào dùng cho text?
+
+* Paragraph dài 📄
+* Blog content 📰
+* Description UI 📦
+* Button text dài 🔘
+
+---
+
+## 🔹 Best practice cho readability
+
+```css
+p {
+  max-width: 65ch;
+}
+```
+
+👉 `ch` = số ký tự (ideal reading width) ✨
+
+---
+
+## 🔹 Responsive pattern phổ biến
+
+```css
+.container {
+  width: 100%;
+  max-width: 1200px;
+}
+```
+
+👉 Full width mobile → giới hạn desktop 📱💻
+
+---
+
+## 🔥 Quy tắc nhớ nhanh
+
+* `min-width` → không nhỏ hơn 📉
+* `max-width` → không lớn hơn 📈
+* dùng `max-width` cho text readability 📖
+ */
+ /* when it comes to text as the content, max-width and width are same */
+        p{
+          background-color: dodgerblue;
+          max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore dignissimos dolor excepturi maxime placeat, dolores provident culpa corrupti repellendus reprehenderit omnis rem veniam temporibus id molestiae deserunt recusandae quos doloribus cupiditate, quae aliquam suscipit exercitationem nostrum. Id debitis assumenda quisquam consequuntur voluptatibus. Labore, ad doloremque nemo assumenda pariatur eaque velit quisquam exercitationem tenetur vero veniam saepe voluptatibus maxime sapiente ipsum quidem sunt quae vel fugiat animi provident id consectetur corrupti? Dolores ducimus veritatis fugit officiis culpa! Veritatis mollitia vitae ratione.</p>
+</body>
+</html>

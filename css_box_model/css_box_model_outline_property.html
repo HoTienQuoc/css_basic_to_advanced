@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS box model outline property</title>
+    <style>
+        /* # 106. Outline Properties
+
+**`outline`** là đường viền **bên ngoài border**, thường dùng để highlight element (ví dụ khi focus input). 🎯
+
+```text
+margin
+ └─ outline  ← nằm ngoài
+     └─ border
+         └─ padding
+             └─ content
+```
+
+---
+
+## 1. Outline cơ bản
+
+```css
+.box {
+  outline: 2px solid red;
+}
+```
+
+👉 giống `border` nhưng **không chiếm không gian layout**
+
+---
+
+## 2. Outline shorthand
+
+```css
+outline: width style color;
+```
+
+Ví dụ:
+
+```css
+.box {
+  outline: 3px dashed blue;
+}
+```
+
+---
+
+## 3. Các thuộc tính outline
+
+### `outline-width`
+
+```css
+.box {
+  outline-width: 3px;
+  outline-style: solid;
+}
+```
+
+---
+
+### `outline-style`
+
+Các giá trị giống border:
+
+```css
+solid
+dashed
+dotted
+double
+none
+```
+
+```css
+.box {
+  outline-style: dotted;
+}
+```
+
+---
+
+### `outline-color`
+
+```css
+.box {
+  outline: 2px solid;
+  outline-color: red;
+}
+```
+
+---
+
+## 4. Outline offset
+
+👉 khoảng cách giữa border và outline
+
+```css
+.box {
+  outline: 2px solid red;
+  outline-offset: 5px;
+}
+```
+
+➡️ outline cách border 5px
+
+---
+
+## 5. Outline vs Border
+
+| Border           | Outline           |
+| ---------------- | ----------------- |
+| nằm trong box    | nằm ngoài box     |
+| ảnh hưởng layout | không             |
+| bo góc được      | không theo radius |
+| từng cạnh được   | không             |
+
+---
+
+## 6. Outline khi focus (rất phổ biến)
+
+```css
+input:focus {
+  outline: 2px solid blue;
+}
+```
+
+---
+
+## 7. Tắt outline (cẩn thận accessibility)
+
+```css
+button {
+  outline: none;
+}
+```
+
+⚠️ nên thay bằng:
+
+```css
+button:focus {
+  outline: 2px solid blue;
+}
+```
+
+---
+
+## 8. Ví dụ thực tế
+
+Highlight card:
+
+```css
+.card:hover {
+  outline: 2px solid #007bff;
+}
+```
+
+Focus input:
+
+```css
+input:focus {
+  outline: 3px solid orange;
+  outline-offset: 2px;
+}
+```
+
+---
+
+## Ghi nhớ nhanh 🧠
+
+* outline = border ngoài 🎯
+* không ảnh hưởng layout
+* không có từng cạnh
+* có `outline-offset`
+* hay dùng cho focus ✨
+ */
+    img{
+        width: 100%;
+    }
+
+    .o{
+        background-color: blueviolet;
+        outline: 25px dashed teal;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        padding: 20px;
+        color: brown;
+    }
+    .b{
+        background-color: lightcoral;
+        padding: 20px;
+        border: 15px solid palevioletred;
+        outline: 20px solid fuchsia;
+        outline-offset: 20px;
+        margin-top: 150px;
+        color: fuchsia;
+    }
+    </style>
+</head>
+<body>
+    <img src="images/image4.png" alt="" srcset="">
+
+    <div class="o">Outline</div>
+    <div class="b">Border</div>
+</body>
+</html>
