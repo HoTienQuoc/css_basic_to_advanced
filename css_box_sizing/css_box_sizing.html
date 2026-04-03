@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css box sizing</title>
+    <style>
+        /* **109. Box sizing** trong CSS dùng để kiểm soát **cách trình duyệt tính kích thước của phần tử** 📦
+
+---
+
+## 🧠 Mặc định (content-box)
+
+Theo mặc định, CSS dùng `box-sizing: content-box`.
+
+👉 `width` và `height` **chỉ tính phần content**, không bao gồm `padding` và `border`.
+
+```css
+.box {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+}
+```
+
+📏 Kích thước thực tế:
+
+* width thực = 200 + 20 + 20 + 5 + 5 = **250px**
+* layout dễ bị "phình" ngoài ý muốn 😵
+
+---
+
+## 💡 border-box (được dùng nhiều nhất)
+
+```css
+.box {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+}
+```
+
+👉 `width = 200px` **đã bao gồm padding + border**
+
+📏 Kích thước thực:
+
+* width thực = **200px (không đổi)**
+* content tự co lại để chứa padding + border
+
+👍 Dễ layout hơn
+👍 Không bị vỡ grid
+👍 Responsive tốt hơn
+
+---
+
+## 📊 So sánh nhanh
+
+| box-sizing  | width tính gì              | dễ layout |
+| ----------- | -------------------------- | --------- |
+| content-box | chỉ content                | ❌         |
+| border-box  | content + padding + border | ✅         |
+
+---
+
+## 🌍 Best Practice (dùng toàn project)
+
+Dev thường reset toàn bộ:
+
+```css
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+```
+
+👉 Giúp layout ổn định toàn bộ website
+
+---
+
+## Ví dụ trực quan
+
+```css
+.container {
+  width: 300px;
+  border: 2px solid red;
+}
+
+.box {
+  width: 100%;
+  padding: 20px;
+  border: 10px solid blue;
+  box-sizing: border-box;
+}
+```
+
+👉 `.box` vẫn nằm gọn trong `.container` 😎
+
+---
+
+## Khi nào dùng content-box?
+
+Hầu như **không dùng** nữa, trừ khi:
+
+* cần tính toán thủ công
+* làm animation đặc biệt
+
+---
+
+## Ghi nhớ nhanh 🧠
+
+* `content-box` → width không bao gồm padding, border
+* `border-box` → width bao gồm tất cả
+* luôn reset `box-sizing: border-box`
+
+---
+
+Bạn có muốn mình tạo **commit note giống các bài trước (87 → 108)** không?
+ */
+ /* Hình này đang giải thích **ý nghĩa của `box-sizing: border-box`** trong CSS 📦
+
+---
+
+## 🧠 Ý chính của hình
+
+Khi dùng:
+
+```css
+box-sizing: border-box;
+```
+
+👉 **padding và border KHÔNG làm tăng width/height nữa**
+👉 Chúng **được tính bên trong** kích thước đã khai báo
+
+---
+
+## 📏 Theo hình: cách tính width
+
+Hình ghi:
+
+> Total width of an element becomes:
+> **Margin-right + width + margin-left**
+
+Điều đó có nghĩa:
+
+* `padding` ❌ không cộng thêm
+* `border` ❌ không cộng thêm
+* chỉ có `margin` là nằm ngoài nên vẫn cộng
+
+### Công thức khi dùng `border-box`
+
+```
+Tổng width = margin-left + width + margin-right
+```
+
+---
+
+## 📐 Cách tính height (trong hình)
+
+```
+Tổng height = margin-top + height + margin-bottom
+```
+
+👉 padding + border đã nằm **bên trong height**
+
+---
+
+## So sánh nhanh
+
+### ❌ content-box (mặc định)
+
+```
+total width = margin + border + padding + width + padding + border + margin
+```
+
+➡️ rất dễ bị layout vỡ 😵
+
+### ✅ border-box
+
+```
+total width = margin + width + margin
+```
+
+➡️ dễ kiểm soát hơn 😎
+
+---
+
+## Ví dụ dễ hiểu
+
+```css
+.box {
+  width: 200px;
+  padding: 20px;
+  border: 10px solid black;
+  box-sizing: border-box;
+}
+```
+
+👉 width thực vẫn = **200px**
+👉 content tự co lại
+
+---
+
+## Kết luận từ hình 🧠
+
+* `border-box` giúp **width/height cố định**
+* `padding + border` nằm **bên trong**
+* chỉ `margin` là nằm ngoài và được cộng
+
+---
+
+Nhớ câu này là đủ:
+👉 **border-box = width không bị phình**
+👉 **chỉ margin làm tăng kích thước ngoài**
+ */
+ /* Hình này đang giải thích **`box-sizing: content-box`** — đây là **giá trị mặc định** của CSS 📦
+
+---
+
+## 🧠 Ý chính của hình
+
+Khi dùng (hoặc không khai báo gì):
+
+```css
+box-sizing: content-box;
+```
+
+👉 `width` và `height` **chỉ tính phần content**
+👉 `padding` + `border` sẽ **được cộng thêm vào bên ngoài**
+👉 layout rất dễ bị "phình" ra 😵
+
+---
+
+## 📏 Công thức tính width (theo hình)
+
+Hình ghi:
+
+```
+Margin-right + border-right + padding-right
++ width
++ padding-left + border-left + margin-left
+```
+
+👉 nghĩa là **mọi thứ đều cộng vào tổng chiều rộng**
+
+### Tóm gọn lại:
+
+```
+total width =
+margin-left
++ border-left
++ padding-left
++ width
++ padding-right
++ border-right
++ margin-right
+```
+
+📌 width thực tế **lớn hơn width khai báo**
+
+---
+
+## 📐 Công thức tính height
+
+Tương tự:
+
+```
+total height =
+margin-top
++ border-top
++ padding-top
++ height
++ padding-bottom
++ border-bottom
++ margin-bottom
+```
+
+👉 height cũng bị cộng thêm
+
+---
+
+## Ví dụ thực tế
+
+```css
+.box {
+  width: 200px;
+  padding: 20px;
+  border: 10px solid black;
+}
+```
+
+👉 width thực:
+
+```
+200 + 20 + 20 + 10 + 10 = 260px
+```
+
+😱 Không còn là 200px nữa
+
+---
+
+## So sánh nhanh với border-box
+
+|                   | content-box | border-box |
+| ----------------- | ----------- | ---------- |
+| padding cộng thêm | ✅           | ❌          |
+| border cộng thêm  | ✅           | ❌          |
+| width bị phình    | ✅           | ❌          |
+| dễ layout         | ❌           | ✅          |
+
+---
+
+## Kết luận từ hình 🧠
+
+* `content-box` = **mọi thứ cộng dồn**
+* `width` chỉ là phần content
+* padding + border làm box to ra
+* dễ vỡ layout
+
+---
+
+Nhớ câu này:
+👉 **content-box = cộng hết**
+👉 **border-box = không cộng padding + border**
+ */
+ /* Mình cho bạn **1 ví dụ đầy đủ có: width + height + padding + border + margin** để thấy rõ sự khác nhau 📦
+
+---
+
+# 🎯 Ví dụ CSS
+
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 10px solid black;
+  margin: 30px;
+}
+```
+
+---
+
+# 1️⃣ Khi dùng `content-box` (mặc định)
+
+## 📏 Tính WIDTH
+
+* width = 200
+* padding trái + phải = 40
+* border trái + phải = 20
+* margin trái + phải = 60
+
+👉 Tổng width:
+
+```
+30 + 10 + 20 + 200 + 20 + 10 + 30 = 320px
+```
+
+👉 Box chiếm **320px ngang**
+
+---
+
+## 📐 Tính HEIGHT
+
+* height = 100
+* padding trên + dưới = 40
+* border trên + dưới = 20
+* margin trên + dưới = 60
+
+👉 Tổng height:
+
+```
+30 + 10 + 20 + 100 + 20 + 10 + 30 = 220px
+```
+
+👉 Box chiếm **220px dọc**
+
+---
+
+# 2️⃣ Khi dùng `border-box`
+
+```css
+.box {
+  box-sizing: border-box;
+}
+```
+
+## 📏 WIDTH
+
+* width = 200 (đã gồm padding + border)
+* margin trái + phải = 60
+
+👉 Tổng width:
+
+```
+30 + 200 + 30 = 260px
+```
+
+---
+
+## 📐 HEIGHT
+
+* height = 100 (đã gồm padding + border)
+* margin trên + dưới = 60
+
+👉 Tổng height:
+
+```
+30 + 100 + 30 = 160px
+```
+
+---
+
+# 🔥 So sánh trực tiếp
+
+|                   | content-box | border-box |
+| ----------------- | ----------- | ---------- |
+| width chiếm       | 320px       | 260px      |
+| height chiếm      | 220px       | 160px      |
+| padding cộng thêm | ✅           | ❌          |
+| border cộng thêm  | ✅           | ❌          |
+| margin cộng thêm  | ✅           | ✅          |
+
+---
+
+# 📦 Hình dung
+
+content-box
+
+```
+margin
+ └ border
+    └ padding
+       └ content
+```
+
+border-box
+
+```
+margin
+ └ width (đã gồm border + padding + content)
+```
+
+---
+
+# 🧠 Công thức nhớ nhanh
+
+### content-box
+
+```
+total = margin + border + padding + width/height + padding + border + margin
+```
+
+### border-box
+
+```
+total = margin + width/height + margin
+```
+
+---
+
+Bạn muốn mình làm **1 hình vẽ trực quan giống video** không? (rất dễ hiểu)
+ */
+ /* **110. Importance of setting `box-sizing: border-box`** 📦✨
+(Ý nghĩa của việc luôn đặt `border-box`)
+
+---
+
+## 🎯 Vì sao nên dùng `border-box`
+
+Khi dùng:
+
+```css
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+```
+
+👉 giúp **dễ kiểm soát layout** hơn rất nhiều.
+
+---
+
+## 1️⃣ Không bị vỡ layout 😵
+
+Không cần tính thêm padding + border.
+
+### Ví dụ
+
+```css
+.container {
+  width: 300px;
+}
+
+.box {
+  width: 100%;
+  padding: 20px;
+  border: 10px solid;
+}
+```
+
+* `content-box` → box sẽ **tràn ra ngoài**
+* `border-box` → box vẫn **nằm gọn bên trong** 😎
+
+---
+
+## 2️⃣ Responsive dễ hơn 📱
+
+Khi làm responsive, width `%` sẽ **không bị phình**.
+
+👉 `width: 50%` luôn đúng 50%
+👉 không bị cộng padding thêm
+
+---
+
+## 3️⃣ Không cần tính toán phức tạp 🧠
+
+Không cần:
+
+```
+width - padding - border
+```
+
+Chỉ cần:
+
+```
+width = kích thước thật
+```
+
+---
+
+## 4️⃣ Grid / Flex ổn định hơn 🎯
+
+Khi chia layout:
+
+```css
+.col {
+  width: 33.33%;
+  padding: 10px;
+}
+```
+
+* content-box → bị xuống dòng
+* border-box → luôn nằm đúng hàng
+
+---
+
+## 5️⃣ Chuẩn được dùng trong hầu hết project 🚀
+
+Gần như **mọi framework** đều reset:
+
+* Bootstrap
+* Tailwind
+* Normalize.css
+* Modern CSS reset
+
+---
+
+## 🧠 Tóm lại
+
+`border-box` giúp:
+
+* 📏 width đúng như khai báo
+* 🧱 layout không vỡ
+* 📱 responsive dễ
+* 🧠 ít phải tính toán
+* 🚀 code sạch hơn
+
+---
+
+## Quy tắc nên dùng luôn
+
+```css
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+```
+
+👉 Đây là **best practice chuẩn hiện nay**
+
+---
+
+Nhớ câu này:
+👉 **border-box = layout ổn định**
+👉 **content-box = dễ vỡ layout**
+ */
+        *{
+            box-sizing: content-box;
+        }
+        .a{
+            display: inline-block;
+            background-color: darkgreen;
+            margin: 5px;
+            padding: 20px;
+            border: 5px solid teal;
+            width: 150px;
+            height: 300px;
+            /* box-sizing: content-box; */
+        }
+        .b{
+            display: inline-block;
+            background-color: gold;
+            margin: 5px;
+            padding: 20px;
+            border: 5px solid teal;
+            width: 150px;
+            height: 300px;
+            /* box-sizing: border-box; */
+        }
+    </style>
+</head>
+<body>
+    <section class="a">Dreams Do Come True</section>
+    <section class="b">Dreams Do Come True</section>
+    <section class="a">Dreams Do Come True</section>
+    <section class="b">Dreams Do Come True</section>
+    <section class="a">Dreams Do Come True</section>
+    <section class="b">Dreams Do Come True</section>
+    <section class="a">Dreams Do Come True</section>
+    <section class="b">Dreams Do Come True</section>
+</body>
+</html>
