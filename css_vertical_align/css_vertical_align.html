@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css vertical align</title>
+    <style>
+        /* **113. Apply `vertical-align` property to inline element** dùng để **căn chỉnh theo chiều dọc** các phần tử **inline / inline-block** (ví dụ: `img`, `span`, `inline-block`, `td`). 📏⬆️⬇️
+
+---
+
+## 🔹 Cú pháp
+
+```css
+vertical-align: baseline | top | middle | bottom | text-top | text-bottom | px | %;
+```
+
+---
+
+## Ví dụ cơ bản
+
+```html
+<p>
+  Hello 
+  <img src="avatar.png" class="icon">
+  World
+</p>
+```
+
+```css
+.icon {
+  width: 40px;
+  vertical-align: middle;
+}
+```
+
+👉 Ảnh sẽ **căn giữa theo chiều dọc** so với text.
+
+---
+
+## Các giá trị thường dùng
+
+### 1. `baseline` (mặc định)
+
+Căn theo **đường chân chữ**
+
+```css
+vertical-align: baseline;
+```
+
+---
+
+### 2. `top`
+
+Căn lên trên cùng
+
+```css
+vertical-align: top;
+```
+
+---
+
+### 3. `middle` ⭐ (hay dùng)
+
+Căn giữa theo chiều dọc
+
+```css
+vertical-align: middle;
+```
+
+---
+
+### 4. `bottom`
+
+Căn xuống dưới
+
+```css
+vertical-align: bottom;
+```
+
+---
+
+## Ví dụ trực quan
+
+```html
+<span class="box box1"></span>
+<span class="box box2"></span>
+<span class="box box3"></span>
+```
+
+```css
+.box {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: orange;
+}
+
+.box1 { vertical-align: top; }
+.box2 { vertical-align: middle; }
+.box3 { vertical-align: bottom; }
+```
+
+👉 Bạn sẽ thấy 3 box **lệch nhau theo chiều dọc**.
+
+---
+
+## ⚠️ Quan trọng
+
+`vertical-align` **KHÔNG hoạt động với block element**
+
+```css
+div {
+  vertical-align: middle; ❌ không có tác dụng
+}
+```
+
+Chỉ dùng cho:
+
+* inline
+* inline-block
+* table-cell
+* img
+
+---
+
+## Trick căn giữa icon + text
+
+```html
+<button>
+  <img src="icon.svg">
+  Download
+</button>
+```
+
+```css
+button img {
+  vertical-align: middle;
+}
+```
+
+---
+
+## Tóm tắt nhanh 🧠
+
+* dùng để **căn dọc inline elements**
+* hay dùng: `middle`
+* không dùng cho `display: block`
+* rất hữu ích với `img + text`
+
+---
+
+Bạn đang học theo list:
+
+* 110. box-sizing ✅
+* 111. overflow ✅
+* 112. text-overflow ✅
+* **113. vertical-align** ✅
+
+Tiếp theo thường là:
+**114. line-height vertical centering trick**
+
+Bạn muốn mình giải luôn không?
+ */
+ /* /* Keyword values */
+/* vertical-align: baseline;
+vertical-align: sub;
+vertical-align: super;
+vertical-align: text-top;
+vertical-align: text-bottom;
+vertical-align: middle;
+vertical-align: top;
+vertical-align: bottom; */
+
+/* <length> values */
+/* vertical-align: 10em; */
+/* vertical-align: 4px; */
+
+/* <percentage> values */
+/* vertical-align: 20%; */
+
+/* Global values */
+/* vertical-align: inherit;
+vertical-align: initial;
+vertical-align: revert;
+vertical-align: revert-layer;
+vertical-align: unset; */
+
+/* The vertical-align CSS shorthand property sets the vertical alignment of an inline, inline-block, or table-cell box. */
+/* Thuộc tính CSS vertical-align dùng để căn chỉnh theo chiều dọc cho các phần tử có kiểu inline, inline-block hoặc table-cell. 📏⬆️⬇️ */
+/* text-align dùng để căn chỉnh theo chiều ngang nội dung inline bên trong một phần tử block hoặc table-cell. Nó giống vertical-align nhưng theo chiều ngang. ↔️ */
+/* Câu này đang giải thích **`text-align`** bằng cách so sánh với `vertical-align`. Mình tách ra cho dễ hiểu nhé:
+
+---
+
+## 📌 Câu gốc
+
+> The text-align CSS property sets the horizontal alignment of the inline-level content inside a block element or table-cell box. This means it works like vertical-align but in the horizontal direction.
+
+---
+
+## ✅ Dịch dễ hiểu
+
+**`text-align` dùng để căn chỉnh theo chiều ngang nội dung inline bên trong một phần tử block hoặc table-cell. Nó giống `vertical-align` nhưng theo chiều ngang.** ↔️
+
+---
+
+## So sánh trực quan
+
+| Thuộc tính       | Hướng | Dùng để căn |
+| ---------------- | ----- | ----------- |
+| `vertical-align` | ⬆️⬇️  | căn dọc     |
+| `text-align`     | ⬅️➡️  | căn ngang   |
+
+---
+
+## Ví dụ `text-align`
+
+```html
+<div class="box">
+  Hello world
+</div>
+```
+
+```css
+.box {
+  text-align: center;
+  border: 1px solid black;
+}
+```
+
+👉 Text nằm **giữa theo chiều ngang**
+
+---
+
+## Các giá trị phổ biến
+
+```css
+text-align: left;    /* trái */
+/* text-align: center;  /* giữa */
+/* text-align: right;   /* phải */
+/* text-align: justify; /* dàn đều */
+/*```
+
+---
+
+## Ví dụ trực quan
+
+```css
+.box1 { text-align: left; }
+.box2 { text-align: center; }
+.box3 { text-align: right; }
+```
+
+```
+|Hello        |  left
+|    Hello    |  center
+|        Hello|  right
+```
+
+---
+
+## ⚠️ Quan trọng
+
+`text-align` **không căn chính block element**, nó chỉ căn **inline content bên trong**
+
+Sai ❌
+
+```css
+div {
+  text-align: center; /* không làm div nằm giữa */
+  /*
+}
+```
+
+Đúng ✅
+
+```css
+.parent {
+  text-align: center;
+}
+```
+
+```html
+<div class="parent">
+  <span>Text</span>
+</div>
+```
+
+---
+
+## Tóm tắt nhanh 🧠
+
+* `text-align` → căn ngang ↔️
+* `vertical-align` → căn dọc ↕️
+* `text-align` áp dụng cho **nội dung inline bên trong block**
+* hay dùng: `center`
+
+---
+
+Combo hay dùng nhất:
+
+```css
+text-align: center;
+vertical-align: middle;
+```
+
+👉 căn giữa cả ngang + dọc (trong trường hợp inline)
+
+Bạn có muốn mình làm **bảng so sánh `text-align vs margin auto vs flex center`** không? 😄
+ */
+        p{
+            background-color: blueviolet;
+            color: black;
+            width: 40%;
+            height: 300px;
+            text-align: center;
+            line-height: 200px;
+            font-size: 40px;
+        }
+        /* Vertical-align it works with inline, inline-block or table-cell box baseline(default), top, text-top, text-bottom, super, sub, middle, bottom, %, px, rem, em */
+        img{
+            vertical-align: 60%;
+        }
+    </style>
+</head>
+<body>
+    <p>Greatness
+        <img src="images/phone-volume-solid.png" alt="">
+    </p>
+    <!-- <img class="theory" src="images/image.png" alt=""> -->
+</body>
+</html>
