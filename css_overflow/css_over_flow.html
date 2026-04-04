@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS overflow</title>
+    <style>
+        /* **111. Overflow property** — dùng để kiểm soát **nội dung bị tràn ra ngoài box** 📦
+
+---
+
+# 🎯 Khi nào xảy ra overflow?
+
+Khi nội dung **lớn hơn** `width` hoặc `height` của phần tử.
+
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  border: 2px solid;
+}
+```
+
+Nếu text dài → sẽ **tràn ra ngoài** 😵
+
+---
+
+# Các giá trị của `overflow`
+
+## 1️⃣ `overflow: visible` (mặc định)
+
+👉 Nội dung tràn ra ngoài
+
+```css
+overflow: visible;
+```
+
+📦 Kết quả:
+
+```
+| BOX |
+| text text text text text text text ---> tràn ra ngoài
+```
+
+---
+
+## 2️⃣ `overflow: hidden`
+
+👉 Nội dung bị **cắt bỏ**
+
+```css
+overflow: hidden;
+```
+
+📦 Kết quả:
+
+```
+| BOX |
+| text text text... |  (phần dư bị mất)
+```
+
+👍 dùng khi muốn ẩn phần dư
+👍 hay dùng với bo góc (`border-radius`)
+
+---
+
+## 3️⃣ `overflow: scroll`
+
+👉 Luôn có **thanh scroll**
+
+```css
+overflow: scroll;
+```
+
+📦 Kết quả:
+
+```
+| BOX |
+| text...      |
+|              |
+|__________| ← scroll luôn xuất hiện
+```
+
+👎 kể cả khi không cần vẫn có scroll
+
+---
+
+## 4️⃣ `overflow: auto`
+
+👉 Chỉ xuất hiện scroll **khi cần**
+
+```css
+overflow: auto;
+```
+
+👍 dùng phổ biến nhất
+👍 UX tốt hơn
+
+---
+
+# Overflow riêng trục
+
+## Trục ngang
+
+```css
+overflow-x: hidden;
+```
+
+## Trục dọc
+
+```css
+overflow-y: scroll;
+```
+
+Ví dụ:
+
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  overflow-y: auto;
+}
+```
+
+👉 chỉ scroll dọc
+
+---
+
+# Ví dụ đầy đủ
+
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  border: 2px solid;
+  overflow: auto;
+}
+```
+
+---
+
+# So sánh nhanh
+
+| value   | hành vi        |
+| ------- | -------------- |
+| visible | tràn ra ngoài  |
+| hidden  | cắt bỏ         |
+| scroll  | luôn có scroll |
+| auto    | scroll khi cần |
+
+---
+
+# 🧠 Nhớ nhanh
+
+* visible → tràn
+* hidden → cắt
+* scroll → luôn scroll
+* auto → scroll khi cần
+
+---
+
+Bạn có muốn mình cho **1 ví dụ HTML + CSS để test trực tiếp** không?
+ */
+ /* `overflow: clip` là giá trị **mới hơn** của thuộc tính `overflow` ✂️
+
+👉 Nó **giống `overflow: hidden`** nhưng **không cho scroll** và **không tạo vùng scrollable**.
+
+---
+
+# 🧠 So sánh nhanh
+
+| value  | cắt nội dung | scroll được | tạo scroll container |
+| ------ | ------------ | ----------- | -------------------- |
+| hidden | ✅            | ❌           | ✅                    |
+| clip   | ✅            | ❌           | ❌                    |
+
+---
+
+# Ví dụ
+
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  border: 2px solid;
+  overflow: clip;
+}
+```
+
+👉 Nội dung vượt quá sẽ **bị cắt luôn** ✂️
+👉 Không kéo scroll được
+👉 Không có thanh cuộn
+
+---
+
+# So với `hidden`
+
+### `overflow: hidden`
+
+* cắt nội dung
+* vẫn có thể scroll bằng JS (`scrollTop`)
+* tạo scroll container
+
+### `overflow: clip`
+
+* cắt nội dung
+* ❌ không scroll được
+* ❌ không tạo scroll container
+* nhẹ hơn một chút
+
+---
+
+# Ví dụ trực quan
+
+text dài:
+
+```
+| BOX |
+| Hello Hello Hello Hello Hello |
+```
+
+## hidden
+
+```
+| BOX |
+| Hello Hello... |  (cắt)
+```
+
+nhưng vẫn có thể scroll bằng code
+
+## clip
+
+```
+| BOX |
+| Hello Hello... |  (cắt luôn)
+```
+
+không scroll được luôn
+
+---
+
+# Khi nào dùng `clip`
+
+👍 khi chỉ muốn **cắt đơn giản**
+👍 performance tốt hơn `hidden`
+👍 dùng trong animation / mask
+
+---
+
+# Ghi nhớ nhanh
+
+* `hidden` → cắt nhưng vẫn scroll được (ngầm)
+* `clip` → cắt cứng luôn ✂️
+
+---
+ */
+ /* /* Keyword values */
+/* overflow: visible;
+overflow: hidden;
+overflow: clip;
+overflow: scroll;
+overflow: auto;
+overflow: hidden visible; */
+
+/* Global values */
+/* overflow: inherit;
+overflow: initial;
+overflow: revert;
+overflow: revert-layer;
+overflow: unset; */
+
+        p{
+            background-color: hotpink;
+            font-size: 30px;
+            width: 100px;
+            /* overflow-x: clip; */
+            /* overflow-x: auto; */
+            /* overflow-x: hidden; */
+            /* overflow-x: visible; */
+            /* overflow-x: scroll; */
+            height: 200px;
+            /* overflow-y: auto; */
+            /* overflow-y: hidden; */
+            /* overflow-y: visible; */
+            /* overflow-y: scroll; */
+            /* overflow-y: clip; */
+
+            /* overflow: auto; */
+            /* overflow: hidden; */
+            /* overflow: scroll; */
+            /* overflow: clip; */
+            /* overflow: visible; */
+          }
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque incidunt nihil totam ullam consectetur corrupti quis culpa sequi tempora tempore facilis ad fuga sunt hic quo ipsa nisi, deserunt deleniti praesentium autem, perferendis cumque distinctio. Eius doloribus perspiciatis temporibus quaerat aperiam voluptas obcaecati id est fuga, ducimus eveniet magni illo recusandae laudantium corrupti corporis ipsam atque placeat ipsa doloremque ipsum neque laboriosam. Reiciendis consequuntur, eligendi dolor quo magnam facilis, cupiditate atque tempora aut quis nisi, nesciunt corporis architecto maxime tempore similique dicta rem exercitationem nulla eveniet! Excepturi quis, earum repellat, dolorum alias quibusdam ipsam libero iusto ex nulla consequuntur eaque placeat exercitationem. Ad in amet suscipit officiis est, debitis qui harum accusantium illo nobis illum autem corporis et sed, ratione voluptas aliquam. Corrupti commodi eligendi officiis ducimus reprehenderit optio nulla quibusdam, deleniti numquam officia nam exercitationem vero vitae earum suscipit ex maiores illum molestiae eaque in, voluptatibus asperiores. Iure ab voluptates dolore tempore possimus architecto quam ut inventore eveniet, voluptatibus, optio sequi minima sed assumenda beatae modi dolorum rem voluptatum ad eum maiores amet? Accusantium aperiam ut provident! Iste id dolore non asperiores exercitationem architecto iure voluptatibus expedita, tenetur impedit? Excepturi optio iusto sit omnis placeat sapiente quam alias saepe? Veniam eos, officia, inventore incidunt qui odio animi maiores in adipisci modi saepe nam natus dolore aliquam commodi labore voluptatem suscipit optio ad laborum corporis doloribus minus ipsa eum? Ut perferendis obcaecati molestias hic! Nam, enim architecto provident facilis tenetur veritatis inventore harum voluptatibus recusandae, commodi magni quos est atque a dolore praesentium sed, dolorum ducimus pariatur dignissimos at! Possimus obcaecati minus id, reiciendis quos omnis perspiciatis ipsa! Voluptas, vel molestiae consequatur natus architecto odio laboriosam blanditiis quidem nihil eaque eius vitae ad corrupti sit voluptatem atque vero velit ipsam dolores nobis. Ex est nisi excepturi sequi dolorem fuga eligendi voluptates nihil, molestiae deleniti temporibus tenetur cumque, eveniet tempora illum commodi officiis dignissimos perspiciatis vitae debitis ad quasi ratione. At numquam facere ducimus impedit, accusamus, necessitatibus rem eveniet veniam laboriosam dicta, est sint repudiandae aperiam! Voluptas, animi! Unde eum, modi vero odio magnam, praesentium et quam aut reiciendis iusto laudantium dignissimos delectus voluptates pariatur amet dolore harum facere suscipit aspernatur. Cum deleniti numquam, id expedita error sapiente libero deserunt maxime? Perspiciatis ea ducimus, repellat veniam quis eos quos aperiam et, soluta illo doloremque aliquid assumenda magnam natus ab. Autem accusamus illo quas ullam a libero. Est vero nulla laudantium deserunt!</p>
+    <img src="" alt="">
+</body>
+</html>

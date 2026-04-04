@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS text over flow</title>
+    <style>
+        /* **112. Text overflow property** trong CSS dùng để kiểm soát **nội dung text bị tràn ra ngoài box** khi không đủ chỗ hiển thị. Nó thường dùng **kết hợp với `overflow` + `white-space`**. 📦✂️
+
+---
+
+## 🔹 Cú pháp cơ bản
+
+```css
+text-overflow: clip | ellipsis | "string";
+```
+
+### 1. `clip` (mặc định)
+
+Cắt chữ luôn, không hiển thị gì thêm.
+
+```css
+.box {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+```
+
+👉 Kết quả: `"Hello this is very long te"`
+
+---
+
+### 2. `ellipsis` (hay dùng nhất) …
+
+Hiển thị dấu ba chấm khi text bị cắt.
+
+```css
+.box {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+
+👉 Kết quả: `"Hello this is very long..."`
+
+---
+
+### 3. Custom string (ít dùng)
+
+Bạn có thể tự định nghĩa ký tự thay thế.
+
+```css
+text-overflow: ">>";
+```
+
+👉 `"Hello this is very long>>"`
+
+---
+
+## ⚠️ Điều kiện để `text-overflow` hoạt động
+
+Bạn **bắt buộc phải có 3 cái này**:
+
+```css
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+```
+
+Nếu thiếu một trong ba 👉 **không hoạt động** ❌
+
+---
+
+## Ví dụ đầy đủ
+
+```html
+<div class="box">
+  This is a very very long text that will overflow
+</div>
+```
+
+```css
+.box {
+  width: 220px;
+  border: 2px solid black;
+  padding: 10px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+
+👉 Hiển thị:
+
+```
+This is a very very long...
+```
+
+---
+
+## 📌 Multi-line ellipsis (nhiều dòng)
+
+`text-overflow` chỉ hoạt động **1 dòng** thôi.
+Muốn nhiều dòng dùng hack:
+
+```css
+.box {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+```
+
+---
+
+## Tóm tắt nhanh 🧠
+
+* `clip` → cắt luôn ✂️
+* `ellipsis` → thêm `...`
+* cần `overflow: hidden` + `white-space: nowrap`
+* mặc định chỉ **1 dòng**
+
+---
+
+Bạn đang học theo list:
+
+* 110. box-sizing
+* 111. overflow
+* **112. text-overflow** ✅
+
+Tiếp theo thường sẽ là:
+**113. word-break / overflow-wrap**
+
+Bạn muốn mình giải luôn phần đó không?
+ */
+ /* text-overflow: clip;
+text-overflow: ellipsis ellipsis;
+text-overflow: ellipsis " [..]";
+
+/* Global values */
+/* text-overflow: inherit;
+text-overflow: initial;
+text-overflow: revert;
+text-overflow: revert-layer;
+text-overflow: unset; */
+        p{
+            background-color: blueviolet;
+            width: 160px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sit perspiciatis at obcaecati ipsam quis iste dolorum temporibus voluptate facere molestias iusto nemo veritatis aliquid eveniet dolorem quidem ducimus, exercitationem doloribus suscipit magnam nisi sunt odit? Nisi dolore vel reprehenderit assumenda alias tempore ex facere, eligendi rerum voluptates nostrum asperiores vitae possimus! Alias voluptates numquam sit magni dicta incidunt aliquam ipsum quibusdam ea quas id laborum eaque, natus recusandae magnam enim! Non quo aliquam minus laudantium at voluptatem, quibusdam, ducimus inventore aut, molestiae repellat sit reiciendis dolores. Minima quae praesentium inventore nihil accusamus officia maxime quis animi repudiandae itaque labore saepe numquam harum voluptate fugiat blanditiis dicta dignissimos, quo tempora unde dolore voluptas cupiditate. Id autem reiciendis dicta, hic labore culpa. Facere sapiente, non dolore at unde minima est accusamus impedit accusantium asperiores officia, assumenda repellendus blanditiis corporis ipsa quisquam. Numquam fuga, fugiat rerum saepe minima tempora ea totam nisi eius recusandae facere minus nemo! Sint numquam animi ipsa ex tempore, praesentium error, consequuntur quibusdam hic quod recusandae consequatur minima nesciunt explicabo, fugit ab. Unde harum soluta optio, aliquam accusamus minima deserunt earum similique voluptate animi. Quis ab culpa pariatur, consequuntur odit quasi, nisi sequi dicta perspiciatis magni est nihil eligendi iure eveniet. Amet, quibusdam, culpa nam, facere beatae aut nesciunt soluta sunt fugiat modi consectetur cumque iusto doloremque at reprehenderit eius repellat ipsum repellendus adipisci! Non nisi eum aliquam sunt voluptatem? Quod odio consequuntur illum doloribus officiis quos reprehenderit voluptate quas iusto laudantium, dolor temporibus beatae repellendus aspernatur deserunt fuga sequi voluptatibus. Ipsum modi facere facilis quia dolores consectetur minus sit velit quam, qui vero sunt tempore incidunt, sed quisquam sequi pariatur voluptatibus reprehenderit nam, laudantium vel. Molestiae reprehenderit accusantium provident ad ipsum nam, aperiam voluptatum est et. Officiis autem totam tenetur distinctio cumque nobis quidem. Expedita, quibusdam quos!</p>
+</body>
+</html>
