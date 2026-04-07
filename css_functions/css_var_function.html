@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS var function</title>
+    <style>
+        /* ## `var()` Function trong CSS 🎯
+
+`var()` dùng để **lấy giá trị của CSS Custom Property (CSS variable)** để tái sử dụng trong nhiều chỗ. 🔁
+
+---
+
+## 📘 Cú pháp
+
+```css
+var(--variable-name, fallback);
+```
+
+* `--variable-name` → tên biến
+* `fallback` → giá trị dự phòng (không bắt buộc)
+
+---
+
+## Ví dụ cơ bản
+
+```css
+:root {
+  --main-color: blue;
+}
+
+.box {
+  color: var(--main-color);
+}
+```
+
+👉 Text trong `.box` sẽ màu **blue** 🎨
+
+---
+
+## Ví dụ có fallback
+
+```css
+.box {
+  color: var(--text-color, black);
+}
+```
+
+👉 Nếu `--text-color` không tồn tại → dùng **black**
+
+---
+
+## Dùng với nhiều thuộc tính
+
+```css
+:root {
+  --spacing: 20px;
+}
+
+.card {
+  padding: var(--spacing);
+  margin: var(--spacing);
+}
+```
+
+👉 Dùng lại cùng 1 giá trị 📦
+
+---
+
+## Override variable
+
+```css
+:root {
+  --color: blue;
+}
+
+.dark {
+  --color: black;
+}
+
+.text {
+  color: var(--color);
+}
+```
+
+👉 Trong `.dark` → text sẽ **black**
+
+---
+
+## Ví dụ thực tế
+
+```css
+:root {
+  --header-height: 60px;
+}
+
+main {
+  height: calc(100vh - var(--header-height));
+}
+```
+
+👉 layout responsive cực tiện ⚡
+
+---
+
+## ⚠️ Quy tắc quan trọng
+
+* Tên biến **bắt đầu bằng `--`**
+* `var()` chỉ dùng với CSS variables
+* Có thể lồng nhau
+
+```css
+color: var(--a, var(--b, red));
+```
+
+---
+
+## Tóm tắt nhanh 🧠
+
+* `var()` = lấy giá trị biến CSS
+* hỗ trợ fallback
+* có thể override
+* dùng chung với `calc()` rất mạnh
+
+Hay dùng nhất:
+
+```css
+var(--color)
+var(--spacing)
+var(--font-size)
+```
+ */
+ /* The var() CSS function can be used to insert the value of a custom property (sometimes called a "CSS variable") instead of any part of a value of another property. */
+ /* :root là pseudo-class selector trong CSS đại diện cho phần tử gốc của document. 🌱
+ */
+ /* Var() function is beneficial when you have a general theme */
+        :root{
+            --border: 4px solid teal;
+            --size: 300px;
+            --color: teal;
+            --shadow: 4px 4px 5px red;
+            --font: 'Segoe UI';
+            --size-1: calc(60px * 2);
+            --color-1: royalblue;
+            --size-w: calc(40% * 2);
+        }
+        p{
+            border: var(--border);
+        }
+        aside{
+          height: var(--size);
+          background-color: var(--color);
+        }
+        h1{
+          font-size: var(--size);
+          text-shadow: var(--shadow);
+        }
+        h2{
+          font-family: var(--font);
+          font-size: var(--size-1);
+          background-color: var(--color-1);
+          width: var(--size-1);
+        }
+    </style>
+</head>
+<body>
+    <p>Awesome</p>
+    <aside></aside>
+    <h1>Great</h1>
+    <h2>Dreams</h2>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS calc function</title>
+    <style>
+        /* The calc() CSS function lets you perform calculations when specifying CSS property values. It can be used with <length>, <frequency>, <angle>, <time>, <percentage>, <number>, <integer>, and <color-function> values. */
+            /* Câu này đang mô tả **`calc()`**. Mình dịch + giải thích từng phần nhé 👇
+
+---
+
+## 📘 Câu gốc
+
+> The calc() CSS function lets you perform calculations when specifying CSS property values. It can be used with `<length>`, `<frequency>`, `<angle>`, `<time>`, `<percentage>`, `<number>`, `<integer>`, and `<color-function>` values.
+
+---
+
+## ✅ Dịch dễ hiểu
+
+**Hàm `calc()` cho phép bạn thực hiện các phép tính khi đặt giá trị cho thuộc tính CSS. Nó có thể dùng với các kiểu giá trị như chiều dài, phần trăm, thời gian, góc, số, màu…** 🧮
+
+---
+
+## Ý chính
+
+`calc()` = **CSS calculator**
+Bạn có thể:
+
+* cộng ➕
+* trừ ➖
+* nhân ✖️
+* chia ➗
+
+---
+
+## Các loại giá trị dùng được
+
+### 1. `<length>` 📏
+
+```css
+width: calc(100% - 50px);
+margin-top: calc(10px + 2rem);
+```
+
+---
+
+### 2. `<percentage>` %
+
+```css
+width: calc(50% - 20px);
+```
+
+---
+
+### 3. `<angle>` 🔄
+
+```css
+transform: rotate(calc(45deg + 15deg));
+```
+
+---
+
+### 4. `<time>` ⏱️
+
+```css
+animation-delay: calc(1s + 200ms);
+```
+
+---
+
+### 5. `<number>`
+
+```css
+line-height: calc(1.2 + 0.3);
+```
+
+---
+
+### 6. `<integer>`
+
+```css
+z-index: calc(10 + 5);
+```
+
+---
+
+### 7. `<frequency>` (ít dùng)
+
+```css
+/* hiếm khi dùng */
+/*```
+
+---
+
+### 8. `<color-function>` 🎨
+
+Có thể dùng trong color functions mới
+
+```css
+color: rgb(calc(255 - 100) 0 0);
+```
+
+---
+
+## Ví dụ phổ biến nhất
+
+```css
+.container {
+  width: calc(100% - 40px);
+}
+```
+
+👉 Chiều rộng = toàn bộ màn hình trừ 40px
+
+---
+
+## ⚠️ Quy tắc quan trọng
+
+Phải có **space giữa toán tử**
+
+```css
+calc(100% - 20px); ✅
+calc(100%-20px);   ❌
+```
+
+---
+
+## Tóm tắt nhanh 🧠
+
+* `calc()` = tính toán trong CSS
+* dùng với px, %, deg, s…
+* phải có khoảng trắng quanh `+ - * /`
+
+---
+
+Ví dụ thực tế hay dùng nhất:
+
+```css
+height: calc(100vh - 60px);
+```
+
+👉 full screen trừ header 😎
+ */
+ /* À, mình thấy bạn đang viết CSS như thế này:
+
+```css
+width: calc(25% * 2%);
+```
+
+Vấn đề là **CSS không cho phép nhân hai giá trị phần trăm trực tiếp với nhau trong `calc()`**. Trong CSS, bạn chỉ có thể:
+
+* Nhân hoặc chia **giá trị số (`number`) với đơn vị** (px, %, em, rem…)
+* Cộng hoặc trừ các giá trị cùng đơn vị hoặc khác đơn vị (một số trường hợp)
+
+Ví dụ hợp lệ:
+
+```css
+width: calc(25% * 2); /* 25% * 2 = 50% */
+/*width: calc(50px * 2); /* 50px * 2 = 100px */
+/*```
+
+Nhưng **`25% * 2%` không hợp lệ** vì CSS không biết “tỷ lệ phần trăm nhân phần trăm” sẽ ra đơn vị gì.
+
+✅ Giải pháp: Nếu ý bạn là nhân 25% với 2% = 0.25 * 0.02 = 0.005, thì bạn có thể viết:
+
+```css
+width: 0.5%; /* tương đương 25% * 2% */
+/*```
+
+hoặc nếu muốn dùng `calc()`:
+
+```css
+width: calc(25% * 0.02);
+```
+
+---
+
+Nếu muốn, mình có thể giải thích **tại sao CSS cấm nhân % với %** và nguyên tắc phía sau `calc()`. Bạn có muốn mình làm không?
+ */
+        img{
+            width: 100%;
+        }
+        h1{
+            /* ❌ font-size: calc(120px+30px); */
+            /* ❌ font-size: calc(120px * 30px); */
+            font-size: calc(70px + 30px);
+        }
+        h2{
+            background-color: blueviolet;
+            color: #fff;
+            padding: calc(10px + 30px);
+        }
+        h3{
+            background-color: crimson;
+            color: #fff;
+            /* height: calc(10vh + 50vh); */
+            height: calc(50vh - 20vh);
+            /* ❌ width: calc(25% * 2%); */
+            width: calc(25% * 2);
+        }
+        /* You can only multiply or divide a unit by a number */
+        img{
+            width: calc(20vm * 5);
+            height: calc(500rem / 10);
+        }
+        p{
+            background-color: darkgoldenrod;
+            padding: calc(4% - 0px);
+            width: calc(60% - 100px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Friends</h1>
+    <h2>Lovely</h2>
+    <h3>Great</h3>
+    <p>Thank you</p>
+    <img src="images/image.png" alt="">
+</body>
+</html>

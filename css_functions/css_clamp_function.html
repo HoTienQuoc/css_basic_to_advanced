@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css clamp function</title>
+    <style>
+        /* `clamp()` là một hàm trong CSS giúp bạn đặt **giá trị linh hoạt nhưng có giới hạn tối thiểu và tối đa**. Nó rất hữu ích cho **responsive design** 📱💻
+
+## Cú pháp
+
+```css
+clamp(min, preferred, max)
+```
+
+* `min` → giá trị nhỏ nhất
+* `preferred` → giá trị mong muốn (thường dùng `vw`, `%`, `calc()`)
+* `max` → giá trị lớn nhất
+
+👉 Trình duyệt sẽ chọn **preferred**, nhưng:
+
+* nếu nhỏ hơn `min` → dùng `min`
+* nếu lớn hơn `max` → dùng `max`
+
+---
+
+## Ví dụ cơ bản
+
+```css
+font-size: clamp(16px, 4vw, 32px);
+```
+
+Ý nghĩa:
+
+* Nhỏ nhất: `16px`
+* Linh hoạt theo màn hình: `4vw`
+* Lớn nhất: `32px`
+
+📌 Khi màn hình:
+
+* nhỏ → font = 16px
+* trung bình → font = 4vw
+* lớn → font = 32px
+
+---
+
+## Ví dụ trực quan
+
+```css
+h1 {
+  font-size: clamp(20px, 5vw, 50px);
+}
+```
+
+* Mobile → ~20px
+* Tablet → ~30px
+* Desktop lớn → 50px
+
+---
+
+## So sánh với media query
+
+❌ Cách cũ:
+
+```css
+h1 { font-size: 20px; }
+
+@media (min-width: 768px) {
+  h1 { font-size: 30px; }
+}
+
+@media (min-width: 1200px) {
+  h1 { font-size: 50px; }
+}
+```
+
+✅ Dùng `clamp()`:
+
+```css
+h1 {
+  font-size: clamp(20px, 5vw, 50px);
+}
+```
+
+➡️ Gọn hơn nhiều 😎
+
+---
+
+## Dùng cho width
+
+```css
+.box {
+  width: clamp(200px, 50%, 800px);
+}
+```
+
+Ý nghĩa:
+
+* Nhỏ nhất 200px
+* Tự co giãn 50%
+* Không vượt quá 800px
+
+---
+
+## Dùng với margin / padding
+
+```css
+.container {
+  padding: clamp(10px, 3vw, 40px);
+}
+```
+
+---
+
+## Công thức dễ nhớ
+
+```
+clamp(minimum, flexible, maximum)
+```
+
+Ví dụ hay dùng:
+
+* `clamp(14px, 2vw, 18px)` → body text
+* `clamp(24px, 5vw, 48px)` → heading
+* `clamp(200px, 50vw, 600px)` → container
+
+---
+
+## Khi nào nên dùng clamp()
+
+✅ Responsive font-size
+✅ Responsive spacing
+✅ Responsive width
+✅ Thay thế media query đơn giản
+
+---
+
+Bạn có muốn mình:
+
+* So sánh `min()` vs `max()` vs `clamp()` không?
+* Hay làm ví dụ hình minh họa trực quan?
+ */
+ /* Clamp function() */
+ /* clamp(minimum value, prefered value, maximum value) */
+ /* if preferred value is greater than the minimum value then the prefered value is used */
+ /* if prefered value is less than the minimum value is used */
+        p{
+            font-size: clamp(100px,70px,170px);
+        }
+        h1{
+            width: clamp(40px, 5px, 450px);
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <p>Hello</p>
+    <h1>Dance</h1>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS min max function</title>
+    <style>
+        /* min() function it picks the least size */
+        p{
+            font-size: min(60px, 170px, 200px);
+        }
+        h1{
+            line-height: max(120px, 700px, 250px);
+        }
+        /* min() function it picks the highest size */
+        h3{
+            font-size: max(200px, 220px, 40px);
+            background-color: blueviolet;
+            width: min(40%, 10%, 80%);
+        }
+    </style>
+</head>
+<body>
+    <p>Great job</p>
+    <h1>Awesome</h1>
+    <h3>Fantastic</h3>
+</body>
+</html>
