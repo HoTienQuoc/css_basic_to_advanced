@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css media screen widht min</title>
+    <style>
+        /* ## 📱 `@media screen and (min-width)` trong CSS
+
+`@media screen and (min-width: …)` dùng để **áp dụng CSS khi màn hình lớn hơn hoặc bằng một kích thước nhất định** — thường dùng cho **responsive mobile-first**.
+
+---
+
+# 🎯 Cú pháp
+
+```css
+@media screen and (min-width: 768px) {
+  /* CSS áp dụng khi màn hình >= 768px */
+/*}
+```
+
+👉 Nghĩa là:
+
+* `screen` → áp dụng cho màn hình 📱💻
+* `min-width: 768px` → khi chiều rộng ≥ 768px
+* CSS bên trong sẽ chạy khi điều kiện đúng
+
+---
+
+# 📱 Ví dụ cơ bản
+
+```css
+.container {
+  width: 320px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+```
+
+👉 Mobile → 320px
+👉 Tablet/Desktop → 768px
+
+---
+
+# 🧩 Ví dụ ẩn menu trên mobile
+
+```css
+.navbar {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    display: flex;
+  }
+}
+```
+
+---
+
+# 📊 Breakpoints thường dùng
+
+```css
+/* mobile nhỏ */
+/*@media screen and (min-width: 280px) {}
+
+/* mobile */
+/*@media screen and (min-width: 320px) {}
+
+/* tablet */
+/*@media screen and (min-width: 768px) {}
+
+/* desktop */
+/*@media screen and (min-width: 1024px) {}
+```
+
+---
+
+# ⚠️ `screen` có bắt buộc không?
+
+Không bắt buộc — bạn có thể viết:
+
+```css
+@media (min-width: 768px)
+```
+
+Hai cái này gần như giống nhau:
+
+```css
+@media screen and (min-width: 768px)
+@media (min-width: 768px)
+```
+
+👉 Dev hiện đại thường bỏ `screen` cho gọn.
+
+---
+
+# 🧠 `min-width` vs `max-width`
+
+### `min-width` (mobile-first)
+
+```css
+@media (min-width: 768px)
+```
+
+→ áp dụng cho màn hình lớn hơn 📈
+
+### `max-width` (desktop-first)
+
+```css
+@media (max-width: 768px)
+```
+
+→ áp dụng cho màn hình nhỏ hơn 📉
+
+---
+
+# 🚀 Ví dụ hoàn chỉnh
+
+```css
+body {
+  font-size: 14px;
+}
+
+/* tablet */
+/*@media screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* desktop */
+/*@media screen and (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+}
+```
+
+---
+
+# 🧠 Nhớ nhanh
+
+* `min-width` → lớn hơn 📈
+* `max-width` → nhỏ hơn 📉
+* `screen` → thiết bị màn hình
+* dùng để responsive 📱
+
+Bạn đang viết responsive theo:
+
+* mobile-first (`min-width`)
+* hay desktop-first (`max-width`)?
+ */
+    /* CSS @Media Query */
+		/* It allows you design a responsive web page
+		@media - is the declaration print or screen or all (all devices) or only screen - Media types and - combining keyword 
+		(max-width: 500px) or (min-width: 320px) - specify the amount of screen to cover or screen sizes 
+        of the devices */
+        /* screen sizes:  */
+        /* very very large screens (4k) - 2560px */
+        /* very large screens - 1440px */
+        /* large screen - 1024px */
+        /* tablet - 768px */
+        /* mobile-large - 425px */
+        /* mobile-medium - 375px */
+        /* mobile-small - 320px */
+        /* mobile-smaller - 280px */
+        /* large-watch - 267px */
+        /* medium-watch - 240px/213px */
+        /* small-watch - 170px */
+
+		/* Trong **CSS Media Query**, từ khóa **`only`** dùng để **áp dụng style chỉ khi toàn bộ điều kiện media query khớp hoàn toàn**. 👍
+
+### Vì sao cần `only`?
+
+* Các **trình duyệt rất cũ** không hiểu phần điều kiện phức tạp (ví dụ `and (max-width: 500px)`).
+* Nếu **không có `only`**, chúng sẽ **bỏ qua phần không hiểu** và vẫn áp dụng style cho mọi màn hình 😵
+* `only` giúp **chặn** những trình duyệt cũ đó.
+
+### Ví dụ
+
+Không dùng `only`:
+
+```css
+@media screen and (max-width: 500px) {
+  body {
+    background: red;
+  }
+}
+```
+
+👉 Trình duyệt cũ có thể hiểu thành chỉ `screen` → áp dụng **mọi kích thước màn hình**
+
+Dùng `only`:
+
+```css
+@media only screen and (max-width: 500px) {
+  body {
+    background: red;
+  }
+}
+```
+
+👉 Trình duyệt cũ **không hiểu `only`** → **bỏ qua toàn bộ media query** → không bị áp sai style
+
+### Lưu ý quan trọng ⚠️
+
+* Khi dùng `only`, **bắt buộc phải có media type** (ví dụ `screen`, `print`, ...)
+* Cú pháp chuẩn:
+
+```css
+@media only screen and (max-width: 768px) { ... }
+```
+
+### Khi nào cần dùng?
+
+* Trước đây dùng nhiều để hỗ trợ trình duyệt cũ 📼
+* Hiện nay **không bắt buộc**, vì hầu hết trình duyệt hiện đại đã hiểu đúng media query
+
+👉 Vì vậy:
+
+* Dự án hiện đại: có thể **không cần `only`**
+* Dự án cần tương thích rất cũ: **nên dùng `only`**
+
+Bạn có muốn mình giải thích luôn:
+
+* `not`
+* `and`
+* `or` (dấu phẩy)
+  trong media query không?
+ */
+    .para{
+        font-size: 30px;
+        background-color: darkorange;
+        color: white;
+        padding: 20px;
+        width: 900px;
+    }
+    img{
+        width: 100%;
+    }
+    @media print {
+        .para{
+            font-size: 70px;
+            color: turquoise;
+        }
+        img{
+            border: 20px solid lime;
+            width: 70%;
+        }
+    }
+
+    @media screen and (min-width: 565px){
+        .para{
+            background-color: lime;
+            width: 400px;
+            color: wheat;
+            font-size: 20px;
+        }
+        img{
+            width: 60%;
+        }
+    }
+    @media only screen and (min-width: 735px){
+        .para{
+            background-color: teal;
+            width: 500px;
+            color: wheat;
+            font-size: 20px;
+        }
+    }
+    @media only screen and (min-width: 895px){
+        .para{
+            background-color: hotpink;
+            width: 750px;
+            color: wheat;
+        }
+    }
+    @media screen and (min-width: 948px){
+        .para{
+            background-color: brown;
+            width: 800px;
+            color: wheat;
+        }
+    }
+    @media screen and (min-width: 1002px){
+        .para{
+            font-size: 30px;
+            color: blue;
+            width: 850px;
+            background-color: deeppink;
+        }
+        img{
+            border: 20px solid lime;
+            width: 70%;
+        }
+    }
+
+    
+    </style>
+</head>
+<body>
+    <section>
+        <p class="para">
+            I am loving this course so far.
+            This is such an amazing Css courses. Splendid indeed
+        </p>
+        <img src="images/image.png" alt="">
+    </section>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS @media screen max width</title>
+    <style>
+        /* ## 📱 `@media screen and (max-width)` trong CSS
+
+`@media screen and (max-width: …)` dùng để **áp dụng CSS khi màn hình nhỏ hơn hoặc bằng một kích thước nhất định** — thường dùng cho **responsive mobile**.
+
+---
+
+# 🎯 Cú pháp
+
+```css
+@media screen and (max-width: 768px) {
+  /* CSS áp dụng khi màn hình <= 768px */
+/*}
+```
+
+👉 Nghĩa là:
+
+* `screen` → áp dụng cho màn hình 📱💻
+* `max-width: 768px` → khi chiều rộng ≤ 768px
+* CSS bên trong sẽ chạy khi điều kiện đúng
+
+---
+
+# 📱 Ví dụ cơ bản
+
+```css
+.container {
+  width: 1200px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+```
+
+👉 Desktop → 1200px
+👉 Mobile → 100%
+
+---
+
+# 🧩 Ví dụ ẩn menu trên mobile
+
+```css
+.navbar {
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+}
+```
+
+---
+
+# 📊 Breakpoints thường dùng
+
+```css
+/* mobile nhỏ */
+/*@media screen and (max-width: 480px) {}
+
+/* mobile */
+/*@media screen and (max-width: 768px) {}
+
+/* tablet */
+/*@media screen and (max-width: 1024px) {}
+```
+
+---
+
+# ⚠️ `screen` có bắt buộc không?
+
+Không bắt buộc — bạn có thể viết:
+
+```css
+@media (max-width: 768px)
+```
+
+Hai cái này gần như giống nhau:
+
+```css
+@media screen and (max-width: 768px)
+@media (max-width: 768px)
+```
+
+👉 Dev hiện đại thường bỏ `screen` cho gọn.
+
+---
+
+# 🧠 `max-width` vs `min-width`
+
+### `max-width` (desktop-first)
+
+```css
+@media (max-width: 768px)
+```
+
+→ áp dụng cho màn hình nhỏ hơn
+
+### `min-width` (mobile-first)
+
+```css
+@media (min-width: 768px)
+```
+
+→ áp dụng cho màn hình lớn hơn
+
+---
+
+# 🚀 Ví dụ hoàn chỉnh
+
+```css
+body {
+  font-size: 18px;
+}
+
+/* tablet */
+/*@media screen and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* mobile */
+/*@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+```
+
+---
+
+# 🧠 Nhớ nhanh
+
+* `max-width` → nhỏ hơn 📉
+* `min-width` → lớn hơn 📈
+* `screen` → thiết bị màn hình
+* dùng để responsive 📱
+
+Bạn đang viết responsive theo:
+
+* desktop-first (`max-width`)
+* hay mobile-first (`min-width`)?
+ */
+ /* CSS @Media Query */
+		/* It allows you design a responsive web page
+		@media - is the declaration print or screen or all (all devices) or only screen - Media types and - combining keyword 
+		(max-width: 500px) or (min-width: 320px) - specify the amount of screen to cover or screen sizes 
+        of the devices */
+        /* screen sizes:  */
+        /* very very large screens (4k) - 2560px */
+        /* very large screens - 1440px */
+        /* large screen - 1024px */
+        /* tablet - 768px */
+        /* mobile-large - 425px */
+        /* mobile-medium - 375px */
+        /* mobile-small - 320px */
+        /* mobile-smaller - 280px */
+        /* large-watch - 267px */
+        /* medium-watch - 240px/213px */
+        /* small-watch - 170px */
+
+    .para{
+        font-size: 30px;
+        background-color: darkorange;
+        color: white;
+        padding: 20px;
+        width: 900px;
+    }
+    img{
+        width: 100%;
+    }
+    @media print {
+        .para{
+            font-size: 70px;
+            color: turquoise;
+        }
+        img{
+            border: 20px solid lime;
+            width: 70%;
+        }
+    }
+    @media screen and (max-width: 1002px){
+        .para{
+            font-size: 30px;
+            color: blue;
+            width: 850px;
+        }
+        img{
+            border: 20px solid lime;
+            width: 70%;
+        }
+    }
+    @media screen and (max-width: 948px){
+        .para{
+            background-color: brown;
+            width: 800px;
+            color: wheat;
+        }
+    }
+    @media screen and (max-width: 895px){
+        .para{
+            background-color: hotpink;
+            width: 750px;
+            color: wheat;
+        }
+    }
+    @media screen and (max-width: 735px){
+        .para{
+            background-color: teal;
+            width: 500px;
+            color: wheat;
+            font-size: 20px;
+        }
+    }
+    @media screen and (max-width: 565px){
+        .para{
+            background-color: lime;
+            width: 400px;
+            color: wheat;
+            font-size: 20px;
+        }
+        img{
+            width: 60%;
+        }
+    }
+    
+    </style>
+</head>
+<body>
+    <section>
+        <p class="para">
+            I am loving this course so far.
+            This is such an amazing Css courses. Splendid indeed
+        </p>
+        <img src="images/image.png" alt="">
+    </section>
+</body>
+</html>

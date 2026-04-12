@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS @media</title>
+    <style>
+        /* ## 🎯 Introduction to `@media` Query & `@media print`
+
+Trong CSS, **`@media`** giúp bạn áp dụng style **theo điều kiện môi trường** như kích thước màn hình, loại thiết bị, hoặc khi in. Điều này cực kỳ quan trọng cho **responsive design** và **print layout**.
+
+---
+
+# 📱 1. `@media` Query là gì?
+
+`@media` cho phép bạn viết CSS chỉ áp dụng khi **điều kiện đúng** (ví dụ: màn hình nhỏ hơn 768px).
+
+### Cú pháp cơ bản
+
+```css
+@media (condition) {
+  /* CSS rules */
+/*}
+```
+
+### Ví dụ: Responsive theo kích thước màn hình
+
+```css
+body {
+  background: white;
+}
+
+@media (max-width: 768px) {
+  body {
+    background: lightblue;
+  }
+}
+```
+
+👉 Khi màn hình ≤ 768px → background đổi sang màu xanh nhạt.
+
+---
+
+### Một số điều kiện thường dùng
+
+| Condition                | Ý nghĩa                   |
+| ------------------------ | ------------------------- |
+| `max-width`              | nhỏ hơn kích thước        |
+| `min-width`              | lớn hơn kích thước        |
+| `orientation: landscape` | màn hình ngang            |
+| `orientation: portrait`  | màn hình dọc              |
+| `hover: hover`           | thiết bị có hover (chuột) |
+
+---
+
+### Ví dụ nhiều điều kiện
+
+```css
+@media (min-width: 768px) and (max-width: 1200px) {
+  .container {
+    width: 80%;
+  }
+}
+```
+
+---
+
+# 🖨️ 2. `@media print` là gì?
+
+`@media print` dùng để **tùy chỉnh giao diện khi người dùng in trang web**.
+
+Rất hữu ích khi:
+
+* Ẩn menu
+* Ẩn button
+* Tối ưu layout
+* Đổi màu sang đen trắng
+
+---
+
+### Ví dụ cơ bản
+
+```css
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+}
+```
+
+---
+
+### Ví dụ thực tế: Ẩn phần không cần in
+
+```css
+.navbar,
+.footer,
+button {
+  display: none;
+}
+
+@media print {
+  .navbar,
+  .footer,
+  button {
+    display: none;
+  }
+}
+```
+
+---
+
+### Ví dụ tối ưu layout khi in
+
+```css
+@media print {
+  body {
+    font-size: 12pt;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+  }
+}
+```
+
+👉 Khi in, link sẽ hiển thị URL luôn.
+
+---
+
+# 📊 So sánh nhanh
+
+|          | `@media screen`         | `@media print`          |
+| -------- | ----------------------- | ----------------------- |
+| Mục đích | Responsive màn hình     | Layout khi in           |
+| Áp dụng  | Mobile, tablet, desktop | Print preview / Printer |
+| Use case | responsive design       | in tài liệu             |
+
+---
+
+# 🚀 Ví dụ hoàn chỉnh
+
+```css
+/* desktop */
+/*.container {
+  width: 1200px;
+}
+
+/* tablet */
+/*@media (max-width: 992px) {
+  .container {
+    width: 90%;
+  }
+}
+
+/* mobile */
+/*@media (max-width: 576px) {
+  .container {
+    width: 100%;
+  }
+}
+
+/* print */
+/*@media print {
+  .container {
+    width: 100%;
+  }
+
+  .no-print {
+    display: none;
+  }
+}
+```
+
+---
+
+# 🧠 Tip hay dùng
+
+* Responsive: dùng `@media (max-width: ...)`
+* Mobile-first: dùng `@media (min-width: ...)`
+* In PDF: dùng `@media print`
+
+---
+
+Bạn có muốn mình:
+
+* Viết commit message cho bài này không?
+* Hay tạo demo HTML hoàn chỉnh?
+ */
+ /* CSS @Media query */
+ /* It allows you design a responsive web page 
+ @media - is the declaration print or screen or all - media types */
+ /* The @media CSS at-rule can be used to apply part of a style sheet based on the result of one or more media queries. With it, you specify a media query and a block of CSS to apply to the document if and only if the media query matches the device on which the content is being used.
+ */
+ /* @media trong CSS được dùng để áp dụng một phần stylesheet dựa trên kết quả của một hoặc nhiều media query.
+Với nó, bạn xác định một media query và một khối CSS, khối này chỉ được áp dụng khi media query khớp với thiết bị đang hiển thị nội dung. */
+/* Bạn đang đọc tài liệu đầy đủ của **`@media`** — mình tóm tắt lại **những phần quan trọng nhất** để bạn dễ nhớ nhé 📚✨
+
+---
+
+# 🎯 `@media` là gì?
+
+`@media` là **CSS at-rule** dùng để áp dụng CSS **chỉ khi điều kiện media query đúng**.
+
+👉 Nói đơn giản:
+
+```
+Nếu điều kiện đúng → CSS chạy
+Nếu sai → CSS bỏ qua
+```
+
+---
+
+# 🧩 Syntax
+
+```css
+@media media-type and (media-feature) {
+  /* CSS */
+/*}
+```
+
+### Ví dụ
+
+```css
+@media screen and (width >= 900px) {
+  article {
+    padding: 1rem 3rem;
+  }
+}
+```
+
+---
+
+# 📱 Media Types
+
+| Type     | Ý nghĩa         |
+| -------- | --------------- |
+| `all`    | tất cả thiết bị |
+| `screen` | màn hình        |
+| `print`  | khi in          |
+
+Ví dụ:
+
+```css
+@media print {
+  body { font-size: 10pt; }
+}
+```
+
+---
+
+# ⚙️ Media Features phổ biến nhất
+
+### 📏 Kích thước
+
+```css
+@media (width > 900px) {}
+@media (height > 600px) {}
+```
+
+### 📱 Responsive (quan trọng nhất)
+
+```css
+@media (max-width: 768px) {}
+```
+
+### 📐 Orientation
+
+```css
+@media (orientation: landscape) {}
+```
+
+### 🌙 Dark mode
+
+```css
+@media (prefers-color-scheme: dark) {}
+```
+
+### 🖱 Hover
+
+```css
+@media (hover: hover) {}
+```
+
+### 🎬 Reduced motion
+
+```css
+@media (prefers-reduced-motion: reduce) {}
+```
+
+---
+
+# 🔗 Logical operators
+
+Bạn có thể kết hợp điều kiện
+
+### `and`
+
+```css
+@media screen and (width > 900px) and (orientation: landscape) {}
+```
+
+### `not`
+
+```css
+@media not screen and (width > 900px) {}
+```
+
+### `only`
+
+```css
+@media only screen and (max-width: 600px) {}
+```
+
+### `,` (OR)
+
+```css
+@media screen, print {
+  body { line-height: 1.2; }
+}
+```
+
+---
+
+# 🧠 Range syntax (mới)
+
+Ngắn gọn hơn:
+
+```css
+@media (400px <= width <= 700px) {
+  body { line-height: 1.4; }
+}
+```
+
+Thay vì:
+
+```css
+@media (min-width: 400px) and (max-width: 700px)
+```
+
+---
+
+# 🧪 Example từ tài liệu
+
+```css
+abbr {
+  color: red;
+}
+
+@media (hover: hover) {
+  abbr:hover {
+    color: blue;
+  }
+}
+```
+
+👉 Nếu thiết bị có hover → đổi màu khi hover
+
+---
+
+# 🖨 Print vs Screen
+
+```css
+@media print {
+  body { font-size: 10pt; }
+}
+
+@media screen {
+  body { font-size: 13px; }
+}
+```
+
+---
+
+# 🚀 Nested @media
+
+```css
+@supports (display: flex) {
+  @media (width > 900px) {
+    article {
+      display: flex;
+    }
+  }
+}
+```
+
+---
+
+# ⚠️ Accessibility tip
+
+Nên dùng `em` thay vì `px`
+
+```css
+@media (min-width: 40em) {}
+```
+
+👉 vì user có thể zoom font
+
+---
+
+# 🧠 Nhớ nhanh
+
+* `@media` = responsive logic
+* media type = screen / print
+* media feature = width / hover / dark mode
+* operators = and / not / or
+
+---
+
+# 🎯 90% dev chỉ dùng 5 cái này
+
+```css
+(max-width: 768px)
+(min-width: 768px)
+(orientation: landscape)
+(prefers-color-scheme: dark)
+(hover: hover)
+```
+
+---
+
+Bạn đang học CSS theo:
+
+* Responsive design? 📱
+* CSS fundamentals?
+* Hay chuẩn bị học container queries?
+ */
+
+		/* CSS @Media Query */
+		/* It allows you design a responsive web page
+		@media - is the declaration print or screen or all (all devices) or only screen - Media types and - combining keyword 
+		(max-width: 500px) or (min-width: 320px) - specify the amount of screen to cover or screen sizes 
+        of the devices */
+        /* screen sizes:  */
+        /* very very large screens (4k) - 2560px */
+        /* very large screens - 1440px */
+        /* large screen - 1024px */
+        /* tablet - 768px */
+        /* mobile-large - 425px */
+        /* mobile-medium - 375px */
+        /* mobile-small - 320px */
+        /* mobile-smaller - 280px */
+        /* large-watch - 267px */
+        /* medium-watch - 240px/213px */
+        /* small-watch - 170px */
+
+        /* @media print áp dụng khi:
+🖨️ Người dùng in trang web
+👀 Xem Print Preview
+📄 Nội dung hiển thị dạng phân trang giống PDF / Word */
+        .para{
+            font-size: 30px;
+            background-color: darkorange;
+            color: white;
+            padding: 20px;
+        }
+        img{
+            width: 100%;
+        }
+        @media print {
+            .para{
+                font-size: 70px;
+                color: turquoise;
+            }
+            img{
+                border: 20px solid lime;
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <p class="para">
+            I am loving this course so far.
+            This is such an amazing Css courses. Splendid indeed
+        </p>
+        <img src="images/image.png" alt="">
+    </section>
+</body>
+</html>
