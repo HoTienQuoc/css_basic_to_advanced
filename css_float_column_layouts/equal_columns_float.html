@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equal Columns Float</title>
+    <style>
+        /* Để **tạo 2 cột bằng nhau bằng `float`**, bạn chỉ cần:
+
+* Float 2 phần tử sang trái
+* Đặt `width: 50%` cho mỗi cột
+
+---
+
+## Ví dụ cơ bản
+
+```html
+<div class="container">
+  <div class="col">Column 1</div>
+  <div class="col">Column 2</div>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+}
+
+.col {
+  float: left;
+  width: 50%;
+}
+```
+
+👉 Kết quả: 2 cột **chia đều 50% - 50%** 📊
+
+---
+
+## ⚠️ Vấn đề thường gặp (cha bị collapse)
+
+Vì dùng `float`, `.container` sẽ **không có chiều cao**.
+Cần clearfix:
+
+```css
+.container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+```
+
+---
+
+## Phiên bản đầy đủ chuẩn
+
+```css
+.container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.col {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+```
+
+---
+
+## Nếu có khoảng cách giữa 2 cột
+
+```css
+.col {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+```
+
+`box-sizing: border-box` giúp padding **không làm vỡ layout**.
+
+---
+
+## Minh họa
+
+```
+| Column 1 | Column 2 |
+|   50%    |   50%    |
+```
+
+---
+
+## ⚠️ Cách hiện đại hơn (không dùng float)
+
+```css
+.container {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
+```
+
+👉 Dễ hơn, không cần clear 😄
+ */
+        
+        /* Để `float` hoạt động **ổn định và “tốt nhất”**, bạn cần đảm bảo một số **điều kiện quan trọng** sau. Code của bạn gần đúng rồi 👍 nhưng mình sẽ giải thích rõ để bạn hiểu bản chất.
+
+---
+
+# ✅ Điều kiện để `float` hoạt động tốt
+
+### 1. Phần tử phải có `width`
+
+Nếu không có `width` thì phần tử `float` sẽ chiếm toàn bộ chiều ngang → không thể chia cột.
+
+```css
+.col-1-2{
+    float: left;
+    width: 50%;
+}
+```
+
+✔ Bạn đã làm đúng.
+
+---
+
+### 2. Các phần tử float phải cùng hướng
+
+Thông thường dùng:
+
+```css
+float: left;
+```
+
+Không nên trộn `left` và `right` nếu không cần thiết.
+
+✔ Bạn cũng đang làm đúng.
+
+---
+
+### 3. Phải clear float cho container (QUAN TRỌNG)
+
+Khi dùng `float`, container cha sẽ **không ôm chiều cao con** → dễ vỡ layout.
+
+Bạn đang dùng:
+
+```css
+.col-container{
+    padding: 20px;
+    overflow: auto;
+}
+```
+
+👉 Đây chính là cách **clearfix** 👍
+
+Ngoài ra có thể dùng cách chuẩn hơn:
+
+```css
+.col-container::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+```
+
+---
+
+### 4. Tổng width không vượt quá 100%
+
+Ví dụ:
+
+```
+2 cột → 50% + 50% = 100%
+3 cột → 33.33% × 3 = 99.99%
+```
+
+✔ Code bạn đúng.
+
+⚠ Nếu thêm padding mà không dùng `box-sizing` sẽ bị xuống dòng.
+
+Bạn đã fix bằng:
+
+```css
+* { box-sizing: border-box; }
+```
+
+✔ Rất chuẩn.
+
+---
+
+### 5. Float nên dùng cho layout ngang đơn giản
+
+`float` hoạt động tốt nhất khi:
+
+* layout dạng grid đơn giản
+* chia cột ngang
+* text wrap quanh hình
+
+Không phù hợp:
+
+* layout phức tạp
+* vertical alignment
+* responsive phức tạp
+
+---
+
+# Tổng hợp "Checklist" chuẩn nhất
+
+Muốn float hoạt động ổn định:
+
+✔ Có `float: left/right`
+✔ Có `width`
+✔ Tổng width ≤ 100%
+✔ Container phải `clear float`
+✔ Dùng `box-sizing: border-box`
+✔ Không trộn float lung tung
+
+---
+
+# Code của bạn đã đạt chuẩn rồi 🎯
+
+Bạn đã có đủ:
+
+* `float`
+* `width`
+* `overflow:auto` (clearfix)
+* `box-sizing`
+* chia cột đúng %
+
+=> Float đang hoạt động **chuẩn nhất có thể** 👍
+
+---
+
+# Bonus: Cách hiện đại hơn (khuyên dùng)
+
+Ngày nay thay `float` bằng:
+
+* `display: flex`
+* `display: grid`
+
+Ví dụ flex thay toàn bộ:
+
+```css
+.col-container{
+    display: flex;
+}
+.col-1-2{
+    width: 50%;
+}
+```
+
+👉 Không cần clear, không bị collapse height 😎
+
+---
+
+Bạn muốn mình:
+
+* So sánh `float vs flex` 🔥
+* Hay chuyển toàn bộ code của bạn sang `flex` 🚀
+ */
+        body{
+            margin: 0;
+        }
+        * {box-sizing: border-box;}
+        /* column container */
+        .col-container{ /* column container */
+            padding: 20px;
+            overflow: auto;
+        }
+        .text{
+            font-size: 15px;
+            font-weight: 800;
+        }
+        /* padding for each column */
+        .pad{ /* padding for each column */
+            padding: 15px;
+        }
+        /* Equal Columns */
+        .col-1-2{ /* 1/2 column */
+            float: left;
+            width: 50%; /* 1/2 column */
+        }
+        .col-1-3{ /* 1/3 column */
+            float: left;
+            width: 33.33%; /* 1/3 column */
+        }
+        .col-1-4{ /* 1/4 column */
+            float: left;
+            width: 25%; /* 1/4 column */
+        }
+        .col-1-5{ /* 1/5 column */
+            float: left;
+            width: 20%; /* 1/5 column */
+        }
+        .col-1-6{ /* 1/6 column */
+            float: left;
+            width: 16.66%; /* 1/6 column */
+        }
+        /* colors */
+        .color1{
+            background-color: darkorange;
+        }
+        .color2{
+            background-color: wheat;
+        }
+        .color3{
+            background-color: blueviolet;
+        }
+        .color4{
+            background-color: hotpink;
+        }
+        .color5{
+            background-color: turquoise;
+        }
+        .color6{
+            background-color: yellow;
+        }
+        /* Responsiveness of the columns */
+        @media screen and (max-width: 600px){
+            /* .col-1-2, .col-1-3, .col-1-4{
+                float: none;
+                display: block;
+                width: 100%;    
+            } */
+            [class*="col-1-"] {
+                float: none;
+                display: block;
+                width: 100%;    
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 2 Equal Columns -->
+    <section class="col-container color6">
+        <h3>2 Equal Columns</h3>
+        <div class="col-1-2 pad color2">
+            <p>
+                <span class="text">1 / 2 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-2 pad color3">
+            <p>
+                <span class="text">1 / 2 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+    </section>
+    <!-- 3 Equal Columns -->
+    <section class="col-container color5">
+        <h3>3 Equal Columns</h3>
+        <div class="col-1-3 pad color1">
+            <p>
+                <span class="text">1 / 3 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-3 pad color2">
+            <p>
+                <span class="text">1 / 3 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-3 pad color3">
+            <p>
+                <span class="text">1 / 3 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+    </section>
+    <!-- 4 Equal Columns -->
+    <section class="col-container color4">
+        <h3>4 Equal Columns</h3>
+        <div class="col-1-4 pad color1">
+            <p>
+                <span class="text">1 / 4 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-4 pad color2">
+            <p>
+                <span class="text">1 / 4 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-4 pad color3">
+            <p>
+                <span class="text">1 / 4 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-4 pad color4">
+            <p>
+                <span class="text">1 / 4 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+    </section>
+    <!-- 5 Equal Columns -->
+    <section class="col-container color3">
+        <h3>5 Equal Columns</h3>
+        <div class="col-1-5 pad color1">
+            <p>
+                <span class="text">1 / 5 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-5 pad color2">
+            <p>
+                <span class="text">1 / 5 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-5 pad color3">
+            <p>
+                <span class="text">1 / 5 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-5 pad color4">
+            <p>
+                <span class="text">1 / 5 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-5 pad color5">
+            <p>
+                <span class="text">1 / 5 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+    </section>
+    <!-- 6 Equal Columns -->
+    <section class="col-container color2">
+        <h3>6 Equal Columns</h3>
+        <div class="col-1-6 pad color1">
+            <p>
+                <span class="text">1 / 6 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-6 pad color2">
+            <p>
+                <span class="text">1 / 6 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-6 pad color3">
+            <p>
+                <span class="text">1 / 6 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-6 pad color4">
+            <p>
+                <span class="text">1 / 6 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-6 pad color5">
+            <p>
+                <span class="text">1 / 6 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+        <div class="col-1-6 pad color6">
+            <p>
+                <span class="text">1 / 6 column</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, cum obcaecati. Accusantium impedit sint illum consectetur dolores excepturi quis nisi minus perspiciatis laudantium, non ex illo consequuntur? Quidem laboriosam excepturi laudantium ea doloremque deleniti quas, saepe expedita perspiciatis dolorem ipsa harum quae optio. Ipsum cum non ipsa perspiciatis quibusdam ex laborum molestiae cupiditate sit reiciendis blanditiis saepe unde consectetur sunt, minima perferendis eos ipsam nisi corporis temporibus velit! Quis sunt nesciunt assumenda! Quisquam nesciunt veniam harum natus adipisci totam dolore.
+            </p>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS full and half columns inside a column</title>
+
+        <style>
+            /*
+        Trong CSS float thuần, “nesting full columns and half columns
+        inside a column” nghĩa là:
+
+        - Bên trong một cột cha có:
+            + full width column (100%)
+            + half columns (50%)
+
+        Cấu trúc chuẩn:
+
+        row
+        └── column
+            └── nested row
+                ├── full column
+                ├── half column
+                └── half column
+
+        Ví dụ CSS:
+
+        .row::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .col-6 {
+            float: left;
+            width: 50%;
+        }
+
+        .col-12 {
+            float: left;
+            width: 100%;
+        }
+
+        Điều quan trọng:
+
+        col
+        └── row
+            └── col
+
+        Không nên:
+
+        col
+        └── col
+
+        Vì float dễ vỡ layout.
+        */
+        </style>
+    </head>
+    <body>
+        <h1>Hello</h1>
+    </body>
+</html>

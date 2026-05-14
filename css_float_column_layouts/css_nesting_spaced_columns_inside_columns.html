@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                margin: 0;
+            }
+            * {
+                box-sizing: border-box;
+            } /* Column container */
+            .column-container-space {
+                padding: 20px 0 20px 20px;
+                overflow: auto;
+            }
+            .text {
+                font-size: 18px;
+                font-weight: 800;
+            } /* padding for each column */
+            .pad-space {
+                padding: 15px;
+                margin-right: 1.5%;
+            }
+            /* padding for nested columns */
+            /* padding for 1/2 nested in 2/3 columns */
+            .p-a {
+                padding-right: 3px;
+                /* p-a must be inside the parent */
+            }
+            .p-b {
+                padding-right: 3px;
+                padding-left: 19px;
+                /* p-b must be inside the parent  */
+            }
+            /* styling for image column */
+            img,
+            video {
+                width: 100%;
+            }
+            /* Effect for each column */
+            /* colors */
+            .color1 {
+                background-color: darkorange;
+            }
+            .color2 {
+                background-color: turquoise;
+            }
+            .color3 {
+                background-color: blueviolet;
+            }
+            .color4 {
+                background-color: darkgreen;
+            }
+            .color5 {
+                background-color: yellow;
+            }
+            .color6 {
+                background-color: tomato;
+            }
+            /* */
+            .col-1-2 {
+                float: left;
+                width: 48.5%; /* 1/2 column */
+            }
+            .col-1-3 {
+                float: left;
+                width: 31.83%; /* 1/3 column */
+            }
+            .col-1-4 {
+                float: left;
+                width: 23.5%; /* 1/4 column */
+            }
+            .col-1-5 {
+                float: left;
+                width: 18.5%; /* 1/5 column */
+            }
+            .col-1-6 {
+                float: left;
+                width: 15.16%;
+                /* 1/6 column */
+            }
+            .col-3-4 {
+                float: left;
+                width: 75%; /* 3/4 column */
+            }
+            /* Effect for column */
+            .effect {
+                border-radius: 40px;
+                box-shadow: 4px 5px 5px 7px gray;
+            }
+            /* unequal columns */
+            .col-1 {
+                float: left;
+                width: 98.5%;
+            }
+            .col-2-3 {
+                float: left;
+                width: 66.16%;
+            }
+            .col-3-4 {
+                float: left;
+                width: 73.5%;
+            }
+            .col-4-5 {
+                float: left;
+                width: 78.5%;
+            }
+            .col-5-6 {
+                float: left;
+                width: 81.83%;
+            }
+            .col-3-5 {
+                float: left;
+                width: 58.5%;
+            }
+            .col-2-5 {
+                float: left;
+                width: 38.5%;
+            }
+            /* Responsiveness of the columns */
+            @media screen and (max-width: 768px) {
+                [class*="col-"] {
+                    float: none;
+                    display: block;
+                    width: 100%;
+                }
+                .column-container-space {
+                    padding-right: 20px;
+                }
+                .pad-space {
+                    margin-right: 0;
+                }
+                [class*="p-"] {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+            /* Khi dùng layout dựa trên `float`, bạn có thể **lồng (nest) các cột bên trong cột khác** bằng cách tạo một container con rồi tiếp tục chia cột bên trong đó.
+
+            Ví dụ:
+
+            ```html
+            <div class="row">
+                <div class="col col-8">
+                    Cột lớn
+
+                    <div class="nested-row">
+                        <div class="nested-col">Cột con 1</div>
+                        <div class="nested-col">Cột con 2</div>
+                    </div>
+                </div>
+
+                <div class="col col-4">
+                    Sidebar
+                </div>
+            </div>
+            ```
+
+            ```css
+            .row::after,
+            .nested-row::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            .col {
+                float: left;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+            .col-8 {
+                width: 66.66%;
+            }
+
+            .col-4 {
+                width: 33.33%;
+            }
+
+            /* Nested columns */
+            /*.nested-col {
+                float: left;
+                width: 50%;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+            ```
+
+            ### Ý tưởng chính
+
+            * Cột cha (`col-8`) hoạt động như một container mới.
+            * Bên trong nó, tạo một hàng con (`nested-row`).
+            * Các cột con tiếp tục dùng `float:left`.
+            * Dùng `clearfix` (`::after`) để tránh vỡ layout do float.
+
+            ### Lưu ý
+
+            Khi lồng nhiều cấp:
+
+            * tổng width của các cột con không vượt quá `100%`
+            * nên dùng `box-sizing:border-box`
+            * cần clearfix cho mỗi container chứa float
+
+            Hiện nay người ta thường thay `float` bằng:
+
+            * Flexbox
+            * CSS Grid
+
+            vì dễ nesting và responsive hơn.
+             */
+        </style>
+    </head>
+    <body>
+        <section class="column-container-space color1">
+            <h3>Nesting column inside column</h3>
+            <div class="col-1-3 p-a color2">
+                <div class="col-1-3 p-a color3">
+                    <div class="col-1-3 p-a color4">
+                        <div class="col-1-3 p-a color5">
+                            <div class="col-1-3 p-a color6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
