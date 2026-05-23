@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Css cursors</title>
+        <style>
+            /*  */
+            .zoom-in {
+                cursor: zoom-in;
+            }
+        </style>
+    </head>
+    <!-- `cursor` trong CSS thuần là thuộc tính dùng để đổi hình dạng con trỏ chuột khi hover lên phần tử.
+
+Nó giúp user hiểu:
+
+* có click được không
+* có drag được không
+* có resize được không
+* đang loading hay bị disabled
+
+---
+
+Cú pháp cơ bản:
+
+```css id="u2d12x"
+cursor: value;
+```
+
+Ví dụ:
+
+```css id="18tbfd"
+button {
+  cursor: pointer;
+}
+```
+
+Hover vào button:
+
+* chuột mũi tên
+* đổi thành bàn tay.
+
+---
+
+## Các cursor phổ biến
+
+### 1. `default`
+
+```css id="dtjlwm"
+cursor: default;
+```
+
+Con trỏ mặc định của hệ điều hành.
+
+---
+
+### 2. `pointer`
+
+```css id="jlwmqt"
+cursor: pointer;
+```
+
+Hiện bàn tay clickable.
+
+Dùng cho:
+
+* button
+* link
+* card click được
+
+---
+
+### 3. `text`
+
+```css id="zxtjlwm"
+cursor: text;
+```
+
+Hiện dạng chữ I-beam.
+
+Dùng cho:
+
+* input
+* textarea
+* editor
+
+---
+
+### 4. `wait`
+
+```css id="xkhv8w"
+cursor: wait;
+```
+
+Hiện loading/bận.
+
+---
+
+### 5. `progress`
+
+```css id="d7r9sk"
+cursor: progress;
+```
+
+App đang xử lý:
+
+* nhưng user vẫn thao tác được.
+
+---
+
+### 6. `not-allowed`
+
+```css id="1z6z1y"
+cursor: not-allowed;
+```
+
+Biểu tượng cấm 🚫
+
+Hay dùng cho:
+
+* button disabled
+
+---
+
+### 7. `move`
+
+```css id="k5t0ak"
+cursor: move;
+```
+
+Cho cảm giác kéo thả.
+
+---
+
+### 8. `grab` và `grabbing`
+
+```css id="psmbp1"
+cursor: grab;
+cursor: grabbing;
+```
+
+Modern drag UI.
+
+Ví dụ:
+
+```css id="daxl5o"
+.card {
+  cursor: grab;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+```
+
+Giống:
+
+* Trello
+* Figma
+* Notion
+
+---
+
+## Resize cursors
+
+### Resize ngang
+
+```css id="wp49od"
+cursor: ew-resize;
+```
+
+---
+
+### Resize dọc
+
+```css id="lzq9a2"
+cursor: ns-resize;
+```
+
+---
+
+### Resize góc
+
+```css id="khl89i"
+cursor: nwse-resize;
+cursor: nesw-resize;
+```
+
+---
+
+Ví dụ resizable panel:
+
+```css id="bjlwmg"
+.resizer {
+  cursor: col-resize;
+}
+```
+
+---
+
+## Zoom cursors
+
+```css id="yvxrql"
+cursor: zoom-in;
+cursor: zoom-out;
+```
+
+Hay dùng:
+
+* image viewer
+* map
+* gallery
+
+---
+
+## Crosshair
+
+```css id="d6zn2j"
+cursor: crosshair;
+```
+
+Dấu cộng.
+
+Hay dùng:
+
+* crop tool
+* drawing app
+* game
+
+---
+
+## Ẩn cursor
+
+```css id="3z01fi"
+cursor: none;
+```
+
+Thường dùng:
+
+* game FPS
+* custom cursor JS
+
+---
+
+# Custom cursor bằng ảnh
+
+CSS hỗ trợ:
+
+```css id="l5x7y2"
+cursor: url(cursor.png), auto;
+```
+
+Ý nghĩa:
+
+* dùng ảnh cursor.png
+* nếu fail → fallback về auto
+
+---
+
+Ví dụ:
+
+```css id="4t1bfx"
+.game {
+  cursor: url(sword.cur), pointer;
+}
+```
+
+---
+
+# Hotspot position
+
+Có thể chỉnh điểm click:
+
+```css id="jlwm4w"
+cursor: url(cursor.png) 4 12, pointer;
+```
+
+Trong đó:
+
+* `4 12`
+* là tọa độ hotspot
+
+Tức:
+
+* điểm click thực tế nằm ở pixel `(4,12)`.
+
+---
+
+# Multiple fallback
+
+```css id="l9sq2r"
+cursor:
+  url(cursor.svg),
+  url(cursor.cur),
+  pointer;
+```
+
+Browser:
+
+1. thử SVG
+2. fail → CUR
+3. fail nữa → pointer
+
+---
+
+# Thực tế frontend hiện đại
+
+Rất hay dùng:
+
+```css id="0u2w5u"
+button {
+  cursor: pointer;
+}
+
+.drag {
+  cursor: grab;
+}
+
+.drag:active {
+  cursor: grabbing;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+```
+
+---
+
+# Một lưu ý quan trọng
+
+`cursor:pointer`
+không tự xuất hiện cho mọi button trên mọi browser/UI framework.
+
+Nhiều project luôn viết:
+
+```css id="c7u53g"
+button,
+[role="button"] {
+  cursor: pointer;
+}
+```
+
+để UX consistent hơn.
+
+---
+
+# Một số cursor đáng nhớ
+
+| Cursor        | Ý nghĩa        |
+| ------------- | -------------- |
+| `pointer`     | click được     |
+| `text`        | nhập text      |
+| `wait`        | loading        |
+| `grab`        | có thể kéo     |
+| `grabbing`    | đang kéo       |
+| `move`        | di chuyển      |
+| `crosshair`   | chọn chính xác |
+| `zoom-in`     | phóng to       |
+| `not-allowed` | bị cấm         |
+| `col-resize`  | resize cột     |
+| `row-resize`  | resize hàng    |
+ -->
+
+    <body>
+        <p style="cursor: auto;">Auto</p>
+        <p style="cursor: crosshair;">Crosshair</p>
+        <p style="cursor: default;">Default</p>
+        <p style="cursor: pointer;">Pointer</p>
+        <p style="cursor: move;">Move</p>
+        <p style="cursor: e-resize;">East Resize</p>
+        <p style="cursor: n-resize;">North Resize</p>
+        <p style="cursor: nw-resize;">Northwest Resize</p>
+        <p style="cursor: ne-resize;">Northeast Resize</p>
+        <p style="cursor: s-resize;">South Resize</p>
+        <p style="cursor: se-resize;">Southeast Resize</p>
+        <p style="cursor: sw-resize;">Southwest Resize</p>
+        <p style="cursor: grab;">Grab</p>
+        <p style="cursor: help;">Help</p>
+        <p style="cursor: progress;">Progress</p>
+        <p class="zoom-in">Zoom in</p>
+    </body>
+
+</html>

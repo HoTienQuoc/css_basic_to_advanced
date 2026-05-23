@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>CSS multiple columns</title>
+    <style>
+      /* `*::-webkit-scrollbar` trong CSS là cách custom thanh cuộn (scrollbar) cho các browser dùng engine WebKit/Blink như:
+
+* Chrome
+* Edge
+* Safari
+* Opera
+
+Nó là pseudo-element không chuẩn chính thức nên có prefix:
+
+```css id="5qgq23"
+::-webkit-scrollbar
+```
+
+---
+
+Khi bạn viết:
+
+```css id="l7jlwm"
+*::-webkit-scrollbar
+```
+
+thì dấu `*` nghĩa là:
+
+```text id="wst5h0"
+mọi phần tử
+```
+
+Tức:
+
+* áp dụng scrollbar style cho toàn bộ website
+
+---
+
+Ví dụ phổ biến:
+
+```css id="9mv0mh"
+*::-webkit-scrollbar {
+  width: 10px;
+}
+```
+
+=> mọi scrollbar đều rộng 10px.
+
+---
+
+Các pseudo-element quan trọng:
+
+### 1. Toàn bộ scrollbar
+
+```css id="7p4wwo"
+::-webkit-scrollbar
+```
+
+Ví dụ:
+
+```css id="w5r4wo"
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+```
+
+* `width` → scrollbar dọc
+* `height` → scrollbar ngang
+
+---
+
+### 2. Thanh kéo (thumb)
+
+```css id="gz7ccw"
+::-webkit-scrollbar-thumb
+```
+
+Ví dụ:
+
+```css id="qzjlwm"
+*::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 999px;
+}
+```
+
+Đây là phần bạn kéo lên xuống.
+
+---
+
+### 3. Track (đường ray)
+
+```css id="3h3b1y"
+::-webkit-scrollbar-track
+```
+
+Ví dụ:
+
+```css id="fmp0k1"
+*::-webkit-scrollbar-track {
+  background: #eee;
+}
+```
+
+---
+
+Ví dụ hoàn chỉnh:
+
+```css id="tqscb1"
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+```
+
+---
+
+Kết quả:
+
+* scrollbar mỏng hơn
+* bo tròn
+* hover đổi màu
+
+Rất hay dùng trong:
+
+* dashboard
+* admin panel
+* dark theme
+* custom UI
+
+---
+
+Ẩn scrollbar:
+
+```css id="6yl3mx"
+*::-webkit-scrollbar {
+  display: none;
+}
+```
+
+Hoặc:
+
+```css id="22rzjz"
+scrollbar-width: none;
+```
+
+cho Firefox.
+
+---
+
+Nếu muốn cross-browser hơn:
+
+```css id="1g22mx"
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #eee;
+}
+```
+
+* Firefox hỗ trợ tốt
+* Chrome thì không đầy đủ như WebKit pseudo-elements
+
+---
+
+Điểm quan trọng:
+
+```css id="5xpxka"
+::-webkit-scrollbar
+```
+
+không phải CSS chuẩn W3C hoàn toàn.
+
+Nên:
+
+* Firefox hỗ trợ hạn chế
+* có thể khác nhau giữa browser
+* mobile đôi khi ignore
+
+---
+
+Thực tế frontend hiện nay:
+
+* đa số dự án vẫn dùng
+* đặc biệt React/Vue/Admin UI
+* vì scrollbar mặc định khá xấu 😅
+
+---
+
+Một pattern modern đẹp:
+
+```css id="epd4pd"
+body {
+  overflow: overlay;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.3);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+```
+
+Cho kiểu:
+
+* scrollbar nổi nhẹ
+* giống Discord/Figma/macOS app.
+ */
+      *::-webkit-scrollbar{
+        width: 12px;
+      }
+      *::-webkit-scrollbar-track {
+        background: hotpink;
+      }
+      *::-webkit-scrollbar-thumb {
+        background: tomato;
+        border-radius: 20px;
+        border: 3px solid springgreen;
+      }
+      .container {
+        background-color: chocolate;
+        padding: 30px;
+        column-count: 4;
+        column-gap: 60px;
+        column-rule: 6px solid firebrick;
+      }
+      h2 {
+        column-span: all;
+        background-color: gold;
+        text-align: center;
+      }
+      img {
+        max-width: 100%;
+      }
+      .container1 {
+        background-color: rebeccapurple;
+        padding: 30px;
+        column-count: 4;
+        column-gap: 60px;
+        column-rule: 6px solid teal;
+      }
+
+      @media screen and (max-width: 870px) {
+        .container {
+          column-count: 1;
+        }
+      }
+      /* `column-count` trong CSS thuần là thuộc tính dùng để chia nội dung của một phần tử thành nhiều cột tự động, giống kiểu bố cục báo giấy.
+
+Ví dụ đơn giản:
+
+```html
+<div class="box">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  Quisquam, tempora. Lorem ipsum dolor sit amet consectetur
+  adipisicing elit.
+</div>
+```
+
+```css
+.box {
+  column-count: 3;
+}
+```
+
+Kết quả: đoạn text sẽ tự chia thành 3 cột đều nhau.
+
+---
+
+Cách hoạt động:
+
+```css
+column-count: 3;
+```
+
+nghĩa là:
+
+* trình duyệt cố gắng tạo 3 cột
+* nội dung sẽ tự chảy từ cột này sang cột khác
+* không cần dùng `flex` hay `grid`
+
+---
+
+Bạn thường dùng kèm:
+
+```css
+column-gap
+```
+
+để tạo khoảng cách giữa các cột.
+
+Ví dụ:
+
+```css
+.box {
+  column-count: 3;
+  column-gap: 40px;
+}
+```
+
+---
+
+Có thể thêm đường kẻ giữa cột:
+
+```css
+.box {
+  column-count: 3;
+  column-rule: 1px solid #ccc;
+}
+```
+
+---
+
+`column-count` khác với Grid/Flex ở chỗ:
+
+* Nó chỉ chia luồng nội dung
+* Không kiểm soát layout từng item mạnh như Grid
+* Phù hợp cho:
+
+  * bài báo
+  * danh sách dài
+  * magazine layout
+  * masonry kiểu nhẹ
+
+---
+
+Ví dụ thực tế:
+
+```html
+<div class="news">
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+</div>
+```
+
+```css
+.news {
+  column-count: 2;
+  column-gap: 24px;
+}
+```
+
+Nội dung sẽ chạy:
+
+* từ trên xuống dưới cột 1
+* rồi sang cột 2
+
+chứ không phải chia từng phần tử ngang hàng như `display:grid`.
+
+---
+
+Ngoài `column-count` còn có:
+
+```css
+column-width
+```
+
+Ví dụ:
+
+```css
+.box {
+  column-width: 200px;
+}
+```
+
+Trình duyệt sẽ tự quyết định số cột dựa trên chiều rộng khả dụng.
+
+---
+
+Có shorthand:
+
+```css
+columns: 200px 3;
+```
+
+tương đương:
+
+```css
+column-width: 200px;
+column-count: 3;
+```
+
+---
+
+Một ví dụ đẹp hơn:
+
+```html
+<div class="article">
+  <p>
+    Đây là nội dung rất dài...
+  </p>
+</div>
+```
+
+```css
+.article {
+  width: 800px;
+  column-count: 3;
+  column-gap: 30px;
+  column-rule: 1px solid #ddd;
+}
+```
+
+Sẽ cho cảm giác như trang báo/tạp chí.
+ */
+
+      /* `column-span` trong CSS Multi-column dùng để cho một phần tử “trải dài” qua tất cả các cột.
+
+Nó thường dùng cho:
+
+* tiêu đề bài báo
+* banner
+* heading giữa nội dung nhiều cột
+
+---
+
+Ví dụ cơ bản:
+
+```html id="w9sp29"
+<article>
+  <h2>Tiêu đề lớn</h2>
+
+  <p>Đoạn văn...</p>
+  <p>Đoạn văn...</p>
+  <p>Đoạn văn...</p>
+</article>
+```
+
+```css id="x79ln4"
+article {
+  column-count: 3;
+  column-gap: 30px;
+}
+
+h2 {
+  column-span: all;
+}
+```
+
+Kết quả:
+
+* Nội dung bên dưới chia thành 3 cột
+* Nhưng `<h2>` sẽ chiếm toàn bộ chiều ngang
+* Giống tiêu đề báo giấy
+
+---
+
+Nếu không có:
+
+```css id="v5oqoh"
+column-span: all;
+```
+
+thì `<h2>` cũng bị nhét vào một cột bình thường.
+
+---
+
+`column-span` chỉ hoạt động trong:
+
+* layout dùng `column-count`
+* hoặc `columns`
+
+Ví dụ:
+
+```css id="p4mujn"
+.container {
+  columns: 3;
+}
+```
+
+---
+
+Các giá trị:
+
+```css id="yo3a4g"
+column-span: none;
+```
+
+Mặc định:
+
+* phần tử không span
+* nằm trong 1 cột
+
+---
+
+```css id="6ujr7j"
+column-span: all;
+```
+
+* span toàn bộ các cột
+* tạo ngắt cột trước và sau phần tử đó
+
+---
+
+Ví dụ thực tế:
+
+```html id="r4k72s"
+<div class="magazine">
+  <p>Text...</p>
+
+  <h1>Breaking News</h1>
+
+  <p>More text...</p>
+  <p>More text...</p>
+</div>
+```
+
+```css id="d1gsl9"
+.magazine {
+  column-count: 3;
+  column-gap: 24px;
+}
+
+h1 {
+  column-span: all;
+}
+```
+
+Flow thực tế sẽ là:
+
+```text
+[cột 1][cột 2][cột 3]
+
+------ H1 full width ------
+
+[cột 1][cột 2][cột 3]
+```
+
+---
+
+Điểm quan trọng:
+
+`column-span: all`:
+
+* phá luồng cột hiện tại
+* browser sẽ cân bằng lại nội dung phía trên
+* rồi tạo block full-width
+* rồi tiếp tục chia cột bên dưới
+
+Nên dùng quá nhiều có thể làm layout nhảy khó kiểm soát.
+
+---
+
+Khác với Grid:
+
+Trong CSS Grid:
+
+```css id="jsjlwm"
+grid-column: span 2;
+```
+
+là span số lượng cell/grid tracks.
+
+Còn:
+
+```css id="v55m2r"
+column-span: all;
+```
+
+là span toàn bộ hệ multi-column text flow.
+
+Hai cái hoàn toàn khác cơ chế.
+ */
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <h2>This is a span</h2>
+      <img
+        src="images/image1.png"
+        alt="" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <img
+        src="images/image1.png"
+        alt="" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <img
+        src="images/image1.png"
+        alt="" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <img
+        src="images/image1.png"
+        alt="" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+    </section>
+    <section class="container1">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <h2>This is a span</h2>
+      <img src="images/image1.png" alt="" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <img src="images/image1.png" alt="" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <img src="images/image1.png" alt="" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+      <img src="images/image1.png" alt="" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum,
+        doloribus totam? Temporibus doloremque debitis omnis quaerat, commodi
+        qui distinctio totam non maiores facilis sequi quibusdam ullam
+        inventore. Mollitia, aliquam. Rerum pariatur nostrum aspernatur nobis
+        inventore sapiente voluptate, dicta quisquam dolorum rem asperiores
+        deleniti magni. Debitis eius odio at doloremque porro in corporis
+        exercitationem sint iste eum ut laboriosam ducimus laudantium, aliquam,
+        assumenda totam blanditiis modi ipsum reprehenderit, ullam unde!
+        Doloribus amet veritatis odio, consectetur sapiente illo ducimus facere
+        aspernatur! Harum veritatis facere enim, quasi a dicta tempora excepturi
+        fugiat saepe cumque quos explicabo autem odio mollitia, maiores, animi
+        tempore ducimus.
+      </p>
+    </section>
+  </body>
+</html>
